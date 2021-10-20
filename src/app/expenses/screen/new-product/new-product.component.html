@@ -1,0 +1,53 @@
+<navigation></navigation>
+
+<section class="form" (change)="updateEnableSubmit()">
+  <mat-form-field appearance="standard">
+    <mat-label>{{"screen.new.product.form.name" | translate}}</mat-label>
+    <input matInput [(ngModel)]="product.name" required>
+  </mat-form-field>
+
+  <mat-form-field appearance="standard">
+    <mat-label>{{"screen.new.product.form.qrCode" | translate}}</mat-label>
+    <input matInput [(ngModel)]="product.qrCode">
+  </mat-form-field>
+
+  <mat-form-field appearance="standard">
+    <mat-label>{{"screen.new.product.form.quantity" | translate}}</mat-label>
+    <input matInput [(ngModel)]="product.quantity" type="number" required>
+  </mat-form-field>
+
+  <section class="photo">
+    <mat-form-field appearance="standard">
+      <mat-label>{{"screen.new.product.form.photo" | translate}}</mat-label>
+      <input matInput disabled>
+    </mat-form-field>
+    <button mat-raised-button color="primary"><mat-icon>camera</mat-icon></button>
+  </section>
+
+  <mat-form-field appearance="standard">
+    <mat-label>{{"screen.new.product.form.calories" | translate}}</mat-label>
+    <input matInput [(ngModel)]="product.calories" type="number">
+  </mat-form-field>
+
+  <section class="category list">
+    <h5 class="category title">{{"screen.new.product.form.category" | translate}}</h5>
+    <div class="keen-slider" #sliderRef>
+      <ng-container *ngFor="let category of productCategories">
+        <div class="keen-slider__slide number-slide{{category.id}}">
+          <div class="product category {{category.active ? 'active': ''}}" (click)="selectCategory(category)">
+            <mat-icon svgIcon="{{category.name}}" [inline]="true"></mat-icon>
+          </div>
+        </div>
+      </ng-container>
+    </div>
+  </section>
+</section>
+
+<footer class="action">
+  <button mat-raised-button mat-button
+          (click)="submit()"
+          [disabled]="!enableSubmit"
+          color="primary">{{"screen.new.product.action.submit" | translate | uppercase}}</button>
+  <button mat-button
+          color="primary">{{"screen.new.product.action.cancel" | translate | uppercase}}</button>
+</footer>

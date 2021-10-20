@@ -1,0 +1,13 @@
+@import "src/styles";
+nav {
+  display: flex;
+  justify-content: space-between;
+  padding: 20px;
+  align-items: center;
+  color: $primary-color;
+
+  span.title {
+    font-weight: 600;
+
+  }
+}

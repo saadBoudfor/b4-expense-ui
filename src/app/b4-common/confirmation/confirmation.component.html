@@ -1,0 +1,11 @@
+<navigation></navigation>
+
+<main>
+  <section class="icon"><mat-icon [inline]="false">{{data.success ? 'check' : 'close'}}</mat-icon></section>
+  <section class="message"> {{data.message}} </section>
+  <button mat-raised-button mat-button color="primary" [routerLink]="data.page">{{"retour à l'acceuil" | uppercase}}</button>
+</main>
+
+<footer>
+  <b4-progress [active]="data.active" [steps]="data.steps"></b4-progress>
+</footer>

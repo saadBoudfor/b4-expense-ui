@@ -1,0 +1,22 @@
+{
+  "screen": {
+    "new": {
+      "product": {
+        "title": "new product",
+        "form": {
+          "name": "Nom",
+          "qrCode": "Code barre",
+          "quantity": "Quantité",
+          "comment": "Commentaire",
+          "calories": "Calories",
+          "category": "Categorie (obligatoire)*",
+          "photo": "photo"
+        },
+        "action": {
+          "submit": "ajouter",
+          "cancel": "annuler"
+        }
+      }
+    }
+  }
+}
