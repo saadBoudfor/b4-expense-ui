@@ -1,0 +1,8 @@
+<section class="chart">
+  <div class="left" [style.height]=" ((target <= total ) ? target * 100 / total : 100) + '%'"></div>
+  <div class="right" [style.height]=" ((target > total ) ? total * 100 / target : 100) + '%'"></div>
+</section>
+<section class="description">
+  <span class="month">{{month | uppercase}}</span>
+  <span class="budget">{{target}}/{{total}}</span>
+</section>

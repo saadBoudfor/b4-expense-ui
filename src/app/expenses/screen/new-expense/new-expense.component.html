@@ -1,0 +1,29 @@
+<navigation
+  [leftAction]="'/holdhouse-expense-type'"
+  [title]="'screen.new.expense.title' | translate"
+  [rightAction]="'/expenses'"></navigation>
+
+<main>
+  <mat-form-field appearance="standard">
+    <mat-label>{{"screen.new.expense.form.name" | translate}}</mat-label>
+    <input matInput required autocomplete="off" [(ngModel)]="expense.name">
+  </mat-form-field>
+  <mat-form-field appearance="standard">
+    <mat-label>{{"screen.new.expense.form.date" | translate}}</mat-label>
+    <input matInput required autocomplete="off" type="date" [(ngModel)]="expense.date">
+  </mat-form-field>
+  <photo-uploader (upload)="onUploadBill($event)"></photo-uploader>
+  <place-autocomplete type="store" (selected)="onSelect($event)"></place-autocomplete>
+  <mat-form-field appearance="standard">
+    <mat-label>{{"screen.new.expense.form.comment" | translate}}</mat-label>
+    <textarea matInput autocomplete="off" [(ngModel)]="expense.comment"></textarea>
+  </mat-form-field>
+</main>
+
+<footer class="action">
+  <button mat-raised-button mat-button
+          (click)="addExpenseLine()"
+          color="primary">{{"global.next" | translate | uppercase}}</button>
+</footer>
+
+<b4-progress [active]="3" [steps]="4"></b4-progress>

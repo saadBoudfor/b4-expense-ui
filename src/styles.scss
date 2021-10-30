@@ -12,8 +12,8 @@
 // Define the palettes for your theme using the Material Design palettes available in palette.scss
 // (imported above). For each palette, you can optionally specify a default, lighter, and darker
 // hue. Available color palettes: https://material.io/design/color/
-$b4-expenses-ui-primary: mat.define-palette(mat.$indigo-palette);
-$b4-expenses-ui-accent: mat.define-palette(mat.$pink-palette, A200, A100, A400);
+$b4-expenses-ui-accent: mat.define-palette(mat.$brown-palette);
+$b4-expenses-ui-primary: mat.define-palette(mat.$grey-palette, A700, A100, A400);
 
 // The warn palette is optional (defaults to red).
 $b4-expenses-ui-warn: mat.define-palette(mat.$red-palette);
@@ -55,3 +55,11 @@ $is-dark-theme:   map.get($color-config, 'is-dark');
 $primary-color: mat.get-color-from-palette($primary-palette, 'default');
 $accent-color: mat.get-color-from-palette($accent-palette, 'default');
 $warn-color: mat.get-color-from-palette($warn-palette, 'default');
+
+h5.title {
+  margin-top: 20px;
+  padding-left: 20px;
+  font-size: 16px;
+  color: $primary-color;
+  font-weight: 500;
+}

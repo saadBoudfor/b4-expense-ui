@@ -1,0 +1,33 @@
+<section class="expense-line-list">
+  <navigation [leftAction]="'/new-expense-list'" [title]="title" [rightAction]="'/expenses'"></navigation>
+
+  <main>
+    <ng-container *ngFor="let expenseLine of expense.expenseLines" >
+      <div *ngIf="expenseLine.product && expenseLine.product.name" class="expense-line">
+        <img src="{{getIcon(expenseLine.product)}}" alt="">
+        <div class="description">
+          <div class="main">
+            <span class="product">{{expenseLine?.product?.name}}</span>
+            <span class="price">{{expenseLine?.price}} €</span>
+          </div>
+          <div class="secondary">
+            {{expenseLine?.quantity}}
+          </div>
+        </div>
+      </div>
+    </ng-container>
+  </main>
+
+  <footer class="action">
+    <button mat-stroked-button mat-button
+            [routerLink]="'/add-expense-line'"
+            color="primary">
+      <mat-icon>add</mat-icon>
+      {{ 'Ajouter une nouvelle Ligne de dépense'| uppercase}}</button>
+    <button mat-button mat-raised-button (click)="submit()"
+            color="primary">{{"screen.new.expense.action.submit" | translate | uppercase}}</button>
+  </footer>
+
+  <b4-progress [active]="3" [steps]="4"></b4-progress>
+</section>
+

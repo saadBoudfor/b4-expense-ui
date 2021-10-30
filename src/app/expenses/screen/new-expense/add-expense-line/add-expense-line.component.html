@@ -1,0 +1,37 @@
+<section *ngIf="!selectingProduct" class="add-expense-line">
+  <navigation
+    [leftAction]="expense && expense.expenseLines && expense.expenseLines.length >  1 ? '' :'/new-expense-list'"
+    [title]="title"
+    [rightAction]="'/expenses'"></navigation>
+  <main>
+    <mat-form-field appearance="standard">
+      <mat-label>{{"screen.new.expense.form.product" | translate}}</mat-label>
+      <input matInput type="text" autocomplete="off" [value]="expenseLine?.product?.name" required
+             (click)="selectingProduct = true;">
+    </mat-form-field>
+    <mat-form-field appearance="standard">
+      <mat-label>{{"screen.new.expense.form.price" | translate}}</mat-label>
+      <input matInput type="number" [(ngModel)]="expenseLine.price" autocomplete="off" required>
+    </mat-form-field>
+    <mat-form-field appearance="standard">
+      <mat-label>{{"screen.new.expense.form.quantity" | translate}}</mat-label>
+      <input matInput type="number" [(ngModel)]="expenseLine.quantity" autocomplete="off" required>
+    </mat-form-field>
+
+    <mat-form-field appearance="standard">
+      <mat-label>{{"screen.new.expense.form.comment" | translate}}</mat-label>
+      <textarea matInput [(ngModel)]="expenseLine.comment" autocomplete="off"></textarea>
+    </mat-form-field>
+  </main>
+
+  <footer>
+    <button mat-raised-button mat-button
+            (click)="addExpenseLine()"
+            color="primary">{{"global.next" | translate | uppercase}}</button>
+  </footer>
+  <b4-progress [steps]="4" [active]="3"></b4-progress>
+
+</section>
+
+
+<search-product *ngIf="selectingProduct" (selected)="onSelectProduct($event)"></search-product>

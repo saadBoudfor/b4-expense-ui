@@ -1,5 +1,9 @@
-<nav>
-  <mat-icon>arrow_back_ios</mat-icon>
-  <span class="title title-font">{{'screen.new.product.title' | translate | uppercase}}</span>
-  <mat-icon>close</mat-icon>
+<nav [style.color]="color">
+  <i>
+    <mat-icon *ngIf="leftAction" [routerLink]="leftAction"> {{leftIcon}} </mat-icon>
+  </i>
+  <i><span class="title title-font" *ngIf="title">{{ title | uppercase}}</span></i>
+  <i>
+    <mat-icon *ngIf="rightAction" [routerLink]="rightAction"> {{rightIcon}} </mat-icon>
+  </i>
 </nav>

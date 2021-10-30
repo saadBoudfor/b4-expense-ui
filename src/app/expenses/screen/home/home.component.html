@@ -1,0 +1,37 @@
+<navigation [rightAction]="'/add'" [rightIcon]="'add'"></navigation>
+<budget-target-displayer *ngIf="info && info.target && info.total"
+                         [target]="info.target"
+                         [routerLink]="'/budget'"
+                         [total]="info.total"></budget-target-displayer>
+
+<h5 class="title">Dernières dépenses:</h5>
+<expenses [expenses]="expenses" (selected)="onExpenseClick($event)"></expenses>
+<more-info [title]="'liste des dépenses'" [routerLink]="'/all-expenses'"></more-info>
+
+
+<h5 class="title">Dépenses par type:</h5>
+<section class="expense-by-type">
+  <p class="description">Cliquez sur les cartes pour avoir plus de détails sur vos statistiques de dépense</p>
+  <expense-card [expensesCount]="info.countRestaurant ? info.countRestaurant : 0"
+                [totalExpenses]="info.totalRestaurant ? info.totalRestaurant : 0"
+                [percentage]="percentageRestaurant"
+                [routerLink]="'/expenses-by-place/restaurants'"
+                [type]="'RESTAURANT'"></expense-card>
+
+  <expense-card [expensesCount]="info.countStore ? info.countStore : 0"
+                [totalExpenses]="info.totalStore ? info.totalStore : 0"
+                [percentage]="percentageStore"
+                [routerLink]="'/expenses-by-place/stores'"
+                [type]="'STORE'"></expense-card>
+</section>
+
+<h5 class="title">Dépenses par mois:</h5>
+<section class="expense-by-month">
+  <p class="description">
+    Vous avez réussi à économiser {{(info.total - info.target).toFixed(2)}} euros ce mois ci soit 14% par rappoort au
+    mois précédent
+  </p>
+  <bar-chart-expense></bar-chart-expense>
+
+</section>
+

@@ -1,0 +1,8 @@
+<header>
+  <navigation [title]="'liste des dépenses'" [rightAction]="'expenses'" color="white"></navigation>
+  <div class="stat">
+    <span class="total">{{info?.weekCount}} €</span>
+    <span class="label">Cette semaine</span>
+  </div>
+</header>
+<expenses [expenses]="expenses"></expenses>

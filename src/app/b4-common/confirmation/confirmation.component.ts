@@ -16,13 +16,6 @@ export class ConfirmationComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit(): void {
-    this.confirmationService.setData({
-      message: 'Le produit Coca zero à été sauvegardé avec succès. Merci de contribuer à la base de données B4Expenses 😇😇',
-      steps: 2,
-      active: 1,
-      page: '/new-product',
-      success: true
-    })
     this.confirmationService.getData().subscribe(data => {
       this.data = data;
     })

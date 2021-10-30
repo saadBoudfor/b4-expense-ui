@@ -1,0 +1,10 @@
+<navigation [title]="'B4-expense'" [rightAction]="'/expenses'"></navigation>
+
+<!--<rounded-icon [icon]="'add'"></rounded-icon>-->
+
+<main>
+  <choice [title]="'Nouveau produit'" [icon]="'add_shopping_cart'" [routerLink]="'/new-product'"></choice>
+  <choice [title]="'Nouvelle dépense'" [icon]="'storefront'" [routerLink]="'/expenses-type'"></choice>
+</main>
+
+<b4-progress [steps]="5" [active]="1"></b4-progress>

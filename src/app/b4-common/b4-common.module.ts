@@ -1,25 +1,59 @@
-import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import {NgModule} from '@angular/core';
+import {CommonModule} from '@angular/common';
 import {LibModule} from "../lib/lib.module";
-import { ConfirmationComponent } from './confirmation/confirmation.component';
+import {ConfirmationComponent} from './confirmation/confirmation.component';
 import {AngularImports} from "../angular-imports";
 import {RouterModule} from "@angular/router";
-import { CameraComponent } from './camera/camera.component';
 import {WebcamModule} from "ngx-webcam";
-
-
+import {TranslateLoader, TranslateModule} from "@ngx-translate/core";
+import {HttpLoaderFactory} from "../app.module";
+import {HttpClient} from "@angular/common/http";
+import {PlaceAutocompleteComponent} from './place-autocomplete/place-autocomplete.component';
+import {FormsModule, ReactiveFormsModule} from "@angular/forms";
+import {BudgetTargetDisplayerComponent} from './budget-target-displayer/budget-target-displayer.component';
+import {ExpensesComponent} from './expenses/expenses.component';
+import {ExpenseCardComponent} from './expense-card/expense-card.component';
+import {BarChartItemComponent} from './bar-chart-item/bar-chart-item.component';
+import {BarChartExpenseComponent} from './bar-chart-expense/bar-chart-expense.component';
+import {ExpensesLinesListComponent} from './expenses-lines-list/expenses-lines-list.component';
 
 @NgModule({
   declarations: [
     ConfirmationComponent,
-    CameraComponent
+    PlaceAutocompleteComponent,
+    BudgetTargetDisplayerComponent,
+    ExpensesComponent,
+    ExpenseCardComponent,
+    BarChartItemComponent,
+    BarChartExpenseComponent,
+    ExpensesLinesListComponent
+  ],
+  exports: [
+    PlaceAutocompleteComponent,
+    BudgetTargetDisplayerComponent,
+    ExpensesComponent,
+    ExpenseCardComponent,
+    BarChartExpenseComponent,
+    ExpensesLinesListComponent
+
   ],
   imports: [
     CommonModule,
     AngularImports,
     LibModule,
     RouterModule,
-    WebcamModule
+    WebcamModule,
+    TranslateModule.forRoot({
+      defaultLanguage: 'fr',
+      loader: {
+        provide: TranslateLoader,
+        useFactory: HttpLoaderFactory,
+        deps: [HttpClient]
+      }
+    }),
+    FormsModule,
+    ReactiveFormsModule
   ]
 })
-export class B4CommonModule { }
+export class B4CommonModule {
+}

@@ -4,6 +4,8 @@ import {DomSanitizer} from "@angular/platform-browser";
 import {MatIconRegistry} from "@angular/material/icon";
 import {Product} from "../../models/Product";
 import {ProductService} from "../../services/product.service";
+import {ConfirmationService} from "../../../b4-common/services/confirmation.service";
+import {TranslateService} from "@ngx-translate/core";
 
 @Component({
   selector: 'app-new-product',
@@ -21,8 +23,13 @@ export class NewProductComponent implements OnInit, AfterViewInit {
   product = new Product();
 
   enableSubmit = false;
+  private file: any;
+  title: any;
+  scanning = false;
 
   constructor(private productService: ProductService,
+              private confirmationService: ConfirmationService,
+              private translateService: TranslateService,
               iconRegistry: MatIconRegistry,
               sanitizer: DomSanitizer) {
     iconRegistry.addSvgIcon('meat', sanitizer.bypassSecurityTrustResourceUrl('assets/products/meat.svg'));
@@ -31,6 +38,9 @@ export class NewProductComponent implements OnInit, AfterViewInit {
   }
 
   ngOnInit(): void {
+    this.translateService.get('screen.new.product.title').subscribe(title => {
+      this.title = title;
+    })
   }
 
   ngAfterViewInit() {
@@ -51,7 +61,27 @@ export class NewProductComponent implements OnInit, AfterViewInit {
   }
 
   submit() {
-    console.log(this.product);
+    this.productService.save(this.file, this.product).subscribe(saved => {
+      console.log('Product saved success', {product: saved});
+      this.confirmationService.displayConfirmationMessage({
+        message: 'Le produit ' + saved.name + ' à été sauvegardé avec succès. Merci de contribuer à la base de données B4Expenses 😇😇',
+        steps: 2,
+        active: 2,
+        page: '/expenses',
+        success: true,
+        title: this.title
+      })
+    }, error => {
+      console.error({error})
+      this.confirmationService.displayConfirmationMessage({
+        message: 'Le produit ' + this.product.name + "n'as pas pu être ajouté",
+        steps: 2,
+        active: 2,
+        page: '/expenses',
+        success: false,
+        title: this.title
+      })
+    })
   }
 
   updateEnableSubmit() {
@@ -59,8 +89,13 @@ export class NewProductComponent implements OnInit, AfterViewInit {
     console.log(this.enableSubmit);
   }
 
-  getImage($event: void) {
-    console.log($event);
+  onUploadPhoto($event: any) {
+    this.file = $event;
+  }
+
+  onScan($event: string) {
+    this.scanning = false;
+    this.product.qrCode = $event;
   }
 }
 

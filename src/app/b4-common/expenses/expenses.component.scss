@@ -1,0 +1,38 @@
+@import "src/styles";
+
+.expense {
+  display: flex;
+  padding: 20px;
+  align-items: center;
+
+  .icon {
+    margin-right: 20px;
+
+    mat-icon {
+      $icon-size: 36px;
+      font-size: $icon-size;
+      width: $icon-size;
+      height: $icon-size;
+      color: $accent-color;
+    }
+  }
+
+  .description {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+
+    .main {
+      display: flex;
+      width: 100%;
+      justify-content: space-between;
+      margin-bottom: 5px;
+    }
+
+    .secondary {
+      .date {
+        color: $accent-color;
+      }
+    }
+  }
+}

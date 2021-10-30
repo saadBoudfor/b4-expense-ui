@@ -1,8 +1,61 @@
 {
+  "component": {
+    "place": {
+      "restaurant": {
+        "label": " Nom Restaurant",
+        "address": "Adresse Restaurant"
+      },
+      "store": {
+        "label": " Nom magasin",
+        "address": "Adresse magasin"
+      }
+    }
+  },
   "screen": {
+    "expense-type": {
+      "title": "nouvelle depense",
+      "description": "Quel est le type de dépense que vous souhaiteriez enregistrer ?",
+      "expense-holdhouse": {
+        "title": "Dépense ménagère",
+        "description": "Couses au supermarché, boulangerie, ..."
+      },
+      "expense-restaurant": {
+        "title": "Dépense retaurant",
+        "description": "Food track, déjeuner d'équipe ..."
+      }
+    },
+    "holdhouse-expense-type": {
+      "title": "nouvelle depense",
+      "description": "Quel est le type de dépense méangère que vous souhaiteriez enregistrer ?",
+      "expense-holdhouse": {
+        "title": "Liste de dépense",
+        "description": "exemple: course rentrée scolaire"
+      },
+      "expense-restaurant": {
+        "title": "Dépense unitaire",
+        "description": "exemple: brique de lait 1L"
+      }
+    },
     "new": {
+      "expense": {
+        "title": "nouvelle dépense",
+        "form": {
+          "name": "Nom",
+          "date": "Date",
+          "bill": "Facture",
+          "comment": "Commentaire",
+          "product": "Article",
+          "price": "Prix",
+          "quantity": "Quantité",
+          "store": "Magasin"
+        },
+        "action": {
+          "submit": "valider",
+          "cancel": "annuler"
+        }
+      },
       "product": {
-        "title": "new product",
+        "title": "nouveau produit",
         "form": {
           "name": "Nom",
           "qrCode": "Code barre",
@@ -10,7 +63,7 @@
           "comment": "Commentaire",
           "calories": "Calories",
           "category": "Categorie (obligatoire)*",
-          "photo": "photo"
+          "photo": "Photo"
         },
         "action": {
           "submit": "ajouter",
@@ -18,5 +71,8 @@
         }
       }
     }
+  },
+  "global": {
+    "next": "suivant"
   }
 }

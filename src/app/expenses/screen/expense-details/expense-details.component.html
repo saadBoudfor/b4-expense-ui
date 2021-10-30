@@ -1,0 +1,57 @@
+<header *ngIf="expense">
+  <navigation [title]="'Détails dépense'" [rightAction]="'expenses'"
+              color="white"></navigation>
+  <div class="stat">
+    <mat-icon class="icon">{{expense.place && expense.place.type === 'STORE' ? 'store' : 'restaurant'}}</mat-icon>
+    <span class="label">{{expense.name}}</span>
+    <span class="label">le: {{expense.date}}</span>
+  </div>
+</header>
+
+<main *ngIf="expense">
+  <section class="information-container">
+    <div class="information">
+      <span class="key">Auteur</span>
+      <span class="value">{{expense?.author?.lastname | uppercase}}  {{expense?.author?.name}}</span>
+    </div>
+    <mat-divider></mat-divider>
+  </section>
+
+  <section class="information-container">
+    <div class="information">
+      <span class="key">Magasin</span>
+      <span class="value">{{expense?.place?.name}} </span>
+    </div>
+    <mat-divider></mat-divider>
+  </section>
+
+  <section class="information-container">
+    <div class="information">
+      <span class="key">Prix</span>
+      <span class="value">{{price}} €</span>
+    </div>
+    <mat-divider></mat-divider>
+  </section>
+
+  <section *ngIf="expense.bill" class="information-container">
+    <div class="information">
+      <span class="key">Facture</span>
+      <span class="value bill">
+        <img  [src]="photoBaseURl + expense.bill" alt="" width="100">
+        <button mat-button mat-raised-button color="accent"><mat-icon>download</mat-icon></button>
+      </span>
+    </div>
+    <mat-divider></mat-divider>
+  </section>
+
+  <section class="information-container">
+    <div class="information">
+      <span class="key">Remarque</span>
+      <span class="value">{{expense.comment ? expense.comment : 'aucune remarque'}}</span>
+    </div>
+    <mat-divider></mat-divider>
+  </section>
+
+  <h5 class="title">Articles achetés</h5>
+  <expenses-lines-list [expenseLines]="expense.expenseLines"></expenses-lines-list>
+</main>

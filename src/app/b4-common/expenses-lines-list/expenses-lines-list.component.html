@@ -1,0 +1,19 @@
+<ng-container *ngIf="expenseLines && expenseLines.length !== 0">
+  <ng-container *ngFor="let expenseLine of expenseLines">
+    <ng-container *ngIf="expenseLine.product">
+      <section class="expense-line">
+        <div class="primary">
+            <span class="name"
+                  *ngIf="expenseLine.product">{{expenseLine.product.name | uppercase }} {{'(' + expenseLine.product.displayQuantity + ')'}}</span>
+          <span class="price" *ngIf="expenseLine.price">{{expenseLine.price}} €</span>
+        </div>
+        <div class="secondary">
+          <span class="quantity">Quantité: {{expenseLine.quantity}}</span>
+          <span class="quantity">Calories: {{expenseLine.product.calories}} kcal</span>
+        </div>
+      </section>
+      <mat-divider></mat-divider>
+    </ng-container>
+
+  </ng-container>
+</ng-container>

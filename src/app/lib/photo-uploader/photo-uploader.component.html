@@ -1,0 +1,20 @@
+<section *ngIf="!file" class="photo">
+  <mat-form-field appearance="standard">
+    <mat-label>{{"screen.new.product.form.photo" | translate}}</mat-label>
+    <input matInput disabled>
+  </mat-form-field>
+  <button mat-raised-button color="primary" (click)="input.click()">
+    <mat-icon>camera</mat-icon>
+  </button>
+</section>
+
+<section *ngIf="file && preview">
+  <h5 class="title">{{"screen.new.product.form.photo" | translate}}</h5>
+  <section class="photo uploaded">
+    <img [src]="preview" alt="">
+    <a  class="update photo" (click)="input.click()" mat-button>Modifier Photo</a>
+  </section>
+</section>
+
+
+<input #input style="display: none;" type="file" accept="image/*" capture="environment" (change)="processPhoto($event)">

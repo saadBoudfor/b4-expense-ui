@@ -1,0 +1,48 @@
+@import "src/styles";
+
+$icon-size: 40px;
+
+.expense-card {
+  display: flex;
+  border-radius: 4px;
+  border: 1px solid #cccccc;
+  padding: 20px;
+  justify-content: start;
+  align-items: center;
+
+  .icon {
+    mat-icon {
+      font-size: $icon-size;
+      width: $icon-size;
+      height: $icon-size;
+      color: $accent-color;
+    }
+
+    margin-right: 20px;
+  }
+
+  .description {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    align-items: center;
+
+    .stats {
+      display: flex;
+      flex-direction: column;
+
+      .title {
+        font-weight: bold;
+      }
+    }
+
+    .percentage {
+      font-size: $icon-size;
+      color: $accent-color;
+    }
+  }
+}
+
+:host {
+  display: block;
+}

@@ -1,0 +1,51 @@
+<section class="new-expense-unit" *ngIf="!selectingProduct">
+  <navigation [leftAction]="router.url === '/new-expense-unit' ? '/holdhouse-expense-type': '/expenses-type'" [title]="title" [rightAction]="'/expenses'"></navigation>
+
+  <section class="form">
+    <mat-form-field appearance="standard">
+      <mat-label>{{"screen.new.expense.form.name" | translate}}</mat-label>
+      <input matInput required autocomplete="off" [(ngModel)]="expense.name">
+    </mat-form-field>
+
+    <mat-form-field appearance="standard">
+      <mat-label>{{"screen.new.expense.form.date" | translate}}</mat-label>
+      <input matInput type="date" [(ngModel)]="expense.date" autocomplete="off" required>
+    </mat-form-field>
+
+    <!--  bill-->
+    <photo-uploader (upload)="uploadBill($event)"></photo-uploader>
+
+    <mat-form-field *ngIf="router.url === '/new-expense-unit'" appearance="standard" (click)="selectProduct()">
+      <mat-label>{{"screen.new.expense.form.product" | translate}}</mat-label>
+      <input matInput type="text" [(ngModel)]="selectedProduct" autocomplete="off" required>
+    </mat-form-field>
+
+    <place-autocomplete [type]="(router.url === '/new-expense-unit') ? 'store': 'restaurant'"
+                        (selected)="onSelectPlace($event)"></place-autocomplete>
+
+    <mat-form-field appearance="standard">
+      <mat-label>{{"screen.new.expense.form.price" | translate}}</mat-label>
+      <input matInput type="number" [(ngModel)]="expense.expenseLines[0].price" autocomplete="off">
+    </mat-form-field>
+
+    <mat-form-field appearance="standard">
+      <mat-label>{{"screen.new.expense.form.quantity" | translate}}</mat-label>
+      <input matInput type="number" [(ngModel)]="expense.expenseLines[0].quantity" autocomplete="off" required>
+    </mat-form-field>
+
+    <mat-form-field appearance="standard">
+      <mat-label>{{"screen.new.expense.form.comment" | translate}}</mat-label>
+      <textarea matInput required [(ngModel)]="expense.comment" autocomplete="off"></textarea>
+    </mat-form-field>
+  </section>
+
+  <footer class="action">
+    <button mat-raised-button mat-button
+            (click)="submitExpense()"
+            color="primary">{{"screen.new.expense.action.submit" | translate | uppercase}}</button>
+  </footer>
+  <b4-progress [steps]="4" [active]="3"></b4-progress>
+
+</section>
+
+<search-product *ngIf="selectingProduct" (selected)="onSelectProduct($event)"></search-product>

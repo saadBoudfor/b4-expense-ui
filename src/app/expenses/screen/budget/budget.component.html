@@ -1,0 +1,36 @@
+<header *ngIf="info">
+  <navigation [title]="'Mon budget'" [rightAction]="'expenses'"
+              color="white"></navigation>
+  <div class="stat">
+    <div class="main-info"> {{info?.target}} €</div>
+    <div class="label">Pour Septembre 2021</div>
+  </div>
+</header>
+
+<main *ngIf="info">
+  <section class="information-container">
+    <div class="information">
+      <span class="key">Total dépensé</span>
+      <span class="value">{{info.total}} €</span>
+    </div>
+    <mat-divider></mat-divider>
+  </section>
+  <section class="information-container">
+    <div class="information">
+      <span class="key">Estimation fin de mois</span>
+      <span class="value">{{info.total + 200}} € </span>
+    </div>
+    <mat-divider></mat-divider>
+  </section>
+</main>
+
+<footer>
+  <footer class="action">
+    <button mat-raised-button mat-button
+            color="accent">{{ 'consulter tous mes budgets'| uppercase}}</button>
+
+    <button mat-button
+            [routerLink]="'/budget/define'"
+            color="accent">{{ 'redéfinir mon budget'| uppercase}}</button>
+  </footer>
+</footer>

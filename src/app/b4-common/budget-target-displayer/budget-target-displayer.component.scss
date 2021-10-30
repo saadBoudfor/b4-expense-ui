@@ -1,0 +1,53 @@
+@import "src/styles";
+.outer {
+  $outer-circle-size: 150px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
+  width: $outer-circle-size;
+  height: $outer-circle-size;
+  background: $accent-color;
+  background: linear-gradient(281deg, lighten($accent-color, 30) 21%, $accent-color 100%);
+  .inner {
+    $inner-circle-size: $outer-circle-size - 30px;
+    width: $inner-circle-size;
+    height: $inner-circle-size;
+    border-radius: 50%;
+    background: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    .info-container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      width: 100%;
+
+      span {
+        margin-bottom: 10px;
+
+        &.divider {
+          border-bottom: 1px solid #cccccc;
+          width: 70%;
+        }
+      }
+    }
+  }
+
+}
+
+$target-size: 16px;
+.total {
+  font-size: $target-size;
+  color: $accent-color;
+}
+.target {
+  font-size: $target-size + 2px;
+}
+
+:host {
+  display: block;
+  width: fit-content;
+}

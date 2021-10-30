@@ -1,0 +1,31 @@
+@import "src/styles";
+
+.photo.uploaded {
+  display: flex;
+  align-items: center;
+  img{
+    width: 100px;
+  }
+}
+
+a.update.photo {
+  color: $primary-color;
+}
+
+:host{
+  display: block;
+}
+
+section.photo {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  mat-form-field {
+    width: 100%;
+  }
+  button {
+    margin-left: 10px;
+    padding: 7px 0;
+  }
+}
+

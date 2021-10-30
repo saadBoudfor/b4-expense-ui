@@ -7,7 +7,19 @@ nav {
   color: $primary-color;
 
   span.title {
-    font-weight: 600;
-
+    font-weight: 400;
+    font-size: 16px;
   }
+
+  i {
+    min-width: 24px;
+  }
+}
+
+:host{
+  display: block;
+}
+
+i {
+  font-style: normal;
 }

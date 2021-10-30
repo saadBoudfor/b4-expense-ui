@@ -1,0 +1,38 @@
+<!--If given place is not known in local database-->
+<section *ngIf="enablePlaceUnknownForm">
+  <mat-form-field appearance="standard">
+    <mat-label>{{'component.place.' + type.toLowerCase() + '.label' | translate}}</mat-label>
+    <input matInput type="text" autocomplete="off" [(ngModel)]="place.name" (change)="selected.emit(place)">
+  </mat-form-field>
+
+
+  <form>
+    <mat-form-field appearance="standard">
+      <mat-label>{{'component.place.' + type.toLowerCase() + '.address' | translate}}</mat-label>
+      <input type="text" matInput [formControl]="autocompleteAddressControl" [matAutocomplete]="auto">
+      <mat-autocomplete #auto="matAutocomplete" [displayWith]="displayAddressFn">
+        <mat-option *ngFor="let option of filteredAddresses | async" [value]="option">
+          {{option.label}}
+        </mat-option>
+      </mat-autocomplete>
+    </mat-form-field>
+  </form>
+</section>
+
+
+<section *ngIf="!enablePlaceUnknownForm">
+  <form>
+    <mat-form-field appearance="standard">
+      <mat-label>{{'component.place.' + type.toLowerCase() + '.label' | translate}}</mat-label>
+      <input type="text" matInput [formControl]="placeControl" [matAutocomplete]="auto">
+      <mat-autocomplete #auto="matAutocomplete" [displayWith]="displayPlaceFn">
+        <mat-option *ngFor="let option of filteredPlace | async" [value]="option">
+          {{option.name}}
+        </mat-option>
+      </mat-autocomplete>
+    </mat-form-field>
+  </form>
+  <div class="add place action" *ngIf="isPlaceUnknown">
+    <a mat-button color="primary" (click)="enablePlaceUnknownForm = true">Nouveau réstaurant</a>
+  </div>
+</section>

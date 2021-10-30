@@ -1,0 +1,27 @@
+:host {
+  display: block;
+  padding-bottom: 20px;
+}
+
+budget-target-displayer {
+  margin: auto auto 40px;
+}
+
+more-info {
+  margin-top: 15px;
+  margin-right: 15px;
+}
+
+.expense-by-type, .expense-by-month {
+  padding: 0 20px;
+  margin-top: 15px;
+
+  expense-card {
+    margin-bottom: 10px;
+  }
+}
+
+p.description {
+  text-align: justify;
+  margin-bottom: 20px;
+}

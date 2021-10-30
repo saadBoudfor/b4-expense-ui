@@ -30,20 +30,6 @@ footer.action {
   }
 }
 
-h5.category {
-  margin-top: 20px;
-  color: darkgray;
-}
-
-section.photo {
-  display: flex;
-  justify-content: space-between;
-  align-items: baseline;
-  mat-form-field {
-    width: 100%;
-  }
-  button {
-    margin-left: 10px;
-    padding: 7px 0;
-  }
+section.new-product {
+  padding-bottom: 20px;
 }

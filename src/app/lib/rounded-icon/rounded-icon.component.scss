@@ -1,0 +1,50 @@
+@import "src/styles";
+
+:host {
+  display: block;
+  width: fit-content;
+}
+
+$container-size: 150px;
+$icon-size: 78px;
+
+.icon.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 12px;
+  border-radius: 50%;
+  box-shadow: 2px 2px 15px 0 #cccccc;
+  width: $container-size;
+  height: $container-size;
+
+  mat-icon {
+    font-size: $icon-size;
+    height: $icon-size;
+    width: $icon-size;
+  }
+}
+
+.fill {
+  color: white;
+
+  &.primary {
+    background: $primary-color;
+  }
+
+  &.accent {
+    background: $accent-color;
+  }
+}
+
+.empty {
+  background: white;
+
+  &.primary {
+    color: $primary-color;
+  }
+
+  &.accent {
+    color: $accent-color;
+  }
+}

@@ -1,0 +1,45 @@
+import {Component, OnInit} from '@angular/core';
+import {Product} from "../../../models/Product";
+import {TranslateService} from "@ngx-translate/core";
+import {ExpenseLine} from "../../../models/ExpenseLine";
+import {ExpenseService} from "../../../services/expense.service";
+import {Expense} from "../../../models/Expense";
+import {Router} from "@angular/router";
+
+@Component({
+  selector: 'add-expense-line',
+  templateUrl: './add-expense-line.component.html',
+  styleUrls: ['./add-expense-line.component.scss']
+})
+export class AddExpenseLineComponent implements OnInit {
+
+  selectingProduct = false;
+  title = '';
+  expenseLine = new ExpenseLine();
+
+  expense: Expense = new Expense();
+
+  constructor(private translateService: TranslateService,
+              private router: Router,
+              private expenseService: ExpenseService) {
+  }
+
+  ngOnInit(): void {
+    this.expenseService.getExpense().subscribe(data => {
+      this.expense = data.expense;
+    })
+    this.translateService.get('screen.new.expense.title')
+      .subscribe(title => this.title = title);
+  }
+
+  onSelectProduct(product: Product) {
+    this.selectingProduct = false;
+    this.expenseLine.product = product;
+  }
+
+  addExpenseLine() {
+    this.expense?.expenseLines.push(this.expenseLine);
+    this.expenseService.setExpense(this.expense, null);
+    this.router.navigate(['/expense-line-list'])
+  }
+}

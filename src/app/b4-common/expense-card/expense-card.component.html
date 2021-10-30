@@ -1,0 +1,13 @@
+<div class="expense-card">
+  <div class="icon">
+    <mat-icon>{{type === 'STORE' ? 'storefront' : 'restaurant'}}</mat-icon>
+  </div>
+  <div class="description">
+    <div class="stats">
+      <span class="title">{{type === 'RESTAURANT' ? 'Au réstaurants' : 'Dans les magasins' }}</span>
+      <span>{{expensesCount }} dépenses en 2021</span>
+      <span>{{totalExpenses }} euros</span>
+    </div>
+    <div class="percentage">{{percentage}} %</div>
+  </div>
+</div>

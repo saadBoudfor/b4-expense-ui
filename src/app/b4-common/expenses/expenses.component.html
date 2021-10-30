@@ -1,0 +1,21 @@
+<ng-container *ngIf="expenses && expenses.length !== 0">
+  <ng-container *ngFor="let expense of expenses">
+    <ng-container *ngIf="expense.place">
+      <div class="expense" (click)="selected.emit(expense)">
+        <div class="icon">
+          <mat-icon>{{expense?.place?.type === 'RESTAURANT' ? 'storefront' : 'shopping_cart'}}</mat-icon>
+        </div>
+        <div class="description">
+          <div class="main">
+            <span class="title">{{expense.name | uppercase}}</span>
+            <span class="price">{{getPrice(expense)}} €</span>
+          </div>
+          <div class="secondary">
+            <span class="date">{{expense.date}}</span>
+          </div>
+        </div>
+      </div>
+      <mat-divider></mat-divider>
+    </ng-container>
+  </ng-container>
+</ng-container>

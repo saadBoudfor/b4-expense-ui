@@ -1,0 +1,25 @@
+<navigation
+  [leftAction]="'/expenses-type'"
+  [title]="'screen.holdhouse-expense-type.title' | translate"
+  [rightAction]="'/expenses'"></navigation>
+
+<main>
+  <rounded-icon [icon]="'payment'"></rounded-icon>
+
+  <p>{{'screen.holdhouse-expense-type.description' | translate}}</p>
+  <choice
+    [routerLink]="'/new-expense-list'"
+    [icon]="'receipt_long'"
+    [title]="'screen.holdhouse-expense-type.expense-holdhouse.title' | translate"
+    [subTitle]="'screen.holdhouse-expense-type.expense-holdhouse.description' | translate"></choice>
+
+
+  <choice
+    [routerLink]="'/new-expense-unit'"
+    [icon]="'local_offer'"
+    [title]="'screen.holdhouse-expense-type.expense-restaurant.title' | translate"
+    [subTitle]="'screen.holdhouse-expense-type.expense-restaurant.description' | translate"></choice>
+
+  <b4-progress [steps]="4" [active]="2"></b4-progress>
+
+</main>

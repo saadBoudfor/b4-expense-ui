@@ -1,0 +1,20 @@
+section.form {
+  display: flex;
+  flex-direction: column;
+  padding: 20px;
+  padding-top: 0;
+}
+
+footer.action {
+  display: flex;
+  flex-direction: column;
+  padding: 20px;
+
+  button {
+    margin-bottom: 15px;
+  }
+}
+
+section.new-expense-unit{
+  padding-bottom: 20px;
+}

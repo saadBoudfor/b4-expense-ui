@@ -1,0 +1,35 @@
+@import "src/styles";
+$icon-size: 36px;
+
+:host {
+  display: block;
+}
+
+.card {
+  display: flex;
+  border: 1px solid #cccccc;
+  border-radius: 4px;
+  padding: 12px;
+  align-items: center;
+
+  .icon {
+    margin-right: 15px;
+    padding: 12px;
+    mat-icon {
+      font-size: $icon-size;
+      width: $icon-size;
+      height: $icon-size;
+      color: $accent-color;
+    }
+  }
+  .description {
+    display: flex;
+    flex-direction: column;
+    .title {
+      margin-bottom: 10px;
+      font-size: 18px;
+      font-weight: 400;
+      color: $primary-color;
+    }
+  }
+}
