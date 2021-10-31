@@ -1,5 +1,5 @@
 import {EventEmitter, OnInit} from '@angular/core';
-import { Component, Output} from '@angular/core';
+import {Component, Output} from '@angular/core';
 import {Html5Qrcode} from "html5-qrcode"
 
 @Component({
@@ -22,7 +22,7 @@ export class BarcodeScannerComponent implements OnInit {
         const cameraId = devices[0].id;
         const html5QrCode = new Html5Qrcode("reader", false);
         html5QrCode.start(
-          cameraId,
+          {facingMode: {exact: "environment"}},
           {
             fps: 10,    // Optional, frame per seconds for qr code scanning
             qrbox: {width: 250, height: 250}  // Optional, if you want bounded box UI
