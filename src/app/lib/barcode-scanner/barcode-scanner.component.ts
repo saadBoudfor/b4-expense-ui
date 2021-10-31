@@ -22,7 +22,11 @@ export class BarcodeScannerComponent implements OnInit {
         let cameraID = devices[0].id;
         // const cameraBackId = devices[1].id;
         if (devices.length > 1) {
-          cameraID = devices[1].id;
+          devices.forEach(device => {
+            if (device.label.indexOf('back') !== -1) {
+              cameraID = device.id;
+            }
+          })
         }
         console.log(devices);
         const html5QrCode = new Html5Qrcode("reader", false);
