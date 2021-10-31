@@ -19,10 +19,15 @@ export class BarcodeScannerComponent implements OnInit {
        * { id: "id", label: "label" }
        */
       if (devices && devices.length) {
-        const cameraId = devices[0].id;
+        let cameraID = devices[0].id;
+        // const cameraBackId = devices[1].id;
+        if (devices.length > 1) {
+          cameraID = devices[1].id;
+        }
+        console.log(devices);
         const html5QrCode = new Html5Qrcode("reader", false);
         html5QrCode.start(
-          {facingMode: {exact: "environment"}},
+          cameraID,
           {
             fps: 10,    // Optional, frame per seconds for qr code scanning
             qrbox: {width: 250, height: 250}  // Optional, if you want bounded box UI

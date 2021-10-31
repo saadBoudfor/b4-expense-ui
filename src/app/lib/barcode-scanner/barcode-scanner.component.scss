@@ -6,7 +6,7 @@
   align-items: center;
   height: 100vh;
   justify-content: space-around;
-  background-color: rgba(0, 0, 0, 0.48);
+  //background-color: rgba(0, 0, 0, 0.48);
 }
 
 button {
@@ -19,7 +19,6 @@ mat-icon {
   font-size: $size;
   width: $size;
   height: $size;
-  color: white;
 }
 
 .wrapper {
@@ -27,9 +26,7 @@ mat-icon {
 }
 
 #reader {
-  width: 80vw;
-  margin: auto;
-  color: white;
+  width: 300px;
 }
 
 
