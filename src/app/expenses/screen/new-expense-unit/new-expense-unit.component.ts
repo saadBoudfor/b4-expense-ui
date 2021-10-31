@@ -7,6 +7,7 @@ import {ConfirmationService} from "../../../b4-common/services/confirmation.serv
 import {Place} from "../../../b4-common/models/Place";
 import {Router} from "@angular/router";
 import {ProductService} from "../../services/product.service";
+import {ExpenseLine} from "../../models/ExpenseLine";
 
 /**
  *  Add new unit expense ans restaurant expense
@@ -18,6 +19,7 @@ import {ProductService} from "../../services/product.service";
 })
 export class NewExpenseUnitComponent implements OnInit {
   expense = new Expense();
+  maxDate = (new Date().toISOString()).split('T')[0];
 
   title: string | any;
   // Date default to today date
@@ -33,6 +35,7 @@ export class NewExpenseUnitComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.expense.expenseLines.push(new ExpenseLine());
     this.translateService.get('screen.new.expense.title')
       .subscribe(title => this.title = title);
   }
@@ -101,5 +104,9 @@ export class NewExpenseUnitComponent implements OnInit {
       this.expense.expenseLines[0].product = found;
       this.selectedProduct = code; //  for template display (binding)
     })
+  }
+
+  canAddExpense() {
+    return this.expenseService.canAddExpense(this.expense);
   }
 }

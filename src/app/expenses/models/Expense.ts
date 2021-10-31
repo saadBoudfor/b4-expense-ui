@@ -5,7 +5,7 @@ import {ExpenseLine} from "./ExpenseLine";
 export class Expense {
   id?: number;
   name?: string = '';
-  expenseLines: ExpenseLine[] = [new ExpenseLine()];
+  expenseLines: ExpenseLine[] = [];
   date?: string = (new Date().toISOString()).split('T')[0];
   comment?: string;
   author?: User;

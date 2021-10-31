@@ -1,5 +1,6 @@
 @import "src/styles";
-$icon-size: 36px;
+
+$icon-size: 3em;
 
 :host {
   display: block;
@@ -7,29 +8,35 @@ $icon-size: 36px;
 
 .card {
   display: flex;
-  border: 1px solid #cccccc;
+  box-shadow: 0 2px 2px 0 lighten($primary-color, 40%), 0 3px 1px -2px lighten($primary-color, 40%), 0 1px 5px 0 lighten($primary-color, 40%);
   border-radius: 4px;
-  padding: 12px;
+  padding: 12px 20px;
   align-items: center;
 
   .icon {
     margin-right: 15px;
     padding: 12px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
     mat-icon {
       font-size: $icon-size;
-      width: $icon-size;
-      height: $icon-size;
       color: $accent-color;
     }
   }
+
   .description {
     display: flex;
     flex-direction: column;
+
     .title {
-      margin-bottom: 10px;
-      font-size: 18px;
       font-weight: 400;
       color: $primary-color;
+    }
+
+    .sub-title {
+      color: $accent-color;
     }
   }
 }

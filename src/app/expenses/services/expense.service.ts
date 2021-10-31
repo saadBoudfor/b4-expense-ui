@@ -4,24 +4,30 @@ import {Expense} from "../models/Expense";
 import {BehaviorSubject, Observable} from "rxjs";
 import {environment} from "../../../environments/environment";
 import {ExpenseInfo} from "../models/ExpenseInfo";
+import {StringUtils} from "../../b4-common/util/StringUtils";
 
 @Injectable({
   providedIn: 'root'
 })
 export class ExpenseService {
 
-  private expenseSubject = new BehaviorSubject<{ expense: Expense, bill: any }>({expense: new Expense(), bill: ''});
-
   constructor(private httpClient: HttpClient) {
   }
 
-  setExpense(expense: Expense, bill: any): void {
+  updateDraftExpense(expense: Expense, bill: any): void {
     console.log('[expense state]: ', {expense});
-    this.expenseSubject.next({expense: expense, bill: bill});
+    localStorage.setItem('draft_expense', JSON.stringify(expense));
+    localStorage.setItem('draft_expense_file', JSON.stringify(bill));
   }
 
-  getExpense(): Observable<{ expense: Expense, bill: any }> {
-    return this.expenseSubject.asObservable();
+  getDraftExpense(): { expense: Expense, bill: any } {
+    const savedExpense = localStorage.getItem('draft_expense');
+    const savedBill = localStorage.getItem('draft_expense_file');
+    console.log('[expense state]: ', {savedExpense});
+    return {
+      expense: !!savedExpense ? JSON.parse(savedExpense) : new Expense(),
+      bill: !!savedBill ? JSON.parse(savedBill) : null
+    };
   }
 
   save(expense: Expense, bill: any): Observable<Expense> {
@@ -45,7 +51,7 @@ export class ExpenseService {
     return this.httpClient.get<Expense[]>(url, {headers: {'access-token': '1'}});
   }
 
-  getExpenseByID(id: number): Observable<Expense>  {
+  getExpenseByID(id: number): Observable<Expense> {
     return this.httpClient.get<Expense>(environment.baseUrl + '/expenses/' + id);
   }
 
@@ -53,4 +59,12 @@ export class ExpenseService {
     return this.httpClient.get<Expense[]>(environment.baseUrl + '/expenses/place/' + placeID, {headers: {'access-token': '1'}})
   }
 
+  canAddExpense(expense: Expense) {
+    return !!expense
+      && StringUtils.isNotEmpty(expense.name)
+      && expense.expenseLines.length !== 0
+      && !!expense.expenseLines[0].product
+      && !!expense.expenseLines[0].quantity
+      && !!expense.place;
+  }
 }

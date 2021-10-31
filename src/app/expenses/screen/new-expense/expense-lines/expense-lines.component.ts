@@ -22,25 +22,13 @@ export class ExpenseLinesComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.expenseService.getExpense().subscribe(data => {
-      this.expense = data.expense;
-      this.bill = data.bill;
-    })
+    const data = this.expenseService.getDraftExpense();
+    this.expense = data.expense;
+    this.bill = data.bill;
     this.translateService.get('screen.new.expense.title')
       .subscribe(title => this.title = title);
   }
 
-  getIcon(product: Product) {
-    switch (product.category) {
-      default:
-      case 'VEGETABLE':
-        return this.iconPath + 'vegetable.svg';
-      case 'MEAT':
-        return this.iconPath + 'meat.svg';
-      case 'DRINK':
-        return this.iconPath + 'drink.svg';
-    }
-  }
 
   submit() {
     this.expenseService.save(this.expense, this.expense.bill).subscribe(saved => {
@@ -63,5 +51,9 @@ export class ExpenseLinesComponent implements OnInit {
         title: this.title
       })
     })
+  }
+
+  canAddExpense() {
+    return this.expenseService.canAddExpense(this.expense);
   }
 }

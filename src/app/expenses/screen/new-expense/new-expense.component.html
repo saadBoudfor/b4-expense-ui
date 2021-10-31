@@ -10,7 +10,7 @@
   </mat-form-field>
   <mat-form-field appearance="standard">
     <mat-label>{{"screen.new.expense.form.date" | translate}}</mat-label>
-    <input matInput required autocomplete="off" type="date" [(ngModel)]="expense.date">
+    <input matInput required autocomplete="off" type="date" [max]="maxDate" [(ngModel)]="expense.date">
   </mat-form-field>
   <photo-uploader (upload)="onUploadBill($event)"></photo-uploader>
   <place-autocomplete type="store" (selected)="onSelect($event)"></place-autocomplete>
@@ -22,6 +22,7 @@
 
 <footer class="action">
   <button mat-raised-button mat-button
+          [disabled]="!canAddExpenseLine()"
           (click)="addExpenseLine()"
           color="primary">{{"global.next" | translate | uppercase}}</button>
 </footer>

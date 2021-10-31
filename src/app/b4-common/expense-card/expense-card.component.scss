@@ -1,6 +1,6 @@
 @import "src/styles";
 
-$icon-size: 40px;
+$icon-size: 3em;
 
 .expense-card {
   display: flex;
@@ -13,8 +13,6 @@ $icon-size: 40px;
   .icon {
     mat-icon {
       font-size: $icon-size;
-      width: $icon-size;
-      height: $icon-size;
       color: $accent-color;
     }
 
@@ -37,7 +35,7 @@ $icon-size: 40px;
     }
 
     .percentage {
-      font-size: $icon-size;
+      font-size: 1.5em;
       color: $accent-color;
     }
   }
