@@ -10,6 +10,7 @@
   <choice
     [routerLink]="'/new-expense-list'"
     [icon]="'receipt_long'"
+    (click)="clearDraftExpense()"
     [title]="'screen.holdhouse-expense-type.expense-holdhouse.title' | translate"
     [subTitle]="'screen.holdhouse-expense-type.expense-holdhouse.description' | translate"></choice>
 

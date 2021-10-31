@@ -1,6 +1,6 @@
-<div class="expense-card">
+<div class="expense-card wave-effect">
   <div class="icon">
-    <mat-icon>{{type === 'STORE' ? 'storefront' : 'restaurant'}}</mat-icon>
+    <mat-icon [inline]="true">{{type === 'STORE' ? 'storefront' : 'restaurant'}}</mat-icon>
   </div>
   <div class="description">
     <div class="stats">
@@ -8,6 +8,6 @@
       <span>{{expensesCount }} dépenses en 2021</span>
       <span>{{totalExpenses }} euros</span>
     </div>
-    <div class="percentage">{{percentage}} %</div>
+    <div class="percentage">{{percentage}}%</div>
   </div>
 </div>

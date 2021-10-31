@@ -28,9 +28,7 @@ export class AddExpenseLineComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.expenseService.getExpense().subscribe(data => {
-      this.expense = data.expense;
-    })
+    this.expense = this.expenseService.getDraftExpense().expense;
     this.translateService.get('screen.new.expense.title')
       .subscribe(title => this.title = title);
   }
@@ -42,7 +40,7 @@ export class AddExpenseLineComponent implements OnInit {
 
   addExpenseLine() {
     this.expense?.expenseLines.push(this.expenseLine);
-    this.expenseService.setExpense(this.expense, null);
+    this.expenseService.updateDraftExpense(this.expense, null);
     this.router.navigate(['/expense-line-list'])
   }
 
@@ -51,5 +49,9 @@ export class AddExpenseLineComponent implements OnInit {
     this.productService.getByCode(code).subscribe(found => {
       this.expenseLine.product = found;
     })
+  }
+
+  canAddExpenseLine() {
+    return !!this.expense && !!this.expenseLine.product && !!this.expenseLine.quantity;
   }
 }

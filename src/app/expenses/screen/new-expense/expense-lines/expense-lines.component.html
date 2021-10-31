@@ -1,6 +1,7 @@
 <section *ngIf="expense" class="expense-line-list">
   <navigation [leftAction]="'/new-expense-list'" [title]="title" [rightAction]="'/expenses'"></navigation>
 
+  <h5 class="title">Ligne de dépenses:</h5>
   <expenses-lines-list *ngIf="expense.expenseLines.length !== 0" [expenseLines]="expense.expenseLines">
 
   </expenses-lines-list>
@@ -10,8 +11,8 @@
             [routerLink]="'/add-expense-line'"
             color="primary">
       <mat-icon>add</mat-icon>
-      {{ 'Ajouter une nouvelle Ligne de dépense'| uppercase}}</button>
-    <button mat-button mat-raised-button (click)="submit()"
+      {{ 'line de dépense' | uppercase}}</button>
+    <button mat-button mat-raised-button [disabled]="!canAddExpense()" (click)="submit()"
             color="primary">{{"screen.new.expense.action.submit" | translate | uppercase}}</button>
   </footer>
 

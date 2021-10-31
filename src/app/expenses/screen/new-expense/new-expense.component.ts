@@ -4,6 +4,7 @@ import {Expense} from "../../models/Expense";
 import {ExpenseService} from "../../services/expense.service";
 import {Router} from "@angular/router";
 import {Place} from "../../../b4-common/models/Place";
+import {StringUtils} from "../../../b4-common/util/StringUtils";
 
 @Component({
   selector: 'new-expense',
@@ -14,6 +15,8 @@ export class NewExpenseComponent implements OnInit {
   title = '';
   expense = new Expense();
   file: any;
+  maxDate = (new Date().toISOString()).split('T')[0];
+
   private bill: any;
 
   constructor(private translateService: TranslateService,
@@ -22,9 +25,9 @@ export class NewExpenseComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.expenseService.getExpense().subscribe(data => {
-      this.expense = data.expense;
-    })
+    const data = this.expenseService.getDraftExpense();
+    this.expense = data.expense;
+    this.bill = data.bill;
     this.translateService.get('screen.new.expense.title')
       .subscribe(title => this.title = title);
   }
@@ -48,11 +51,15 @@ export class NewExpenseComponent implements OnInit {
       email: "saad.boudfor@b4expenses.com",
       username: "sboudfor"
     };
-    this.expenseService.setExpense(this.expense, this.bill);
+    this.expenseService.updateDraftExpense(this.expense, this.bill);
     this.router.navigate(['/add-expense-line'])
   }
 
   onSelect(place: Place) {
     this.expense.place = place;
+  }
+
+  canAddExpenseLine() {
+    return StringUtils.isNotEmpty(this.expense.name) && !!this.expense.place && !!this.expense.place.type;
   }
 }

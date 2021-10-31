@@ -12,4 +12,8 @@ export class HoldhouseExpensesTypeComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  clearDraftExpense() {
+    localStorage.removeItem('draft_expense_file');
+    localStorage.removeItem('draft_expense');
+  }
 }
