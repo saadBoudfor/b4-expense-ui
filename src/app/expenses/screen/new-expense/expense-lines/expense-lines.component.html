@@ -1,22 +1,9 @@
-<section class="expense-line-list">
+<section *ngIf="expense" class="expense-line-list">
   <navigation [leftAction]="'/new-expense-list'" [title]="title" [rightAction]="'/expenses'"></navigation>
 
-  <main>
-    <ng-container *ngFor="let expenseLine of expense.expenseLines" >
-      <div *ngIf="expenseLine.product && expenseLine.product.name" class="expense-line">
-        <img src="{{getIcon(expenseLine.product)}}" alt="">
-        <div class="description">
-          <div class="main">
-            <span class="product">{{expenseLine?.product?.name}}</span>
-            <span class="price">{{expenseLine?.price}} €</span>
-          </div>
-          <div class="secondary">
-            {{expenseLine?.quantity}}
-          </div>
-        </div>
-      </div>
-    </ng-container>
-  </main>
+  <expenses-lines-list *ngIf="expense.expenseLines.length !== 0" [expenseLines]="expense.expenseLines">
+
+  </expenses-lines-list>
 
   <footer class="action">
     <button mat-stroked-button mat-button

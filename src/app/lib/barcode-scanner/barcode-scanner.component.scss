@@ -3,23 +3,46 @@
 :host {
   display: flex;
   flex-direction: column;
-  padding: 20px;
   align-items: center;
+  height: 100vh;
+  justify-content: space-around;
+  background-color: rgba(0, 0, 0, 0.48);
 }
 
 button {
   margin-top: 20px;
 }
 
-barcode-scanner-livestream {
-  margin-top: 150px;
-}
-
 $size: 45px;
 mat-icon {
-  margin-top: 40px;
+  margin-top: 20px;
   font-size: $size;
   width: $size;
   height: $size;
-  color: $primary-color;
+  color: white;
+}
+
+.wrapper {
+  padding: 15px 10px 10px;
+}
+
+#reader {
+  width: 80vw;
+  margin: auto;
+  color: white;
+}
+
+
+.camera-border {
+  background: linear-gradient(to right, white 4px, transparent 4px) 0 0,
+  linear-gradient(to right, white 4px, transparent 4px) 0 100%,
+  linear-gradient(to left, white 4px, transparent 4px) 100% 0,
+  linear-gradient(to left, white 4px, transparent 4px) 100% 100%,
+  linear-gradient(to bottom, white 4px, transparent 4px) 0 0,
+  linear-gradient(to bottom, white 4px, transparent 4px) 100% 0,
+  linear-gradient(to top, white 4px, transparent 4px) 0 100%,
+  linear-gradient(to top, white 4px, transparent 4px) 100% 100%;
+
+  background-repeat: no-repeat;
+  background-size: 50px 50px;
 }

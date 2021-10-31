@@ -5,6 +5,7 @@ import {ExpenseLine} from "../../../models/ExpenseLine";
 import {ExpenseService} from "../../../services/expense.service";
 import {Expense} from "../../../models/Expense";
 import {Router} from "@angular/router";
+import {ProductService} from "../../../services/product.service";
 
 @Component({
   selector: 'add-expense-line',
@@ -18,9 +19,11 @@ export class AddExpenseLineComponent implements OnInit {
   expenseLine = new ExpenseLine();
 
   expense: Expense = new Expense();
+  scanCode: boolean = false;
 
   constructor(private translateService: TranslateService,
               private router: Router,
+              private productService: ProductService,
               private expenseService: ExpenseService) {
   }
 
@@ -41,5 +44,12 @@ export class AddExpenseLineComponent implements OnInit {
     this.expense?.expenseLines.push(this.expenseLine);
     this.expenseService.setExpense(this.expense, null);
     this.router.navigate(['/expense-line-list'])
+  }
+
+  onScanCode(code: string) {
+    this.scanCode = false;
+    this.productService.getByCode(code).subscribe(found => {
+      this.expenseLine.product = found;
+    })
   }
 }

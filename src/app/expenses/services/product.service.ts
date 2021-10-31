@@ -32,6 +32,10 @@ export class ProductService {
     return this.httpClient.get<Product[]>(environment.baseUrl + '/products/' + name);
   }
 
+  getByCode(code: string): Observable<Product> {
+    return this.httpClient.get<Product>(environment.baseUrl + '/products/code/' + code);
+  }
+
 }
 
 function isNotEmpty(name: String) {

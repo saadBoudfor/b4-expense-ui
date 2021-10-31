@@ -8,9 +8,8 @@ import { PhotoUploaderComponent } from './photo-uploader/photo-uploader.componen
 import { RoundedIconComponent } from './rounded-icon/rounded-icon.component';
 import { ChoiceComponent } from './choice/choice.component';
 import {RouterModule} from "@angular/router";
-import { BarcodeScannerComponent } from './barcode-scanner/barcode-scanner.component';
-import {BarcodeScannerLivestreamModule} from "ngx-barcode-scanner";
 import { MoreInfoComponent } from './more-info/more-info.component';
+import {BarcodeScannerComponent} from "./barcode-scanner/barcode-scanner.component";
 
 @NgModule({
   declarations: [
@@ -26,8 +25,7 @@ import { MoreInfoComponent } from './more-info/more-info.component';
         CommonModule,
         TranslateModule,
         AngularImports,
-        RouterModule,
-        BarcodeScannerLivestreamModule
+        RouterModule
     ],
   exports: [NavigationComponent, MoreInfoComponent, ProgressComponent, PhotoUploaderComponent, RoundedIconComponent, ChoiceComponent, BarcodeScannerComponent]
 })

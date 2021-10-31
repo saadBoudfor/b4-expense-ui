@@ -1,4 +1,4 @@
-<section *ngIf="!selectingProduct" class="add-expense-line">
+<section *ngIf="!selectingProduct && !scanCode" class="add-expense-line">
   <navigation
     [leftAction]="expense && expense.expenseLines && expense.expenseLines.length >  1 ? '' :'/new-expense-list'"
     [title]="title"
@@ -8,6 +8,7 @@
       <mat-label>{{"screen.new.expense.form.product" | translate}}</mat-label>
       <input matInput type="text" autocomplete="off" [value]="expenseLine?.product?.name" required
              (click)="selectingProduct = true;">
+      <mat-icon (click)="scanCode = true" matSuffix>qr_code</mat-icon>
     </mat-form-field>
     <mat-form-field appearance="standard">
       <mat-label>{{"screen.new.expense.form.price" | translate}}</mat-label>
@@ -33,5 +34,5 @@
 
 </section>
 
-
+<barcode-scanner *ngIf="scanCode" (scanned)="onScanCode($event)"></barcode-scanner>
 <search-product *ngIf="selectingProduct" (selected)="onSelectProduct($event)"></search-product>

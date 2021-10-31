@@ -6,6 +6,7 @@ import {ExpenseService} from "../../services/expense.service";
 import {ConfirmationService} from "../../../b4-common/services/confirmation.service";
 import {Place} from "../../../b4-common/models/Place";
 import {Router} from "@angular/router";
+import {ProductService} from "../../services/product.service";
 
 /**
  *  Add new unit expense ans restaurant expense
@@ -23,11 +24,12 @@ export class NewExpenseUnitComponent implements OnInit {
   selectingProduct: boolean = false;
   bill: File | any;
   selectedProduct: string = '';
+  scanCode: boolean = false;
 
   constructor(private translateService: TranslateService,
               private confirmationService: ConfirmationService,
               public router: Router,
-              private expenseService: ExpenseService) {
+              private expenseService: ExpenseService, private productService: ProductService) {
   }
 
   ngOnInit(): void {
@@ -91,5 +93,13 @@ export class NewExpenseUnitComponent implements OnInit {
 
   onSelectPlace(selectedPlace: Place) {
     this.expense.place = selectedPlace;
+  }
+
+  onScanCode(code: string) {
+    this.scanCode = false;
+    this.productService.getByCode(code).subscribe(found => {
+      this.expense.expenseLines[0].product = found;
+      this.selectedProduct = code; //  for template display (binding)
+    })
   }
 }

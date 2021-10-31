@@ -52,4 +52,5 @@ export class ExpenseService {
   getByPlace(placeID: number): Observable<Expense[]> {
     return this.httpClient.get<Expense[]>(environment.baseUrl + '/expenses/place/' + placeID, {headers: {'access-token': '1'}})
   }
+
 }

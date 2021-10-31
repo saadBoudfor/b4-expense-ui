@@ -1,16 +1,11 @@
-
-<barcode-scanner-livestream
-  type="code_128"
-  (valueChanges)="onValueChanges($event)"
-  (started)="onStarted($event)"
-></barcode-scanner-livestream>
 <mat-icon>qr_code_scanner</mat-icon>
-<div [hidden]="!barcodeValue">
-  {{ barcodeValue }}
+
+<div class="wrapper camera-border">
+  <div id="reader">loading ....</div>
 </div>
 
 <div>
   <button mat-button mat-raised-button
           (click)="scanned.emit('')"
-          color="primary">{{'Saisir le code manuellement' | uppercase}}</button>
+          color="accent">{{'Saisir le code manuellement' | uppercase}}</button>
 </div>

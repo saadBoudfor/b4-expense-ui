@@ -1,40 +1,43 @@
-import {EventEmitter} from '@angular/core';
-import {AfterViewInit, Component, OnInit, Output, ViewChild} from '@angular/core';
-import {BarcodeScannerLivestreamComponent} from "ngx-barcode-scanner";
+import {EventEmitter, OnInit} from '@angular/core';
+import { Component, Output} from '@angular/core';
+import {Html5Qrcode} from "html5-qrcode"
 
 @Component({
   selector: 'barcode-scanner',
   templateUrl: './barcode-scanner.component.html',
   styleUrls: ['./barcode-scanner.component.scss']
 })
-export class BarcodeScannerComponent implements AfterViewInit {
-
-  @ViewChild(BarcodeScannerLivestreamComponent)
-  barcodeScanner: BarcodeScannerLivestreamComponent | undefined;
+export class BarcodeScannerComponent implements OnInit {
 
   @Output()
   scanned = new EventEmitter<string>();
 
-  barcodeValue: any;
-
-  ngAfterViewInit() {
-    if (this.barcodeScanner)
-      this.barcodeScanner.start();
-  }
-
-  onValueChanges(result: any) {
-    this.barcodeValue = result.codeResult.code;
-    this.scanned.emit(this.barcodeValue);
-  }
-
-  onStarted(started: any) {
-    console.log(started);
-  }
-
-  constructor() {
-  }
-
-  ngOnInit(): void {
+  ngOnInit() {
+    Html5Qrcode.getCameras().then(devices => {
+      /**
+       * devices would be an array of objects of type:
+       * { id: "id", label: "label" }
+       */
+      if (devices && devices.length) {
+        const cameraId = devices[0].id;
+        const html5QrCode = new Html5Qrcode("reader", false);
+        html5QrCode.start(
+          cameraId,
+          {
+            fps: 10,    // Optional, frame per seconds for qr code scanning
+            qrbox: {width: 250, height: 250}  // Optional, if you want bounded box UI
+          },
+          (decodedText, decodedResult) => {
+            this.scanned.emit(decodedText);
+          },
+          (errorMessage) => {
+            // parse error, ignore it.
+          })
+          .catch((err) => {
+          });
+      }
+    }).catch(err => {
+    });
   }
 
 }

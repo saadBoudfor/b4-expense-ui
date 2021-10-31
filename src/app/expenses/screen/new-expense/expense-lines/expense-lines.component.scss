@@ -7,33 +7,3 @@ main, footer {
 button {
   margin-bottom: 10px;
 }
-
-.expense-line {
-  display: flex;
-  border-bottom: 1px solid #cccccc;
-  padding-bottom: 15px;
-  margin-top: 10px;
-  img {
-    width: 50px;
-    margin-right: 15px;
-  }
-
-  .description {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    width: 100%;
-
-    .main {
-      display: flex;
-      justify-content: space-between;
-    }
-    .secondary {
-      color: darkgray;
-    }
-  }
-}
-
-section.expense-line-list {
-  padding-bottom: 20px;
-}

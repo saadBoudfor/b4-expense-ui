@@ -1,4 +1,4 @@
-<section class="new-expense-unit" *ngIf="!selectingProduct">
+<section class="new-expense-unit" *ngIf="!selectingProduct && !scanCode">
   <navigation [leftAction]="router.url === '/new-expense-unit' ? '/holdhouse-expense-type': '/expenses-type'" [title]="title" [rightAction]="'/expenses'"></navigation>
 
   <section class="form">
@@ -18,6 +18,7 @@
     <mat-form-field *ngIf="router.url === '/new-expense-unit'" appearance="standard" (click)="selectProduct()">
       <mat-label>{{"screen.new.expense.form.product" | translate}}</mat-label>
       <input matInput type="text" [(ngModel)]="selectedProduct" autocomplete="off" required>
+      <mat-icon (click)="scanCode = true" matSuffix>qr_code</mat-icon>
     </mat-form-field>
 
     <place-autocomplete [type]="(router.url === '/new-expense-unit') ? 'store': 'restaurant'"
@@ -49,3 +50,4 @@
 </section>
 
 <search-product *ngIf="selectingProduct" (selected)="onSelectProduct($event)"></search-product>
+<barcode-scanner *ngIf="scanCode" (scanned)="onScanCode($event)"></barcode-scanner>
