@@ -49,6 +49,9 @@ header {
       width: 100%;
     }
   }
+  &.photo-container {
+    padding: 5px 20px;
+  }
 }
 
 expenses-lines-list {
@@ -59,6 +62,7 @@ footer.action {
   display: flex;
   flex-direction: column;
   align-items: center;
+  margin-top: 30px;
 }
 
 :host {

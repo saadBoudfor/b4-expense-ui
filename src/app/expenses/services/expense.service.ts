@@ -1,7 +1,7 @@
 import {Injectable} from '@angular/core';
 import {HttpClient} from "@angular/common/http";
 import {Expense} from "../models/Expense";
-import {BehaviorSubject, Observable} from "rxjs";
+import {Observable} from "rxjs";
 import {environment} from "../../../environments/environment";
 import {ExpenseInfo} from "../models/ExpenseInfo";
 import {StringUtils} from "../../b4-common/util/StringUtils";
@@ -36,6 +36,13 @@ export class ExpenseService {
     formData.append('expense', JSON.stringify(expense));
 
     return this.httpClient.post<Expense>(environment.baseUrl + '/expenses', formData);
+  }
+
+  addBill(expenseID: number, bill: any): Observable<Expense> {
+    const formData = new FormData();
+    formData.append('file', bill);
+    return this.httpClient.put<Expense>(environment.baseUrl + '/expenses/' + expenseID, formData);
+
   }
 
   getInfo(): Observable<ExpenseInfo> {

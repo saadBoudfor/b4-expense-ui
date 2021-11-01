@@ -1,4 +1,4 @@
-import {EventEmitter, Output} from '@angular/core';
+import {EventEmitter, Input, Output} from '@angular/core';
 import {Component, OnInit} from '@angular/core';
 
 @Component({
@@ -13,6 +13,12 @@ export class PhotoUploaderComponent implements OnInit {
 
   file: any;
   preview: string | ArrayBuffer | null = null;
+
+  @Input()
+  title = "Photo";
+
+  @Input()
+  color: 'primary' | 'accent' = 'primary';
 
   constructor() {
   }
