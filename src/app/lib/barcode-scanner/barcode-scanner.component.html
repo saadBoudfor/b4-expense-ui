@@ -1,9 +1,27 @@
 <mat-icon>qr_code_scanner</mat-icon>
 
-<div id="reader">loading ....</div>
+<ng-container *ngIf="!setBarCodeManually">
+  <div id="reader">loading ....</div>
 
-<div>
+  <div>
+    <button mat-button mat-raised-button
+            (click)="setBarCodeManually = true"
+            color="accent">{{'Saisir le code manuellement' | uppercase}}</button>
+  </div>
+</ng-container>
+
+<section class="add-barcode" *ngIf="setBarCodeManually">
+  <mat-form-field appearance="standard">
+    <mat-label>{{"screen.new.product.form.quantity" | translate}}</mat-label>
+    <input matInput type="text" [(ngModel)]="barCode" required>
+  </mat-form-field>
   <button mat-button mat-raised-button
+          [disabled]="barCode.length <= 6"
+          (click)="scanned.emit(barCode)"
+          color="accent">{{'valider' | uppercase}}</button>
+
+  <button mat-button
           (click)="scanned.emit('')"
-          color="accent">{{'Saisir le code manuellement' | uppercase}}</button>
-</div>
+          color="accent">{{'annuler' | uppercase}}</button>
+
+</section>

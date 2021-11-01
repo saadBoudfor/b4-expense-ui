@@ -4,8 +4,6 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  height: 80vh;
-  justify-content: space-around;
 }
 
 button {
@@ -26,6 +24,7 @@ mat-icon {
 
 #reader {
   width: 300px;
+  margin-top: 50px;
 }
 
 
@@ -41,4 +40,11 @@ mat-icon {
 
   background-repeat: no-repeat;
   background-size: 50px 50px;
+}
+
+.add-barcode {
+  display: flex;
+  flex-direction: column;
+  width: 80%;
+  margin-top: 50px;
 }

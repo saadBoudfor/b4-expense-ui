@@ -8,6 +8,7 @@ import {Place} from "../../../b4-common/models/Place";
 import {Router} from "@angular/router";
 import {ProductService} from "../../services/product.service";
 import {ExpenseLine} from "../../models/ExpenseLine";
+import {MatSnackBar} from "@angular/material/snack-bar";
 
 /**
  *  Add new unit expense ans restaurant expense
@@ -31,6 +32,7 @@ export class NewExpenseUnitComponent implements OnInit {
   constructor(private translateService: TranslateService,
               private confirmationService: ConfirmationService,
               public router: Router,
+              private snackBar: MatSnackBar,
               private expenseService: ExpenseService, private productService: ProductService) {
   }
 
@@ -103,6 +105,8 @@ export class NewExpenseUnitComponent implements OnInit {
     this.productService.getByCode(code).subscribe(found => {
       this.expense.expenseLines[0].product = found;
       this.selectedProduct = code; //  for template display (binding)
+    }, error => {
+      this.snackBar.open('Produit avec le code barre ' + code + ' inconnu', '', {duration: 3000});
     })
   }
 

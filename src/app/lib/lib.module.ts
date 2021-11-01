@@ -10,6 +10,7 @@ import { ChoiceComponent } from './choice/choice.component';
 import {RouterModule} from "@angular/router";
 import { MoreInfoComponent } from './more-info/more-info.component';
 import {BarcodeScannerComponent} from "./barcode-scanner/barcode-scanner.component";
+import {FormsModule} from "@angular/forms";
 
 @NgModule({
   declarations: [
@@ -25,7 +26,8 @@ import {BarcodeScannerComponent} from "./barcode-scanner/barcode-scanner.compone
         CommonModule,
         TranslateModule,
         AngularImports,
-        RouterModule
+        RouterModule,
+        FormsModule
     ],
   exports: [NavigationComponent, MoreInfoComponent, ProgressComponent, PhotoUploaderComponent, RoundedIconComponent, ChoiceComponent, BarcodeScannerComponent]
 })

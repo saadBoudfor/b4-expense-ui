@@ -12,6 +12,9 @@ export class BarcodeScannerComponent implements OnInit {
   @Output()
   scanned = new EventEmitter<string>();
 
+  setBarCodeManually = false;
+  barCode: string = '';
+
   ngOnInit() {
     Html5Qrcode.getCameras().then(devices => {
       /**
