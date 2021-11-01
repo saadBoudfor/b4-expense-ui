@@ -4,13 +4,13 @@ $icon-size: 3em;
 
 a.expense-card-wrapper {
   display: block;
-
+  padding: 10px;
+  border: 1px solid #cccccc;
+  border-radius: 4px;
 
   .expense-card {
     display: flex;
-    border-radius: 4px;
-    border: 1px solid #cccccc;
-    padding: 20px;
+
     justify-content: start;
     align-items: center;
     text-align: left;
