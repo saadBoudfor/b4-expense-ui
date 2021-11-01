@@ -67,4 +67,8 @@ export class ExpenseService {
       && !!expense.expenseLines[0].quantity
       && !!expense.place;
   }
+
+  delete(id: number | undefined) {
+    return this.httpClient.delete(environment.baseUrl + '/expenses/' + id);
+  }
 }

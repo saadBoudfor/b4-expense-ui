@@ -54,4 +54,7 @@
 
   <h5 class="title">Articles achetés</h5>
   <expenses-lines-list [expenseLines]="expense.expenseLines"></expenses-lines-list>
+  <footer class="action">
+    <button mat-button color="accent" (click)="delete()">supprimer cette dépense</button>
+  </footer>
 </main>

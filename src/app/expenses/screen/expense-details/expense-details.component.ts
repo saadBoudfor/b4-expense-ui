@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {ExpenseService} from "../../services/expense.service";
-import {ActivatedRoute} from "@angular/router";
+import {ActivatedRoute, Router} from "@angular/router";
 import {Expense} from "../../models/Expense";
 import {environment} from "../../../../environments/environment";
 
@@ -14,7 +14,7 @@ export class ExpenseDetailsComponent implements OnInit {
   photoBaseURl: string = environment.fileServerURL + '/expenses/';
   price: number = 0;
 
-  constructor(private expenseService: ExpenseService, private activatedRouteService: ActivatedRoute) {
+  constructor(private expenseService: ExpenseService, private router: Router, private activatedRouteService: ActivatedRoute) {
   }
 
   ngOnInit(): void {
@@ -25,6 +25,12 @@ export class ExpenseDetailsComponent implements OnInit {
     })
   }
 
+  delete() {
+    this.expenseService.delete(this.expense.id).subscribe(() => {
+      console.warn('expense deleted', {expense: this.expense})
+      this.router.navigate(['/expenses'])
+    })
+  }
 }
 
 function getPrice(expense: Expense) {

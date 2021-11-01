@@ -54,3 +54,14 @@ header {
 expenses-lines-list {
   margin-top: 20px;
 }
+
+footer.action {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+:host {
+  display: block;
+  padding-bottom: 20px;
+}

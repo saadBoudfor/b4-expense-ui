@@ -4,6 +4,7 @@ import {Expense} from "../../../models/Expense";
 import {Product} from "../../../models/Product";
 import {ExpenseService} from "../../../services/expense.service";
 import {ConfirmationService} from "../../../../b4-common/services/confirmation.service";
+import {ExpenseLine} from "../../../models/ExpenseLine";
 
 @Component({
   selector: 'expense-lines',
@@ -55,5 +56,9 @@ export class ExpenseLinesComponent implements OnInit {
 
   canAddExpense() {
     return this.expenseService.canAddExpense(this.expense);
+  }
+
+  onDelete(expenseLine: ExpenseLine) {
+    alert('delete expense line' + {expenseLine});
   }
 }

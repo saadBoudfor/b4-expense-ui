@@ -1,7 +1,7 @@
 <ng-container *ngIf="expenseLines && expenseLines.length !== 0">
   <ng-container *ngFor="let expenseLine of expenseLines">
     <ng-container *ngIf="expenseLine.product">
-      <section class="expense-line">
+      <section class="expense-line" (dblclick)="deleted.emit(expenseLine)">
         <div class="primary">
             <span class="name"
                   *ngIf="expenseLine.product">{{expenseLine.product.name | uppercase }} {{'(' + expenseLine.product.displayQuantity + ')'}}</span>

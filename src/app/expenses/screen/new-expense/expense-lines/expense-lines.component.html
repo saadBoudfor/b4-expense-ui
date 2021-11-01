@@ -2,7 +2,9 @@
   <navigation [leftAction]="'/new-expense-list'" [title]="title" [rightAction]="'/expenses'"></navigation>
 
   <h5 class="title">Ligne de dépenses:</h5>
-  <expenses-lines-list *ngIf="expense.expenseLines.length !== 0" [expenseLines]="expense.expenseLines">
+  <expenses-lines-list *ngIf="expense.expenseLines.length !== 0"
+                       (deleted)="onDelete($event)"
+                       [expenseLines]="expense.expenseLines">
 
   </expenses-lines-list>
 
