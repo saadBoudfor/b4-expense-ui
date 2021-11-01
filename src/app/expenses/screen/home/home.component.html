@@ -1,6 +1,5 @@
 <navigation [rightAction]="'/add'" [rightIcon]="'add'"></navigation>
-<budget-target-displayer *ngIf="info && info.target && info.total"
-                         [target]="info.target"
+<budget-target-displayer [target]="info.target"
                          [routerLink]="'/budget'"
                          [total]="info.total"></budget-target-displayer>
 
