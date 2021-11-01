@@ -55,7 +55,7 @@ export class ExpenseLinesComponent implements OnInit {
   }
 
   canAddExpense() {
-    return this.expenseService.canAddExpense(this.expense);
+    return this.expenseService.isExpenseValid(this.expense);
   }
 
   onDelete(expenseLine: ExpenseLine) {

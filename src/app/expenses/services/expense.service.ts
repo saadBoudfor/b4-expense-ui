@@ -59,14 +59,22 @@ export class ExpenseService {
     return this.httpClient.get<Expense[]>(environment.baseUrl + '/expenses/place/' + placeID, {headers: {'access-token': '1'}})
   }
 
-  canAddExpense(expense: Expense) {
+  isExpenseValid(expense: Expense): boolean {
+    if (expense && expense.place && expense.place.type === 'RESTAURANT') {
+      return this.isRestaurantExpenseValid(expense);
+    }
+    return this.isRestaurantExpenseValid(expense)
+      && !!expense.expenseLines[0].product;
+  }
+
+  isRestaurantExpenseValid(expense: Expense): boolean {
     return !!expense
       && StringUtils.isNotEmpty(expense.name)
       && expense.expenseLines.length !== 0
-      && !!expense.expenseLines[0].product
       && !!expense.expenseLines[0].quantity
       && !!expense.place;
   }
+
 
   delete(id: number | undefined) {
     return this.httpClient.delete(environment.baseUrl + '/expenses/' + id);

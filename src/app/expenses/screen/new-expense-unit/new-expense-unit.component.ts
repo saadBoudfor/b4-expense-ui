@@ -107,6 +107,6 @@ export class NewExpenseUnitComponent implements OnInit {
   }
 
   canAddExpense() {
-    return this.expenseService.canAddExpense(this.expense);
+    return this.expenseService.isExpenseValid(this.expense);
   }
 }

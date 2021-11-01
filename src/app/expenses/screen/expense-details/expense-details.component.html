@@ -1,10 +1,12 @@
 <header *ngIf="expense">
-  <navigation [title]="'Détails dépense'" [rightAction]="'expenses'"
+  <navigation [title]="'Détails dépense'"
+              [enableLeft]="true"
+              (left)="location.back()"
               color="white"></navigation>
   <div class="stat">
     <mat-icon class="icon">{{expense.place && expense.place.type === 'STORE' ? 'store' : 'restaurant'}}</mat-icon>
     <span class="label">{{expense.name}}</span>
-    <span class="label">le: {{expense.date}}</span>
+    <span class="label">le: {{expense.date | dateFormat}}</span>
   </div>
 </header>
 

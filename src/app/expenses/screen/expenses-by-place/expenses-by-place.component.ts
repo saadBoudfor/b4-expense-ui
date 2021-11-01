@@ -7,6 +7,7 @@ import {PlaceService} from "../../../b4-common/services/place.service";
 import {PlaceExpense} from "../../../b4-common/models/PlaceExpense";
 import {Address} from "../../../b4-common/models/Address";
 import {Router} from "@angular/router";
+import {$e} from "@angular/compiler/src/chars";
 
 @Component({
   selector: 'expenses-by-place',
@@ -49,6 +50,10 @@ export class ExpensesByPlaceComponent implements OnInit {
         this.expenses = data;
       })
     }
+  }
+
+  onSelectExpense($event: Expense) {
+    this.router.navigate(['/expense-details'], {queryParams: {id: $event.id}});
   }
 }
 

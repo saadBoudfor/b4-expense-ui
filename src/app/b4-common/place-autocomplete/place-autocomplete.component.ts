@@ -69,7 +69,7 @@ export class PlaceAutocompleteComponent implements OnInit {
 
 function convertToAddress(addressGov: AddressGov): Address {
   return {
-    street: addressGov.housenumber ? addressGov.housenumber : '' + ' ' + addressGov.street ? addressGov.street : '',
+    street: (addressGov.housenumber ? addressGov.housenumber : '') + ' ' + (addressGov.street ? addressGov.street : ''),
     zipCode: addressGov.postcode,
     city: addressGov.city,
     country: 'France'

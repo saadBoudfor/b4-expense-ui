@@ -3,6 +3,7 @@ import {ExpenseService} from "../../services/expense.service";
 import {ActivatedRoute, Router} from "@angular/router";
 import {Expense} from "../../models/Expense";
 import {environment} from "../../../../environments/environment";
+import {Location} from "@angular/common";
 
 @Component({
   selector: 'expense-details',
@@ -14,7 +15,10 @@ export class ExpenseDetailsComponent implements OnInit {
   photoBaseURl: string = environment.fileServerURL + '/expenses/';
   price: number = 0;
 
-  constructor(private expenseService: ExpenseService, private router: Router, private activatedRouteService: ActivatedRoute) {
+  constructor(private expenseService: ExpenseService,
+              public location: Location,
+              private router: Router,
+              private activatedRouteService: ActivatedRoute) {
   }
 
   ngOnInit(): void {

@@ -1,6 +1,6 @@
 <nav [style.color]="color">
   <i>
-    <mat-icon *ngIf="leftAction" [routerLink]="leftAction"> {{leftIcon}} </mat-icon>
+    <mat-icon *ngIf="enableLeft || leftAction" (click)="left.emit('left')" [routerLink]="leftAction"> {{leftIcon}} </mat-icon>
   </i>
   <i><span class="title title-font" *ngIf="title">{{ title | uppercase}}</span></i>
   <i>

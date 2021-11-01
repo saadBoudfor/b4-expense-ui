@@ -16,6 +16,7 @@ import {ExpenseCardComponent} from './expense-card/expense-card.component';
 import {BarChartItemComponent} from './bar-chart-item/bar-chart-item.component';
 import {BarChartExpenseComponent} from './bar-chart-expense/bar-chart-expense.component';
 import {ExpensesLinesListComponent} from './expenses-lines-list/expenses-lines-list.component';
+import { DatePipe } from './util/date.pipe';
 
 @NgModule({
   declarations: [
@@ -26,7 +27,8 @@ import {ExpensesLinesListComponent} from './expenses-lines-list/expenses-lines-l
     ExpenseCardComponent,
     BarChartItemComponent,
     BarChartExpenseComponent,
-    ExpensesLinesListComponent
+    ExpensesLinesListComponent,
+    DatePipe
   ],
   exports: [
     PlaceAutocompleteComponent,
@@ -34,7 +36,8 @@ import {ExpensesLinesListComponent} from './expenses-lines-list/expenses-lines-l
     ExpensesComponent,
     ExpenseCardComponent,
     BarChartExpenseComponent,
-    ExpensesLinesListComponent
+    ExpensesLinesListComponent,
+    DatePipe
 
   ],
   imports: [

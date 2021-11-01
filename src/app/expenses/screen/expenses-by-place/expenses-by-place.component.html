@@ -1,5 +1,6 @@
 <header>
-  <navigation [title]="isStore ? 'Dépenses magasin': 'Dépenses réstaurant'" [rightAction]="'expenses'"
+  <navigation [title]="isStore ? 'Dépenses magasin': 'Dépenses réstaurant'"
+              [rightAction]="'expenses'"
               color="white"></navigation>
   <div class="stat">
     <mat-icon class="icon">{{isStore ? 'store' : 'restaurant'}}</mat-icon>
@@ -43,7 +44,7 @@
             marginheight="0"
             marginwidth="0"></iframe>
 
-    <expenses [expenses]="expenses"></expenses>
+    <expenses [expenses]="expenses" (selected)="onSelectExpense($event)"></expenses>
 
   </ng-container>
 
