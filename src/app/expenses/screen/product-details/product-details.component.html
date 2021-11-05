@@ -1,0 +1,49 @@
+<ng-container *ngIf="expenseLine && expenseLine.product && expenseLine.product.name">
+  <header>
+    <navigation [title]="'Détails produit: ' + expenseLine.product.name" (right)="clickRight($event)"
+                [enableRight]="true"></navigation>
+
+    <div class="photo">
+      <img [src]="expenseLine.product.photo" alt="">
+    </div>
+  </header>
+
+  <main>
+    <div class="information wrapper">
+      <section class="information">
+        <span class="key">Nom</span>
+        <span class="value">{{expenseLine.product.name}}</span>
+      </section>
+      <mat-divider></mat-divider>
+    </div>
+
+    <div class="information wrapper">
+      <section class="information">
+        <span class="key">Calories</span>
+        <span class="value">{{expenseLine.product.calories}} kcal / {{expenseLine.product.dataPer}}</span>
+      </section>
+      <mat-divider></mat-divider>
+    </div>
+
+    <div class="information wrapper">
+      <section class="information">
+        <span class="key">Quantité</span>
+        <span class="value">{{expenseLine.quantity}}</span>
+      </section>
+      <mat-divider></mat-divider>
+    </div>
+
+    <div class="information wrapper">
+      <section class="information">
+        <span class="key">Prix</span>
+        <span class="value">{{expenseLine.price}}</span>
+      </section>
+      <mat-divider></mat-divider>
+    </div>
+  </main>
+
+  <footer class="action">
+    <button (click)="delete.emit(expenseLine)" mat-button color="accent">Supprimer</button>
+  </footer>
+
+</ng-container>

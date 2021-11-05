@@ -29,8 +29,14 @@ export class NavigationComponent implements OnInit {
   @Output()
   left = new EventEmitter();
 
+  @Output()
+  right = new EventEmitter();
+
   @Input()
   enableLeft = false;
+
+  @Input()
+  enableRight = false;
 
   constructor() {
   }

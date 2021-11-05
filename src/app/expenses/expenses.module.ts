@@ -24,6 +24,7 @@ import { ExpensesByPlaceComponent } from './screen/expenses-by-place/expenses-by
 import { ExpenseDetailsComponent } from './screen/expense-details/expense-details.component';
 import { BudgetComponent } from './screen/budget/budget.component';
 import { DefineBudgetComponent } from './screen/define-budget/define-budget.component';
+import { ProductDetailsComponent } from './screen/product-details/product-details.component';
 
 @NgModule({
   declarations: [
@@ -41,7 +42,8 @@ import { DefineBudgetComponent } from './screen/define-budget/define-budget.comp
     ExpensesByPlaceComponent,
     ExpenseDetailsComponent,
     BudgetComponent,
-    DefineBudgetComponent
+    DefineBudgetComponent,
+    ProductDetailsComponent
   ],
     imports: [
         CommonModule,

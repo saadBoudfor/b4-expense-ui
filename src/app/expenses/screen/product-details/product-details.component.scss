@@ -1,0 +1,33 @@
+section.information {
+  padding: 20px;
+  display: flex;
+  .key {
+    font-weight: 600;
+    min-width: 100px;
+  }
+}
+
+
+:host {
+  display: block;
+  padding-bottom: 20px;
+}
+
+header {
+  box-shadow: inset 0px -2px 3px 0 rgb(0 0 0 / 20%);
+  padding-bottom: 20px;
+  .photo {
+    width: fit-content;
+    margin: auto;
+    img {
+      width: 60px;
+    }
+  }
+
+}
+
+footer {
+  margin-top: 20px;
+  display: flex;
+  justify-content: center;
+}

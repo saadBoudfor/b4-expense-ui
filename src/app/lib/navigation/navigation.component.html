@@ -4,6 +4,6 @@
   </i>
   <i><span class="title title-font" *ngIf="title">{{ title | uppercase}}</span></i>
   <i>
-    <mat-icon *ngIf="rightAction" [routerLink]="rightAction"> {{rightIcon}} </mat-icon>
+    <mat-icon *ngIf="enableRight || rightAction"   (click)="right.emit('right')"  [routerLink]="rightAction"> {{rightIcon}} </mat-icon>
   </i>
 </nav>

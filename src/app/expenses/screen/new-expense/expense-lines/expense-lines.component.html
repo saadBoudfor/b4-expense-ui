@@ -1,9 +1,10 @@
-<section *ngIf="expense" class="expense-line-list">
+<section *ngIf="expense && !selected" class="expense-line-list">
   <navigation [leftAction]="'/new-expense-list'" [title]="title" [rightAction]="'/expenses'"></navigation>
 
   <h5 class="title">Ligne de dépenses:</h5>
   <expenses-lines-list *ngIf="expense.expenseLines.length !== 0"
-                       (deleted)="onDelete($event)"
+
+                       (selected)="onSelect($event)"
                        [expenseLines]="expense.expenseLines">
 
   </expenses-lines-list>
@@ -20,4 +21,5 @@
 
   <b4-progress [active]="3" [steps]="4"></b4-progress>
 </section>
+<product-details *ngIf="selected" [expenseLine]="selected" (close)="onCloseDetails($event)" (delete)="onDelete($event)"></product-details>
 

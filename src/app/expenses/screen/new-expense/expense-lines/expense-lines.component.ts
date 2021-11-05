@@ -14,8 +14,8 @@ import {ExpenseLine} from "../../../models/ExpenseLine";
 export class ExpenseLinesComponent implements OnInit {
   title = '';
   expense = new Expense();
-  iconPath = '/assets/products/';
   bill: any;
+  selected: ExpenseLine | undefined | null;
 
   constructor(private translateService: TranslateService,
               private confirmationService: ConfirmationService,
@@ -59,6 +59,18 @@ export class ExpenseLinesComponent implements OnInit {
   }
 
   onDelete(expenseLine: ExpenseLine) {
-    alert('delete expense line' + {expenseLine});
+    this.selected = null;
+    console.warn('delete expense line' + {expenseLine});
+    this.expense.expenseLines = this.expense.expenseLines.filter(item => item.product !== expenseLine.product)
+    this.expenseService.updateDraftExpense(this.expense, this.bill);
+  }
+
+  onSelect($event: ExpenseLine) {
+    this.selected = $event;
+  }
+
+  onCloseDetails($event: any) {
+    console.log('close details', {expenseLine: this.selected});
+    this.selected = null;
   }
 }

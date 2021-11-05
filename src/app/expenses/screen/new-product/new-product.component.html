@@ -32,7 +32,8 @@
         <ng-container *ngFor="let category of productCategories">
           <div class="keen-slider__slide number-slide{{category.id}}">
             <div class="product category {{category.active ? 'active': ''}}" (click)="selectCategory(category)">
-              <mat-icon svgIcon="{{category.name}}" [inline]="true"></mat-icon>
+              <mat-icon *ngIf="category.type !== 'png'" svgIcon="{{category.name}}" [inline]="true"></mat-icon>
+              <img *ngIf="category.type === 'png'" [src]="'assets/products/' + category.name + '.png'" alt="">
             </div>
           </div>
         </ng-container>

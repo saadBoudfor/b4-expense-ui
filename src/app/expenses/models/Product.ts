@@ -12,4 +12,5 @@ export class Product {
   calories?: number;
   category: string = '';
   photo?: string;
+  dataPer?: string;
 }

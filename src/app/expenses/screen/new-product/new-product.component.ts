@@ -103,5 +103,5 @@ export const PRODUCT_CATEGORY_LIST = [
   {id: 1, name: 'meat', active: false},
   {id: 2, name: 'vegetable', active: false},
   {id: 3, name: 'water', active: false},
-  {id: 4, name: 'meat', active: false},
+  {id: 5, name: 'hygiene', active: false, type: 'png'}
 ];

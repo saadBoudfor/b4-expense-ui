@@ -15,6 +15,9 @@ export class ExpensesLinesListComponent implements OnInit {
   @Output()
   deleted = new EventEmitter<ExpenseLine>();
 
+  @Output()
+  selected = new EventEmitter<ExpenseLine>();
+
   constructor() {
   }
 
