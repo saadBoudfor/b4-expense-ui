@@ -9,4 +9,8 @@ export class ExpenseInfo {
   countStore: number = 0;
   weekCount: number = 0;
   weekTotal: number = 0;
+  weekCountForRestaurant: number = 0;
+  weekTotalForRestaurant: number = 0;
+  weekCountForStore: number = 0;
+  weekTotalForStore: number = 0;
 }

@@ -16,7 +16,7 @@ header {
     }
 
     .label {
-
+    text-align: center;
     }
   }
   padding-bottom: 30px;
@@ -32,4 +32,22 @@ span.date {
   display: block;
   background: #f7f7f7;
   padding-bottom: 20px;
+}
+
+section.filters {
+  display: flex;
+  justify-content: space-around;
+  margin-bottom: 12px;
+  span.filter {
+    display: flex;
+    align-items: center;
+    padding: 12px;
+    width: 100%;
+    &.active {
+      border-bottom: 3px solid $accent-color;
+    }
+    mat-icon {
+      margin-right: 10px;
+    }
+  }
 }
