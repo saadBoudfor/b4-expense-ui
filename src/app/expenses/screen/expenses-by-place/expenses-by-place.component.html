@@ -4,7 +4,7 @@
               color="white"></navigation>
   <div class="stat">
     <mat-icon class="icon">{{isStore ? 'store' : 'restaurant'}}</mat-icon>
-    <span class="label">{{isStore ? info?.totalStore : info?.totalRestaurant}} €</span>
+    <span class="label">{{isStore ? info?.totalStore.toFixed(2) : info?.totalRestaurant.toFixed(2)}} €</span>
   </div>
 </header>
 

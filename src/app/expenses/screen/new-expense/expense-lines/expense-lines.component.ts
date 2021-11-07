@@ -37,7 +37,7 @@ export class ExpenseLinesComponent implements OnInit {
         message: "C'est dans la poche. Votre déponse " + saved.name + ' à été sauvegardé avec succès.',
         steps: 2,
         active: 2,
-        page: '/new-expense-list',
+        page: '/expenses',
         success: true,
         title: this.title
       })
@@ -47,7 +47,7 @@ export class ExpenseLinesComponent implements OnInit {
         message: "Erreur " + error.code + " La dépense " + this.expense.name + " n'à pas été sauvegardé. Merci de contacter votre administrateur",
         steps: 2,
         active: 2,
-        page: '/new-expense-list',
+        page: '/expenses',
         success: false,
         title: this.title
       })

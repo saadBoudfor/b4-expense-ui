@@ -9,7 +9,6 @@ import {ConfirmationPageModel, ConfirmationService} from "../services/confirmati
 })
 export class ConfirmationComponent implements OnInit, OnDestroy {
 
-  message: any;
   data!: ConfirmationPageModel;
 
   constructor(private confirmationService: ConfirmationService) {
