@@ -2,6 +2,7 @@ import {Component, Input, OnInit, Output} from '@angular/core';
 import {ExpenseService} from "../../expenses/services/expense.service";
 import {Expense} from "../../expenses/models/Expense";
 import {EventEmitter} from '@angular/core';
+import {ExpenseUtils} from "../util/ExpenseUtils";
 
 @Component({
   selector: 'expenses',
@@ -22,9 +23,7 @@ export class ExpensesComponent implements OnInit {
 
   }
 
-  getPrice(expense: Expense): number {
-    let total = 0;
-    expense.expenseLines.forEach(expenseLine => total += expenseLine.price ? expenseLine.price : 0);
-    return total;
+  getPrice(expense: Expense): string {
+    return ExpenseUtils.getPrice(expense);
   }
 }

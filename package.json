@@ -6,7 +6,8 @@
     "start": "ng serve",
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
-    "test": "ng test"
+    "test": "ng test",
+    "sonar": "sonar-scanner -D\"sonar.projectKey=b4_expenses_ui\" -D\"sonar.sources=.\" -D\"sonar.host.url=http://apps.boudfor.fr:9000\" -D\"sonar.login=b9b0bb0db0cdd8e00d4e1ccdd829af4abfe4ab0e\""
   },
   "private": true,
   "dependencies": {
@@ -42,6 +43,7 @@
     "karma-coverage": "~2.0.3",
     "karma-jasmine": "~4.0.0",
     "karma-jasmine-html-reporter": "~1.7.0",
+    "sonar-scanner": "^3.1.0",
     "typescript": "~4.3.5"
   }
 }

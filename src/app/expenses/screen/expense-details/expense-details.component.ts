@@ -4,6 +4,7 @@ import {ActivatedRoute, Router} from "@angular/router";
 import {Expense} from "../../models/Expense";
 import {environment} from "../../../../environments/environment";
 import {Location} from "@angular/common";
+import {ExpenseUtils} from "../../../b4-common/util/ExpenseUtils";
 
 @Component({
   selector: 'expense-details',
@@ -13,7 +14,7 @@ import {Location} from "@angular/common";
 export class ExpenseDetailsComponent implements OnInit {
   expense!: Expense;
   photoBaseURl: string = environment.fileServerURL + '/expenses/';
-  price: number = 0;
+  price: string = '0';
 
   constructor(private expenseService: ExpenseService,
               public location: Location,
@@ -48,10 +49,8 @@ export class ExpenseDetailsComponent implements OnInit {
   }
 }
 
-function getPrice(expense: Expense) {
-  let total = 0;
-  expense.expenseLines.forEach(expense => total += expense.price ? expense.price : 0)
-  return total;
+function getPrice(expense: Expense): string {
+  return  ExpenseUtils.getPrice(expense);
 }
 
 function forceDown(url: string, filename: string) {
