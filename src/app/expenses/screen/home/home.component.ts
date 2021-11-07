@@ -25,7 +25,7 @@ export class HomeComponent implements OnInit {
       this.info = data;
       this.getPercentage(data);
     });
-    this.expenseService.fetchExpenses(0, 0).subscribe(data => this.expenses = data);
+    this.expenseService.fetchLastExpenses().subscribe(data => this.expenses = data);
 
   }
 

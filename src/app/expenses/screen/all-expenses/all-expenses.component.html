@@ -1,8 +1,16 @@
 <header>
   <navigation [title]="'liste des dépenses'" [rightAction]="'expenses'" color="white"></navigation>
   <div class="stat">
-    <span class="total">{{info?.weekCount}} €</span>
-    <span class="label">Cette semaine</span>
+    <span class="total">{{info?.weekTotal}} €</span>
+    <span class="label">{{info?.weekCount}} cette semaine</span>
   </div>
 </header>
-<expenses [expenses]="expenses"></expenses>
+
+<ng-container *ngIf="groupedExpenses">
+  <ng-container *ngFor="let date of expenseDates">
+    <section *ngIf="groupedExpenses[date] && groupedExpenses[date].length !==0" class="expenses">
+      <span class="date">{{date | dateFormat}}</span>
+      <expenses [expenses]="groupedExpenses[date]" subTitle="place" (selected)="onSelectExpense($event)"></expenses>
+    </section>
+  </ng-container>
+</ng-container>

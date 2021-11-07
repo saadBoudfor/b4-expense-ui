@@ -20,8 +20,16 @@ header {
     }
   }
   padding-bottom: 30px;
+
+}
+
+span.date {
+  padding: 12px 20px;
+  display: block;
 }
 
 :host {
   display: block;
+  background: #f7f7f7;
+  padding-bottom: 20px;
 }

@@ -8,4 +8,5 @@ export class ExpenseInfo {
   totalStore: number = 0;
   countStore: number = 0;
   weekCount: number = 0;
+  weekTotal: number = 0;
 }

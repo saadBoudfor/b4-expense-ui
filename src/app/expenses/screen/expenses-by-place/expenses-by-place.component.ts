@@ -7,7 +7,6 @@ import {PlaceService} from "../../../b4-common/services/place.service";
 import {PlaceExpense} from "../../../b4-common/models/PlaceExpense";
 import {Address} from "../../../b4-common/models/Address";
 import {Router} from "@angular/router";
-import {$e} from "@angular/compiler/src/chars";
 
 @Component({
   selector: 'expenses-by-place',

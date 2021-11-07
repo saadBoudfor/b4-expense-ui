@@ -58,6 +58,10 @@ export class ExpenseService {
     return this.httpClient.get<Expense[]>(url, {headers: {'access-token': '1'}});
   }
 
+  fetchLastExpenses() {
+    return this.httpClient.get<Expense[]>( environment.baseUrl + '/expenses/last', {headers: {'access-token': '1'}});
+  }
+
   getExpenseByID(id: number): Observable<Expense> {
     return this.httpClient.get<Expense>(environment.baseUrl + '/expenses/' + id);
   }

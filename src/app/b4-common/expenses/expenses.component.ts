@@ -13,6 +13,9 @@ export class ExpensesComponent implements OnInit {
   @Input()
   expenses!: Expense[];
 
+  @Input()
+  subTitle: 'date' | 'place' = 'date';
+
   @Output()
   selected = new EventEmitter<Expense>();
 
