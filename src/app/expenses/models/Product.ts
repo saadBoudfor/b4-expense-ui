@@ -1,6 +1,8 @@
 /**
  * Model for Product object
  */
+import {NutrientLevels} from "./NutrientLevels";
+
 export class Product {
   id?: number = 0;
   quantity: number = 0;
@@ -13,4 +15,6 @@ export class Product {
   category: string = '';
   photo?: string;
   dataPer?: string;
+  score?: string;
+  nutrientLevels?: NutrientLevels;
 }

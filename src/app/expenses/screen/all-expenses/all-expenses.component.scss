@@ -41,6 +41,7 @@ section.filters {
   span.filter {
     display: flex;
     align-items: center;
+    justify-content: center;
     padding: 12px;
     width: 100%;
     &.active {

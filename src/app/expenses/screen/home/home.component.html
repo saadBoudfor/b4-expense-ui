@@ -11,15 +11,15 @@
 <h5 class="title">Dépenses par type:</h5>
 <section class="expense-by-type">
   <p class="description">Cliquez sur les cartes pour avoir plus de détails sur vos statistiques de dépense</p>
-  <expense-card [expensesCount]="info.countRestaurant ? info.countRestaurant : 0"
-                [totalExpenses]="info.totalRestaurant ? info.totalRestaurant : 0"
-                [percentage]="percentageRestaurant"
+  <expense-card [expensesCount]="info.countRestaurant ? info.countRestaurant.toFixed(0) : '0'"
+                [totalExpenses]="info.totalRestaurant ? info.totalRestaurant.toFixed(2) : '0'"
+                [percentage]="percentageRestaurant + ''"
                 [routerLink]="'/expenses-by-place/restaurants'"
                 [type]="'RESTAURANT'"></expense-card>
 
-  <expense-card [expensesCount]="info.countStore ? info.countStore : 0"
-                [totalExpenses]="info.totalStore ? info.totalStore : 0"
-                [percentage]="percentageStore"
+  <expense-card [expensesCount]="info.countStore ? info.countStore.toFixed(0) : '0'"
+                [totalExpenses]="info.totalStore ? info.totalStore.toFixed(2) : '0'"
+                [percentage]="percentageStore + ''"
                 [routerLink]="'/expenses-by-place/stores'"
                 [type]="'STORE'"></expense-card>
 </section>

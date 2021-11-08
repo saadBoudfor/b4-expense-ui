@@ -104,7 +104,7 @@ export class NewExpenseUnitComponent implements OnInit {
     this.scanCode = false;
     this.productService.getByCode(code).subscribe(found => {
       this.expense.expenseLines[0].product = found;
-      this.selectedProduct = code; //  for template display (binding)
+      this.selectedProduct = found.name; //  for template display (binding)
     }, error => {
       this.snackBar.open('Produit avec le code barre ' + code + ' inconnu', '', {duration: 3000});
     })

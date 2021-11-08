@@ -28,7 +28,7 @@ export class ProductService {
     return this.httpClient.post<Product>(environment.baseUrl + '/products', formData);
   }
 
-  requestSearchProduct(name: string): Observable<Product[]> {
+  requestSearchProduct(name: string | null): Observable<Product[]> {
     return this.httpClient.get<Product[]>(environment.baseUrl + '/products/' + name);
   }
 
@@ -36,6 +36,9 @@ export class ProductService {
     return this.httpClient.get<Product>(environment.baseUrl + '/products/code/' + code);
   }
 
+  getLast(): Observable<Product[]> {
+    return this.httpClient.get<Product[]>(environment.baseUrl + '/products/last');
+  }
 }
 
 function isNotEmpty(name: String) {

@@ -5,6 +5,7 @@ import {Expense} from "../../models/Expense";
 import {environment} from "../../../../environments/environment";
 import {Location} from "@angular/common";
 import {ExpenseUtils} from "../../../b4-common/util/ExpenseUtils";
+import {ExpenseLine} from "../../models/ExpenseLine";
 
 @Component({
   selector: 'expense-details',
@@ -15,6 +16,7 @@ export class ExpenseDetailsComponent implements OnInit {
   expense!: Expense;
   photoBaseURl: string = environment.fileServerURL + '/expenses/';
   price: string = '0';
+  selectedExpenseLine!: ExpenseLine | null;
 
   constructor(private expenseService: ExpenseService,
               public location: Location,
@@ -46,6 +48,14 @@ export class ExpenseDetailsComponent implements OnInit {
 
   download(url: string, filename: string) {
     forceDown(url, filename);
+  }
+
+  onSelectExpenseList(expenseLine: ExpenseLine) {
+    this.selectedExpenseLine = expenseLine;
+  }
+
+  closeDetails() {
+    this.selectedExpenseLine = null;
   }
 }
 

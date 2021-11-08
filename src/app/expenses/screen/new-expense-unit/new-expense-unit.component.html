@@ -50,5 +50,6 @@
 
 </section>
 
-<search-product *ngIf="selectingProduct" (selected)="onSelectProduct($event)"></search-product>
+<!--<search-product *ngIf="selectingProduct" (selected)="onSelectProduct($event)"></search-product>-->
 <barcode-scanner *ngIf="scanCode" (scanned)="onScanCode($event)"></barcode-scanner>
+<product-list [returnSelectedProduct]="true" (selected)="onSelectProduct($event)"></product-list>

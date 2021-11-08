@@ -1,17 +1,19 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, OnDestroy, OnInit} from '@angular/core';
 import {ExpenseService} from "../../services/expense.service";
 import {Expense} from "../../models/Expense";
 import {ExpenseInfo} from "../../models/ExpenseInfo";
 import * as _ from 'lodash';
 import {Dictionary} from 'lodash';
 import {Router} from "@angular/router";
+import {flatMap} from "rxjs/operators";
+import {Observable, Subscription} from "rxjs";
 
 @Component({
   selector: 'all-expenses',
   templateUrl: './all-expenses.component.html',
   styleUrls: ['./all-expenses.component.scss']
 })
-export class AllExpensesComponent implements OnInit {
+export class AllExpensesComponent implements OnInit, OnDestroy {
   expenses!: Expense[];
   expensesGroupedByDate!: Dictionary<[Expense, ...Expense[]]>;
   info!: ExpenseInfo;
@@ -22,21 +24,27 @@ export class AllExpensesComponent implements OnInit {
   private allExpensesGroupedByDate!: Dictionary<[Expense, ...Expense[]]>;
   total = '0';
   count = '0';
+  private $getDataSubscription!: Subscription;
 
   constructor(private expenseService: ExpenseService,
               private router: Router) {
   }
 
+  ngOnDestroy(): void {
+    this.$getDataSubscription.unsubscribe();
+  }
+
   ngOnInit(): void {
-    this.expenseService.fetchExpenses(0, 0).subscribe((data: Expense[]) => {
+    this.$getDataSubscription = this.expenseService.getInfo().pipe(flatMap(info => {
+      this.info = info;
+      return this.expenseService.fetchExpenses(0, 0);
+    })).subscribe((data: Expense[]) => {
       this.expenses = data;
       this.allExpensesGroupedByDate = _.groupBy<Expense>(data, 'date');
       this.storesExpensesGroupedByDate = _.groupBy<Expense>(data.filter(expense => !expense.place || expense.place.type === 'STORE'), 'date');
       this.restaurantsExpensesGroupedByDate = _.groupBy<Expense>(data.filter(expense => expense.place && expense.place.type === 'RESTAURANT'), 'date');
       this.filterBy('all');
-    })
-
-    this.expenseService.getInfo().subscribe(info => this.info = info)
+    });
   }
 
   onSelectExpense($event: Expense) {

@@ -17,6 +17,7 @@ import {ExpensesByPlaceComponent} from "./expenses/screen/expenses-by-place/expe
 import {ExpenseDetailsComponent} from "./expenses/screen/expense-details/expense-details.component";
 import {BudgetComponent} from "./expenses/screen/budget/budget.component";
 import {DefineBudgetComponent} from "./expenses/screen/define-budget/define-budget.component";
+import {ProductListComponent} from "./expenses/screen/product-list/product-list.component";
 
 const routes: Routes = [
   {path: 'expenses', component: HomeComponent},
@@ -38,6 +39,7 @@ const routes: Routes = [
   {path: 'holdhouse-expense-type', component: HoldhouseExpensesTypeComponent},
   {path: 'budget', component: BudgetComponent},
   {path: 'budget/define', component: DefineBudgetComponent},
+  {path: 'product-list', component: ProductListComponent},
   {path: '**', redirectTo: 'expenses'}
 ];
 

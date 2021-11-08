@@ -1,18 +1,21 @@
-<ng-container *ngIf="expenseLine && expenseLine.product && expenseLine.product.name">
+<ng-container *ngIf="product && product.name">
   <header>
-    <navigation [title]="'Détails produit: ' + expenseLine.product.name" (right)="clickRight($event)"
+    <navigation [enableLeft]="enableValidate"
+                [leftIcon]="'check'"
+                (left)="selectedProduct.emit(product)"
+                [title]="'Détails produit: ' + product.name" (right)="clickRight($event)"
                 [enableRight]="true"></navigation>
 
     <div class="photo">
-      <img [src]="expenseLine.product.photo" alt="">
+      <img [src]="product.photo" alt="">
     </div>
   </header>
 
-  <main>
+  <section class="information-general">
     <div class="information wrapper">
       <section class="information">
         <span class="key">Nom</span>
-        <span class="value">{{expenseLine.product.name}}</span>
+        <span class="value">{{product.name}}</span>
       </section>
       <mat-divider></mat-divider>
     </div>
@@ -20,7 +23,7 @@
     <div class="information wrapper">
       <section class="information">
         <span class="key">Calories</span>
-        <span class="value">{{expenseLine.product.calories}} kcal / {{expenseLine.product.dataPer}}</span>
+        <span class="value">{{product.calories}} kcal / {{product.dataPer}}</span>
       </section>
       <mat-divider></mat-divider>
     </div>
@@ -28,22 +31,90 @@
     <div class="information wrapper">
       <section class="information">
         <span class="key">Quantité</span>
-        <span class="value">{{expenseLine.quantity}}</span>
+        <span class="value">{{product.displayQuantity}}</span>
       </section>
       <mat-divider></mat-divider>
     </div>
 
     <div class="information wrapper">
       <section class="information">
+        <span class="key">Code barre</span>
+        <span class="value">{{product.qrCode | uppercase}}</span>
+      </section>
+      <mat-divider></mat-divider>
+    </div>
+
+    <div *ngIf="expenseLine" class="information wrapper">
+      <section class="information">
+        <span class="key">Quantité acheté</span>
+        <span class="value">{{expenseLine.quantity}}</span>
+      </section>
+      <mat-divider></mat-divider>
+    </div>
+
+    <div *ngIf="expenseLine" class="information wrapper">
+      <section class="information">
         <span class="key">Prix</span>
         <span class="value">{{expenseLine.price}}</span>
       </section>
       <mat-divider></mat-divider>
     </div>
-  </main>
+  </section>
+
+  <section class="nutritional-information">
+    <h5 class="title">Informations nutritionnelles</h5>
+    <div class="information wrapper">
+      <section class="information">
+        <span class="key">Nutri-score</span>
+        <span class="value nutrition-score {{product.score}}">{{product.score | uppercase}}</span>
+      </section>
+      <mat-divider></mat-divider>
+    </div>
+    <ng-container *ngIf="product.nutrientLevels">
+      <div class="information wrapper">
+        <section class="information">
+          <span class="key">Sucres </span>
+          <span class="value">
+            <span class="indicator" [class]="product.nutrientLevels.sugars"></span>
+            {{product.nutrientLevels.sugars | uppercase}}</span>
+        </section>
+        <mat-divider></mat-divider>
+      </div>
+
+      <div class="information wrapper">
+        <section class="information">
+          <span class="key">Acides gras saturés</span>
+          <span class="value">
+            <span class="indicator" [class]="product.nutrientLevels.saturatedFat"></span>
+            {{product.nutrientLevels.saturatedFat | uppercase}}</span>
+        </section>
+        <mat-divider></mat-divider>
+      </div>
+
+      <div class="information wrapper">
+        <section class="information">
+          <span class="key"> Sel</span>
+          <span class="value">
+            <span class="indicator" [class]="product.nutrientLevels.salt"></span>
+            {{product.nutrientLevels.salt | uppercase}}</span>
+        </section>
+        <mat-divider></mat-divider>
+      </div>
+
+      <div class="information wrapper">
+        <section class="information">
+          <span class="key">Matières grasses / Lipides</span>
+          <span class="value">
+            <span class="indicator" [class]="product.nutrientLevels.fat"></span>
+            {{product.nutrientLevels.fat | uppercase}}</span>
+        </section>
+        <mat-divider></mat-divider>
+      </div>
+    </ng-container>
+  </section>
 
   <footer class="action">
-    <button (click)="delete.emit(expenseLine)" mat-button color="accent">Supprimer</button>
+    <button (click)="delete.emit(expenseLine)" mat-button color="accent">{{'supprimer' | uppercase}}</button>
   </footer>
 
 </ng-container>

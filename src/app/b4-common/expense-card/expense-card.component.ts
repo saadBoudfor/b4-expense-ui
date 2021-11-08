@@ -8,13 +8,13 @@ import {Component, Input, OnInit} from '@angular/core';
 export class ExpenseCardComponent implements OnInit {
 
   @Input()
-  expensesCount = 0;
+  expensesCount = '0';
 
   @Input()
-  totalExpenses = 0;
+  totalExpenses = '0';
 
   @Input()
-  percentage = 0;
+  percentage = '0';
 
   @Input()
   type: 'STORE' | 'RESTAURANT' = 'STORE';

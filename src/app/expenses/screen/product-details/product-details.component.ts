@@ -1,5 +1,6 @@
 import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {ExpenseLine} from "../../models/ExpenseLine";
+import {Product} from "../../models/Product";
 
 @Component({
   selector: 'product-details',
@@ -8,10 +9,14 @@ import {ExpenseLine} from "../../models/ExpenseLine";
 })
 export class ProductDetailsComponent implements OnInit {
 
-  constructor() { }
+  constructor() {
+  }
 
   @Input()
-  expenseLine: ExpenseLine | undefined ;
+  enableValidate = false;
+
+  @Input()
+  expenseLine!: ExpenseLine;
 
   @Output()
   close = new EventEmitter();
@@ -19,7 +24,16 @@ export class ProductDetailsComponent implements OnInit {
   @Output()
   delete = new EventEmitter<ExpenseLine>();
 
+  @Output()
+  selectedProduct = new EventEmitter<Product>();
+
+  @Input()
+  product!: Product | undefined;
+
   ngOnInit(): void {
+    if (this.expenseLine) {
+      this.product = this.expenseLine.product;
+    }
   }
 
   clickRight($event: any) {

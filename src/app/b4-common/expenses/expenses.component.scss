@@ -28,6 +28,10 @@
       width: 100%;
       justify-content: space-between;
       margin-bottom: 5px;
+      .price {
+        width: fit-content;
+        white-space: nowrap;
+      }
     }
 
     .secondary {
