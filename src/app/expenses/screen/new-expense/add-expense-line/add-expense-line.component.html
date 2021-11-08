@@ -36,4 +36,7 @@
 </section>
 
 <barcode-scanner *ngIf="scanCode" (scanned)="onScanCode($event)"></barcode-scanner>
-<search-product *ngIf="selectingProduct" (selected)="onSelectProduct($event)"></search-product>
+<product-list *ngIf="selectingProduct" [returnSelectedProduct]="true"
+              [enableClose]="true"
+              (close)="selectingProduct = false"
+              (selected)="onSelectProduct($event)"></product-list>

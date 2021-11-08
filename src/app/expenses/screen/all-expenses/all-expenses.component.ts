@@ -1,12 +1,12 @@
 import {Component, OnDestroy, OnInit} from '@angular/core';
 import {ExpenseService} from "../../services/expense.service";
 import {Expense} from "../../models/Expense";
-import {ExpenseInfo} from "../../models/ExpenseInfo";
 import * as _ from 'lodash';
 import {Dictionary} from 'lodash';
 import {Router} from "@angular/router";
 import {flatMap} from "rxjs/operators";
-import {Observable, Subscription} from "rxjs";
+import {Subscription} from "rxjs";
+import {ExpenseBasicStats} from "../../models/ExpenseBasicStats";
 
 @Component({
   selector: 'all-expenses',
@@ -16,7 +16,7 @@ import {Observable, Subscription} from "rxjs";
 export class AllExpensesComponent implements OnInit, OnDestroy {
   expenses!: Expense[];
   expensesGroupedByDate!: Dictionary<[Expense, ...Expense[]]>;
-  info!: ExpenseInfo;
+  expenseBasicStats!: ExpenseBasicStats;
   expenseDates!: string[];
   filter: 'all' | 'restaurants' | 'stores' = 'all';
   private restaurantsExpensesGroupedByDate!: Dictionary<[Expense, ...Expense[]]>;
@@ -35,8 +35,8 @@ export class AllExpensesComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit(): void {
-    this.$getDataSubscription = this.expenseService.getInfo().pipe(flatMap(info => {
-      this.info = info;
+    this.$getDataSubscription = this.expenseService.getBasicStats().pipe(flatMap(data => {
+      this.updateStats(data);
       return this.expenseService.fetchExpenses(0, 0);
     })).subscribe((data: Expense[]) => {
       this.expenses = data;
@@ -56,20 +56,29 @@ export class AllExpensesComponent implements OnInit, OnDestroy {
     switch (selected) {
       case "all":
         this.expensesGroupedByDate = this.allExpensesGroupedByDate;
-        this.total = this.info.weekTotal ? this.info.weekTotal.toFixed(2): '0';
-        this.count = this.info.weekCount.toFixed(0);
+        this.expenseService.getBasicStats().subscribe(data => {
+          this.updateStats(data);
+        })
         break;
       case "restaurants":
         this.expensesGroupedByDate = this.restaurantsExpensesGroupedByDate;
-        this.total =  this.info.weekTotalForRestaurant ? this.info.weekTotalForRestaurant.toFixed(2) : '0';
-        this.count = this.info.weekCountForRestaurant.toFixed(0);
+        this.expenseService.getBasicRestaurantsStats().subscribe(data => {
+          this.updateStats(data);
+        })
         break
       case "stores":
         this.expensesGroupedByDate = this.storesExpensesGroupedByDate;
-        this.total = this.info.weekTotalForStore ? this.info.weekTotalForStore.toFixed(2) : '0';
-        this.count = this.info.weekCountForStore.toFixed(0);
+        this.expenseService.getBasicStoresStats().subscribe(data => {
+          this.updateStats(data);
+        })
         break;
     }
     this.expenseDates = Object.keys(this.expensesGroupedByDate);
   }
+
+  updateStats(data: ExpenseBasicStats) {
+    this.total = data.totalForCurrentWeek.toFixed(2);
+    this.count = data.countForCurrentWeek.toFixed(0);
+  }
+
 }

@@ -29,6 +29,12 @@ export class ProductListComponent implements OnInit {
   @Output()
   selected = new EventEmitter<Product>();
 
+  @Output()
+  close = new EventEmitter<string>();
+
+  @Input()
+  enableClose = false;
+
   constructor(private productService: ProductService) {
   }
 

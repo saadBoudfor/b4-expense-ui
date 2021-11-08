@@ -1,7 +1,7 @@
 <navigation [rightAction]="'/add'" [rightIcon]="'add'"></navigation>
-<budget-target-displayer [target]="info.target"
+<budget-target-displayer [target]="expenseBasicStats.target"
                          [routerLink]="'/budget'"
-                         [total]="info.total"></budget-target-displayer>
+                         [total]="expenseBasicStats.total"></budget-target-displayer>
 
 <h5 class="title">Dernières dépenses:</h5>
 <expenses [expenses]="expenses" (selected)="onExpenseClick($event)"></expenses>
@@ -11,14 +11,14 @@
 <h5 class="title">Dépenses par type:</h5>
 <section class="expense-by-type">
   <p class="description">Cliquez sur les cartes pour avoir plus de détails sur vos statistiques de dépense</p>
-  <expense-card [expensesCount]="info.countRestaurant ? info.countRestaurant.toFixed(0) : '0'"
-                [totalExpenses]="info.totalRestaurant ? info.totalRestaurant.toFixed(2) : '0'"
+  <expense-card *ngIf="restaurantsBasicStats" [expensesCount]="restaurantsBasicStats.count.toFixed(0)"
+                [totalExpenses]="restaurantsBasicStats.total.toFixed(2)"
                 [percentage]="percentageRestaurant + ''"
                 [routerLink]="'/expenses-by-place/restaurants'"
                 [type]="'RESTAURANT'"></expense-card>
 
-  <expense-card [expensesCount]="info.countStore ? info.countStore.toFixed(0) : '0'"
-                [totalExpenses]="info.totalStore ? info.totalStore.toFixed(2) : '0'"
+  <expense-card *ngIf="storeBasicStats" [expensesCount]="storeBasicStats.count.toFixed(0)"
+                [totalExpenses]="storeBasicStats.total.toFixed(2)"
                 [percentage]="percentageStore + ''"
                 [routerLink]="'/expenses-by-place/stores'"
                 [type]="'STORE'"></expense-card>
@@ -27,7 +27,7 @@
 <h5 class="title">Dépenses par mois:</h5>
 <section class="expense-by-month">
   <p class="description">
-    Vous avez réussi à économiser {{(info.total - info.target).toFixed(2)}} euros ce mois ci soit 14% par rappoort au
+    Vous avez réussi à économiser {{(expenseBasicStats.total - expenseBasicStats.target).toFixed(2)}} euros ce mois ci soit 14% par rappoort au
     mois précédent
   </p>
   <bar-chart-expense></bar-chart-expense>

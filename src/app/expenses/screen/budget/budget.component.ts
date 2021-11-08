@@ -2,7 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {BudgetService} from "../../services/budget.service";
 import {Budget} from "../../models/Budget";
 import {ExpenseService} from "../../services/expense.service";
-import {ExpenseInfo} from "../../models/ExpenseInfo";
+import {ExpenseBasicStats} from "../../models/ExpenseBasicStats";
 
 @Component({
   selector: 'budget',
@@ -11,7 +11,7 @@ import {ExpenseInfo} from "../../models/ExpenseInfo";
 })
 export class BudgetComponent implements OnInit {
   budget!: Budget;
-  info!: ExpenseInfo;
+  expenseBasicStats!: ExpenseBasicStats;
 
   constructor(private budgetService: BudgetService,
               private expenseService: ExpenseService) {
@@ -19,8 +19,8 @@ export class BudgetComponent implements OnInit {
 
   ngOnInit(): void {
     this.budgetService.getBudget().subscribe(data => this.budget = data)
-    this.expenseService.getInfo().subscribe(data => {
-      this.info = data;
+    this.expenseService.getBasicStats().subscribe(data => {
+      this.expenseBasicStats = data;
     })
   }
 

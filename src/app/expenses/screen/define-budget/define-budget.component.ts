@@ -1,8 +1,8 @@
 import {Component, OnInit} from '@angular/core';
 import {ExpenseService} from "../../services/expense.service";
-import {ExpenseInfo} from "../../models/ExpenseInfo";
 import {BudgetService} from "../../services/budget.service";
 import {Router} from "@angular/router";
+import {ExpenseBasicStats} from "../../models/ExpenseBasicStats";
 
 @Component({
   selector: 'define-budget',
@@ -11,7 +11,7 @@ import {Router} from "@angular/router";
 })
 export class DefineBudgetComponent implements OnInit {
 
-  info!: ExpenseInfo;
+  expenseBasicStats!: ExpenseBasicStats;
   newTarget = '';
   currentMonth = getCurrentMonth();
 
@@ -21,8 +21,8 @@ export class DefineBudgetComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.expenseService.getInfo().subscribe(data => {
-      this.info = data;
+    this.expenseService.getBasicStats().subscribe(data => {
+      this.expenseBasicStats = data;
       this.newTarget = data.target + '';
     })
   }

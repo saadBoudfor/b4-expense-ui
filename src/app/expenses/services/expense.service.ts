@@ -3,8 +3,8 @@ import {HttpClient} from "@angular/common/http";
 import {Expense} from "../models/Expense";
 import {Observable} from "rxjs";
 import {environment} from "../../../environments/environment";
-import {ExpenseInfo} from "../models/ExpenseInfo";
 import {StringUtils} from "../../b4-common/util/StringUtils";
+import {ExpenseBasicStats} from "../models/ExpenseBasicStats";
 
 @Injectable({
   providedIn: 'root'
@@ -45,8 +45,16 @@ export class ExpenseService {
 
   }
 
-  getInfo(): Observable<ExpenseInfo> {
-    return this.httpClient.get<ExpenseInfo>(environment.baseUrl + '/expenses/info', {headers: {'access-token': '1'}});
+  getBasicStats(): Observable<ExpenseBasicStats> {
+    return this.httpClient.get<ExpenseBasicStats>(environment.baseUrl + '/expenses/basic-stats', {headers: {'access-token': '1'}});
+  }
+
+  getBasicRestaurantsStats(): Observable<ExpenseBasicStats> {
+    return this.httpClient.get<ExpenseBasicStats>(environment.baseUrl + '/expenses/basic-stats/restaurants', {headers: {'access-token': '1'}});
+  }
+
+  getBasicStoresStats(): Observable<ExpenseBasicStats> {
+    return this.httpClient.get<ExpenseBasicStats>(environment.baseUrl + '/expenses/basic-stats/stores', {headers: {'access-token': '1'}});
   }
 
   fetchExpenses(page: number, size: number): Observable<Expense[]> {

@@ -10,7 +10,6 @@ import {environment} from "../../../environments/environment";
 })
 export class ProductService {
 
-
   constructor(private httpClient: HttpClient, private router: Router) {
   }
 

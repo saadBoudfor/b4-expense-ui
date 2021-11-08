@@ -1,12 +1,12 @@
 import {Component, OnInit} from '@angular/core';
 import {ExpenseService} from "../../services/expense.service";
-import {ExpenseInfo} from "../../models/ExpenseInfo";
 import {Expense} from "../../models/Expense";
 import {DomSanitizer, SafeResourceUrl} from "@angular/platform-browser";
 import {PlaceService} from "../../../b4-common/services/place.service";
 import {PlaceExpense} from "../../../b4-common/models/PlaceExpense";
 import {Address} from "../../../b4-common/models/Address";
 import {Router} from "@angular/router";
+import {ExpenseBasicStats} from "../../models/ExpenseBasicStats";
 
 @Component({
   selector: 'expenses-by-place',
@@ -14,13 +14,14 @@ import {Router} from "@angular/router";
   styleUrls: ['./expenses-by-place.component.scss']
 })
 export class ExpensesByPlaceComponent implements OnInit {
-  info!: ExpenseInfo;
+  expenseBasicStats!: ExpenseBasicStats;
   expenses!: Expense[];
   googleMapUrl!: SafeResourceUrl;
   placeExpenses!: PlaceExpense[];
   showDetails = false;
   isStore: boolean = false;
   selected!: PlaceExpense;
+  total = 0;
 
   constructor(private expenseService: ExpenseService,
               private placeService: PlaceService,
@@ -32,10 +33,11 @@ export class ExpensesByPlaceComponent implements OnInit {
     this.isStore = this.router.url.indexOf('stores') !== -1;
     if (this.isStore) {
       this.placeService.getStoresRanking().subscribe(data => this.placeExpenses = data)
+      this.expenseService.getBasicStoresStats().subscribe(data => this.total = data.total)
     } else {
       this.placeService.getRestaurantRanking().subscribe(data => this.placeExpenses = data)
+      this.expenseService.getBasicRestaurantsStats().subscribe(data => this.total = data.total)
     }
-    this.expenseService.getInfo().subscribe(data => this.info = data)
 
   }
 

@@ -1,24 +1,24 @@
-<header *ngIf="info">
+<header *ngIf="expenseBasicStats">
   <navigation [title]="'Mon budget'" [rightAction]="'expenses'"
               color="white"></navigation>
   <div class="stat">
-    <div class="main-info"> {{info?.target}} €</div>
+    <div class="main-info"> {{expenseBasicStats?.target}} €</div>
     <div class="label">Pour Septembre 2021</div>
   </div>
 </header>
 
-<main *ngIf="info">
+<main *ngIf="expenseBasicStats">
   <section class="information-container">
     <div class="information">
       <span class="key">Total dépensé</span>
-      <span class="value">{{info.total}} €</span>
+      <span class="value">{{expenseBasicStats.total}} €</span>
     </div>
     <mat-divider></mat-divider>
   </section>
   <section class="information-container">
     <div class="information">
       <span class="key">Estimation fin de mois</span>
-      <span class="value">{{info.total + 200}} € </span>
+      <span class="value">{{expenseBasicStats.total + 200}} € </span>
     </div>
     <mat-divider></mat-divider>
   </section>

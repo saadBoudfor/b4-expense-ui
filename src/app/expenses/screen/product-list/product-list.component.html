@@ -1,6 +1,6 @@
 <ng-container *ngIf="!selectProduct">
   <header>
-    <navigation [title]="'Produits'"></navigation>
+    <navigation [title]="'Produits'" [enableRight]="enableClose" (right)="close.emit('close')"></navigation>
 
     <section class="search-wrapper">
       <div class="search">
