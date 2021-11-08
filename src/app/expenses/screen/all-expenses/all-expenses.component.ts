@@ -56,17 +56,17 @@ export class AllExpensesComponent implements OnInit, OnDestroy {
     switch (selected) {
       case "all":
         this.expensesGroupedByDate = this.allExpensesGroupedByDate;
-        this.total = this.info.weekTotal.toFixed(2);
+        this.total = this.info.weekTotal ? this.info.weekTotal.toFixed(2): '0';
         this.count = this.info.weekCount.toFixed(0);
         break;
       case "restaurants":
         this.expensesGroupedByDate = this.restaurantsExpensesGroupedByDate;
-        this.total = this.info.weekTotalForRestaurant.toFixed(2);
+        this.total =  this.info.weekTotalForRestaurant ? this.info.weekTotalForRestaurant.toFixed(2) : '0';
         this.count = this.info.weekCountForRestaurant.toFixed(0);
         break
       case "stores":
         this.expensesGroupedByDate = this.storesExpensesGroupedByDate;
-        this.total = this.info.weekTotalForStore.toFixed(2);
+        this.total = this.info.weekTotalForStore ? this.info.weekTotalForStore.toFixed(2) : '0';
         this.count = this.info.weekCountForStore.toFixed(0);
         break;
     }
