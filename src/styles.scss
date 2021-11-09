@@ -56,6 +56,7 @@ $primary-color: mat.get-color-from-palette($primary-palette, 'default');
 $accent-color: mat.get-color-from-palette($accent-palette, 'default');
 $warn-color: mat.get-color-from-palette($warn-palette, 'default');
 
+
 h5.title {
   margin-top: 20px;
   padding-left: 20px;
@@ -79,3 +80,5 @@ h5.title {
   -webkit-transition: .3s ease-out;
   transition: .3s ease-out;
 }
+
+

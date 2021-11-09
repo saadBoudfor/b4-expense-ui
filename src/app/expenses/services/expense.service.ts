@@ -57,6 +57,10 @@ export class ExpenseService {
     return this.httpClient.get<ExpenseBasicStats>(environment.baseUrl + '/expenses/basic-stats/stores', {headers: {'access-token': '1'}});
   }
 
+  getNutrientBasicStats() {
+    return this.httpClient.get<any>(environment.baseUrl + '/expenses/basic-stats/nutrients', {headers: {'access-token': '1'}});
+  }
+
   fetchExpenses(page: number, size: number): Observable<Expense[]> {
     let url = environment.baseUrl + '/expenses';
     if (size !== 0) {
@@ -98,4 +102,6 @@ export class ExpenseService {
   delete(id: number | undefined) {
     return this.httpClient.delete(environment.baseUrl + '/expenses/' + id);
   }
+
+
 }
