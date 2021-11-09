@@ -37,6 +37,7 @@ let chartConf = {
       radius: ['40%', '70%'],
       color: [
         '#795548',
+        '#bc6c25',
         '#ddbea9',
         '#ffe8d6',
         '#b7b7a4',
