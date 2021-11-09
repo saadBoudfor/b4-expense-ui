@@ -14,7 +14,7 @@ export class NutrientsStatsComponent {
   constructor(private expenseService: ExpenseService) {
     this.expenseService.getNutrientBasicStats().subscribe((data: { stats: { count: number, label: string }[] }) => {
       chartConf.series[0].data = data.stats.map(item => {
-        return {value: item.count, name: item.label.toUpperCase()}
+        return {value: item.count, name: item.label ? item.label.toUpperCase() : 'inconnu'}
       });
       this.option = chartConf as EChartsOption;
     })
