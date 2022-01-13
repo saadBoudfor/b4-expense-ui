@@ -16,7 +16,7 @@ import {ExpenseCardComponent} from './expense-card/expense-card.component';
 import {BarChartItemComponent} from './bar-chart-item/bar-chart-item.component';
 import {BarChartExpenseComponent} from './bar-chart-expense/bar-chart-expense.component';
 import {ExpensesLinesListComponent} from './expenses-lines-list/expenses-lines-list.component';
-import { DatePipe } from './util/date.pipe';
+import { DatePipe } from './pipes/date/date.pipe';
 
 @NgModule({
   declarations: [
