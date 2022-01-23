@@ -27,6 +27,7 @@
     "echarts": "^5.2.2",
     "keen-slider": "^5.5.1",
     "ngx-echarts": "^8.0.0",
+    "ngx-logger": "^5.0.6",
     "ngx-webcam": "^0.3.2",
     "rxjs": "~6.6.0",
     "tslib": "^2.3.0",

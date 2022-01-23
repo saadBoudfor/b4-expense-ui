@@ -23,13 +23,13 @@ describe('AppComponent', () => {
   it(`should have as title 'b4-expenses-ui'`, () => {
     const fixture = TestBed.createComponent(AppComponent);
     const app = fixture.componentInstance;
-    expect(app.title).toEqual('b4-expenses-ui');
+    expect(app.title).toEqual('b4-b4-expenses-ui');
   });
 
   it('should render title', () => {
     const fixture = TestBed.createComponent(AppComponent);
     fixture.detectChanges();
     const compiled = fixture.nativeElement as HTMLElement;
-    expect(compiled.querySelector('.content span')?.textContent).toContain('b4-expenses-ui app is running!');
+    expect(compiled.querySelector('.content span')?.textContent).toContain('b4-b4-expenses-ui app is running!');
   });
 });

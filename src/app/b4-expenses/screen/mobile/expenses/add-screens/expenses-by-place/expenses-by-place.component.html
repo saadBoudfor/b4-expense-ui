@@ -1,0 +1,52 @@
+<header>
+  <navigation [title]="isStore ? 'Dépenses magasin': 'Dépenses réstaurant'"
+              [rightAction]="'b4-expenses'"
+              color="white"></navigation>
+  <div class="stat">
+    <mat-icon class="icon">{{isStore ? 'store' : 'restaurant'}}</mat-icon>
+    <span class="label">{{total.toFixed(2)}} €</span>
+  </div>
+</header>
+
+<section>
+  <ng-container *ngIf="placeExpenses">
+    <ng-container *ngFor="let placeExpense of placeExpenses; let index = index">
+      <section class="place" (click)="onSelect(placeExpense)">
+        <div class="rank">
+          {{index + 1}}.
+        </div>
+        <div class="description">
+          <div class="primary">
+            <span class="name">{{placeExpense.place.name | uppercase}}</span>
+            <span class="total">{{placeExpense.total}} €</span>
+          </div>
+          <div class="secondary">
+            <span class="count">{{placeExpense.count}} dépenses</span>
+          </div>
+        </div>
+      </section>
+      <mat-divider></mat-divider>
+    </ng-container>
+
+  </ng-container>
+
+  <ng-container *ngIf="showDetails">
+    <h5 class="title">Détails de la dépense: {{selected.place.name}}</h5>
+
+    <iframe *ngIf="googleMapUrl"
+            width="445"
+            height="515"
+            id="gmap_canvas"
+            class="map"
+            [src]="googleMapUrl"
+            frameborder="0"
+            scrolling="no"
+            marginheight="0"
+            marginwidth="0"></iframe>
+
+    <expenses [expenses]="expenses" (selected)="onSelectExpense($event)"></expenses>
+
+  </ng-container>
+
+
+</section>

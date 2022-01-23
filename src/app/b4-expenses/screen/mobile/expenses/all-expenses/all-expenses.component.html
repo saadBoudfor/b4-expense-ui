@@ -1,0 +1,22 @@
+<header>
+  <navigation [title]="'liste des dépenses'" [rightAction]="'b4-expenses'" color="white"></navigation>
+  <div class="stat">
+    <span class="total">{{total}} €</span>
+    <span class="label">{{count}} dépenses cette semaine</span>
+  </div>
+</header>
+
+<section class="filters">
+  <span class="filter" [class.active]="filter === 'all'" (click)="filterBy('all')"><mat-icon class="true" color="accent">list_alt</mat-icon> Tous</span>
+  <span class="filter" [class.active]="filter === 'restaurants'" (click)="filterBy('restaurants')"><mat-icon class="true" color="accent">storefront</mat-icon> Restaurants</span>
+  <span class="filter" [class.active]="filter === 'stores'" (click)="filterBy('stores')"><mat-icon class="true" color="accent">shopping_cart</mat-icon> Magasins</span>
+</section>
+
+<ng-container *ngIf="expensesGroupedByDate">
+  <ng-container *ngFor="let date of expenseDates">
+    <section *ngIf="expensesGroupedByDate[date] && expensesGroupedByDate[date].length !==0" class="expenses">
+      <span class="date">{{date | dateFormat}}</span>
+      <expenses [expenses]="expensesGroupedByDate[date]" subTitle="place" (selected)="onSelectExpense($event)"></expenses>
+    </section>
+  </ng-container>
+</ng-container>

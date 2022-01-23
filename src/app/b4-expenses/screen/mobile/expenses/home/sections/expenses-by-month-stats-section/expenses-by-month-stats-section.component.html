@@ -1,0 +1,13 @@
+<ng-container *ngIf="expenseBasicStats">
+  <h5 class="title">Dépenses par mois:</h5>
+  <section class="expense-by-month">
+    <p class="description">
+      Vous avez réussi à économiser {{(expenseBasicStats.total - expenseBasicStats.target).toFixed(2)}} euros ce mois ci
+      soit 14% par rappoort au
+      mois précédent
+    </p>
+    <bar-chart-expense></bar-chart-expense>
+
+  </section>
+
+</ng-container>

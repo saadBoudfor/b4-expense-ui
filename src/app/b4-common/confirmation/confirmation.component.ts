@@ -1,5 +1,4 @@
 import {Component, OnDestroy, OnInit} from '@angular/core';
-import {BehaviorSubject, Observable} from "rxjs";
 import {ConfirmationPageModel, ConfirmationService} from "../services/confirmation.service";
 
 @Component({

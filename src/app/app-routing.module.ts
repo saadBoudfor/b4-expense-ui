@@ -1,23 +1,23 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import {NewProductComponent} from "./expenses/screen/new-product/new-product.component";
+import {NewProductComponent} from "./b4-expenses/screen/mobile/expenses/add-screens/new-product/new-product.component";
 import {ConfirmationComponent} from "./b4-common/confirmation/confirmation.component";
-import {NewExpenseUnitComponent} from "./expenses/screen/new-expense-unit/new-expense-unit.component";
-import {SearchProductComponent} from "./expenses/screen/search-product/search-product.component";
-import {NewExpenseComponent} from "./expenses/screen/new-expense/new-expense.component";
-import {ExpenseLinesComponent} from "./expenses/screen/new-expense/expense-lines/expense-lines.component";
-import {AddExpenseLineComponent} from "./expenses/screen/new-expense/add-expense-line/add-expense-line.component";
-import {ExpensesTypeComponent} from "./expenses/screen/expenses-type/expenses-type.component";
-import {HoldhouseExpensesTypeComponent} from "./expenses/screen/holdhouse-expenses-type/holdhouse-expenses-type.component";
-import {HomeComponent} from "./expenses/screen/home/home.component";
-import {AddActionComponent} from "./expenses/screen/add-action/add-action.component";
+import {NewExpenseUnitComponent} from "./b4-expenses/screen/mobile/expenses/add-screens/add-expense/new-expense-unit/new-expense-unit.component";
+import {SearchProductComponent} from "./b4-expenses/screen/mobile/expenses/search-product/search-product.component";
+import {NewExpenseComponent} from "./b4-expenses/screen/mobile/expenses/add-screens/add-expense/new-expense/new-expense.component";
+import {ExpenseLinesComponent} from "./b4-expenses/screen/mobile/expenses/add-screens/add-expense/new-expense/expense-lines/expense-lines.component";
+import {AddExpenseLineComponent} from "./b4-expenses/screen/mobile/expenses/add-screens/add-expense/new-expense/add-expense-line/add-expense-line.component";
+import {ExpensesTypeComponent} from "./b4-expenses/screen/mobile/expenses/add-screens/expenses-type/expenses-type.component";
+import {HoldhouseExpensesTypeComponent} from "./b4-expenses/screen/mobile/expenses/add-screens/holdhouse-expenses-type/holdhouse-expenses-type.component";
+import {HomeComponent} from "./b4-expenses/screen/mobile/expenses/home/home.component";
+import {AddActionComponent} from "./b4-expenses/screen/mobile/expenses/add-screens/add-action/add-action.component";
 import {BarcodeScannerComponent} from "./lib/barcode-scanner/barcode-scanner.component";
-import {AllExpensesComponent} from "./expenses/screen/all-expenses/all-expenses.component";
-import {ExpensesByPlaceComponent} from "./expenses/screen/expenses-by-place/expenses-by-place.component";
-import {ExpenseDetailsComponent} from "./expenses/screen/expense-details/expense-details.component";
-import {BudgetComponent} from "./expenses/screen/budget/budget.component";
-import {DefineBudgetComponent} from "./expenses/screen/define-budget/define-budget.component";
-import {ProductListComponent} from "./expenses/screen/product-list/product-list.component";
+import {AllExpensesComponent} from "./b4-expenses/screen/mobile/expenses/all-expenses/all-expenses.component";
+import {ExpensesByPlaceComponent} from "./b4-expenses/screen/mobile/expenses/add-screens/expenses-by-place/expenses-by-place.component";
+import {ExpenseDetailsComponent} from "./b4-expenses/screen/mobile/expenses/expense-details/expense-details.component";
+import {BudgetComponent} from "./b4-expenses/screen/mobile/expenses/budget/display-budget/budget.component";
+import {DefineBudgetComponent} from "./b4-expenses/screen/mobile/expenses/budget/define-budget/define-budget.component";
+import {ProductListComponent} from "./b4-expenses/screen/mobile/expenses/product-list/product-list.component";
 
 const routes: Routes = [
   {path: 'expenses', component: HomeComponent},

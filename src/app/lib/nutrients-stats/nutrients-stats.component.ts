@@ -1,6 +1,7 @@
 import {Component} from '@angular/core';
 import {EChartsOption} from "echarts";
-import {ExpenseService} from "../../expenses/services/expense.service";
+import {ExpenseRepository} from "../../b4-expenses/repositories/expenses/expense-repository.service";
+import {ExpenseStatsRepository} from "../../b4-expenses/repositories/expenses/expense-stats-repository.service";
 
 @Component({
   selector: 'nutrients-stats',
@@ -11,8 +12,8 @@ export class NutrientsStatsComponent {
 
   option!: EChartsOption;
 
-  constructor(private expenseService: ExpenseService) {
-    this.expenseService.getNutrientBasicStats().subscribe((data: { stats: { count: number, label: string }[] }) => {
+  constructor(private expenseService: ExpenseRepository, private expenseStatsRepository: ExpenseStatsRepository,) {
+    this.expenseStatsRepository.getNutrientBasicStats().subscribe((data: { stats: { count: number, label: string }[] }) => {
       chartConf.series[0].data = data.stats.map(item => {
         return {value: item.count, name: item.label ? item.label.toUpperCase() : 'inconnu'}
       });

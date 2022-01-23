@@ -1,6 +1,6 @@
 import {Component, Input, OnInit, Output} from '@angular/core';
-import {ExpenseService} from "../../expenses/services/expense.service";
-import {Expense} from "../../expenses/models/Expense";
+import {ExpenseRepository} from "../../b4-expenses/repositories/expenses/expense-repository.service";
+import {Expense} from "../../b4-expenses/models/Expense";
 import {EventEmitter} from '@angular/core';
 import {ExpenseUtils} from "../util/ExpenseUtils";
 
@@ -19,7 +19,7 @@ export class ExpensesComponent implements OnInit {
   @Output()
   selected = new EventEmitter<Expense>();
 
-  constructor(private expenseService: ExpenseService) {
+  constructor(private expenseService: ExpenseRepository) {
   }
 
   ngOnInit(): void {

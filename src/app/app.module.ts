@@ -6,7 +6,7 @@ import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {TranslateLoader, TranslateModule} from "@ngx-translate/core";
 import {HttpClient, HttpClientModule} from "@angular/common/http";
-import {ExpensesModule} from "./expenses/expenses.module";
+import {ExpensesModule} from "./b4-expenses/expenses.module";
 import {TranslateHttpLoader} from "@ngx-translate/http-loader";
 import {AngularImports} from "./angular-imports";
 import {B4CommonModule} from "./b4-common/b4-common.module";

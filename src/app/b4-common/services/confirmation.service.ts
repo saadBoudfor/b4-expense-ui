@@ -1,6 +1,5 @@
 import {Injectable} from '@angular/core';
 import {BehaviorSubject, Observable} from "rxjs";
-import {map} from "rxjs/operators";
 import {Router} from "@angular/router";
 
 @Injectable({
@@ -8,14 +7,7 @@ import {Router} from "@angular/router";
 })
 export class ConfirmationService {
 
-  private $data = new BehaviorSubject<ConfirmationPageModel>({
-    message: '',
-    steps: 0,
-    page: '',
-    active: 0,
-    success: true,
-    title: ''
-  });
+  private $data = new BehaviorSubject<ConfirmationPageModel>(EMPTY_MESSAGE);
 
   constructor(private routerService: Router) {
   }
@@ -28,7 +20,20 @@ export class ConfirmationService {
   public getData(): Observable<ConfirmationPageModel> {
     return this.$data.asObservable();
   }
+
+  public clear(): void {
+    this.$data.next(EMPTY_MESSAGE);
+  }
 }
+
+const EMPTY_MESSAGE: ConfirmationPageModel = {
+  message: '',
+  steps: 0,
+  page: '',
+  active: 0,
+  success: true,
+  title: ''
+};
 
 export interface ConfirmationPageModel {
   title: any;

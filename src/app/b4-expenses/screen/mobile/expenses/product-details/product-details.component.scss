@@ -1,0 +1,79 @@
+@import "../../../../../../styles";
+
+section.information {
+  padding: 20px;
+  display: flex;
+  justify-content: space-between;
+  .key {
+    font-weight: 600;
+    min-width: 100px;
+    margin-right: 10px;
+  }
+  background: white;
+}
+
+.indicator {
+  width: 10px;
+  height: 10px;
+  margin-right: 10px;
+  display: inline-block;
+  border-radius: 50%;
+  &.high {
+    background-color: $warn-color;
+  }
+  &.moderate {
+    background-color: $accent-color;
+  }
+  &.low {
+    background-color: $primary-color;
+  }
+}
+
+.nutrition-score {
+  display: inline-block;
+  color: white;
+  padding: 3px 9px;
+  &.e {
+    background-color: $warn-color;
+  }
+  &.d {
+    background-color: $accent-color;
+  }
+  &.c {
+    background-color: $accent-color;
+  }
+  &.b {
+    background-color: $primary-color;
+  }
+  &.a {
+    background-color: $primary-color;
+  }
+}
+
+
+
+:host {
+  display: block;
+  background: #f7f7f7;
+}
+
+header {
+  box-shadow: inset 0px -2px 3px 0 rgb(0 0 0 / 20%);
+  padding-bottom: 20px;
+  background-color: white;
+  .photo {
+    width: fit-content;
+    margin: 20px auto;
+
+    img {
+     height: 100px;
+    }
+  }
+
+}
+
+footer {
+  margin-top: 20px;
+  display: flex;
+  justify-content: center;
+}
