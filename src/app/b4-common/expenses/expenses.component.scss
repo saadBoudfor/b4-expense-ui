@@ -1,5 +1,9 @@
 @import "src/styles";
 
+:host {
+  display: block;
+}
+
 .expense {
   display: flex;
   padding: 20px;

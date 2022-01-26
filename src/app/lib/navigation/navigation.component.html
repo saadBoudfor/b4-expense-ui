@@ -2,7 +2,7 @@
   <i>
     <mat-icon *ngIf="enableLeft || leftAction" (click)="left.emit('left')" [routerLink]="leftAction"> {{leftIcon}} </mat-icon>
   </i>
-  <i class="title-wrapper"><span class="title title-font" *ngIf="title">{{ title | uppercase}}</span></i>
+  <i class="title-wrapper"><span class="title title-font" *ngIf="title"> <span class="title-icon material-icons">{{titleIcon}}</span>   {{ title | uppercase}}</span></i>
   <i>
     <mat-icon *ngIf="enableRight || rightAction"   (click)="right.emit('right')"  [routerLink]="rightAction"> {{rightIcon}} </mat-icon>
   </i>

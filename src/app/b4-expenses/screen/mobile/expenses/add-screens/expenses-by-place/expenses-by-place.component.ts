@@ -32,7 +32,7 @@ export class ExpensesByPlaceComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.isStore = this.router.url.indexOf('stores') !== -1;
+    this.isStore = this.router.url.indexOf('storage') !== -1;
     if (this.isStore) {
       this.placeService.getStoresRanking().subscribe(data => this.placeExpenses = data)
       this.expenseStatsRepository.getBasicStoresStats().subscribe(data => this.total = data.total)

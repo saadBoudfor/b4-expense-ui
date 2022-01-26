@@ -54,7 +54,7 @@ import { ExpensesByMonthStatsSectionComponent } from './screen/mobile/expenses/h
     LastExpensesComponent,
     ExpensesByTypeSummarySectionComponent,
     ExpensesByNutrientsStatsSectionComponent,
-    ExpensesByMonthStatsSectionComponent
+    ExpensesByMonthStatsSectionComponent,
 
   ],
   imports: [

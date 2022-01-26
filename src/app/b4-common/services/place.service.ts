@@ -24,11 +24,11 @@ export class PlaceService {
   }
 
   findStores(searchStr: string): Observable<Place[]> {
-    return this.httpClient.get<Place[]>(environment.baseUrl + '/places/stores/' + searchStr)
+    return this.httpClient.get<Place[]>(environment.baseUrl + '/places/storage/' + searchStr)
   }
 
   getStoresRanking(): Observable<PlaceExpense[]> {
-    return this.httpClient.get<PlaceExpense[]>(environment.baseUrl + '/places/stores/ranking');
+    return this.httpClient.get<PlaceExpense[]>(environment.baseUrl + '/places/storage/ranking');
   }
 
   getRestaurantRanking(): Observable<PlaceExpense[]> {

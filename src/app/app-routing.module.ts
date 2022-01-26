@@ -35,7 +35,7 @@ const routes: Routes = [
   {path: 'expenses-type', component: ExpensesTypeComponent},
   {path: 'all-expenses', component: AllExpensesComponent},
   {path: 'expenses-by-place/restaurants', component: ExpensesByPlaceComponent},
-  {path: 'expenses-by-place/stores', component: ExpensesByPlaceComponent},
+  {path: 'expenses-by-place/storage', component: ExpensesByPlaceComponent},
   {path: 'holdhouse-expense-type', component: HoldhouseExpensesTypeComponent},
   {path: 'budget', component: BudgetComponent},
   {path: 'budget/define', component: DefineBudgetComponent},

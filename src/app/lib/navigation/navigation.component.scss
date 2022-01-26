@@ -8,6 +8,11 @@ nav {
 
   span.title {
     font-weight: 400;
+    display: flex;
+    align-items: center;
+    span.title-icon {
+      margin-right: 5px;
+    }
   }
 
   i {

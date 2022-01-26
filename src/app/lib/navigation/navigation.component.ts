@@ -12,6 +12,9 @@ export class NavigationComponent implements OnInit {
   title: string | undefined;
 
   @Input()
+  titleIcon: string | undefined;
+
+  @Input()
   leftAction: string | undefined;
 
   @Input()

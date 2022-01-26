@@ -67,7 +67,7 @@ fdescribe('ExpensesByTypeSummarySectionComponent', () => {
     expect(expenseStatsRepositoryMock.getBasicRestaurantsStats).toHaveBeenCalledTimes(1);
   }))
 
-  it('should set dataLoadError to true if error occurred when load stores stats', fakeAsync(() => {
+  it('should set dataLoadError to true if error occurred when load storage stats', fakeAsync(() => {
     expenseStatsRepositoryMock.getBasicStoresStats.and.returnValue(throwError({error: 'some random error'}));
 
     expenseStatsRepositoryMock.getBasicRestaurantsStats.and.returnValue(of({
