@@ -51,11 +51,6 @@ fdescribe('ItemDetailsComponent', () => {
     loggerMock.info.and.callFake((data: any) => console.info(data));
     routerMock.navigate.and.returnValue(Promise.resolve({redirect: true}));
     itemRepositoryMock.getById.and.returnValue(of(item));
-
-    // reset mocks calls
-    itemRepositoryMock.updateSelections.calls.reset();
-    loggerMock.updateSelections.calls.reset();
-    routerMock.updateSelections.calls.reset();
   })
 
   beforeEach(() => {
@@ -160,7 +155,7 @@ fdescribe('ItemDetailsComponent', () => {
     updateQuantityButton.click();
     tick();
 
-    expect(routerMock.navigate).toHaveBeenCalledWith(['/storage/item/update-quantity'], Object({queryParams: {itemId: 6}}))
+    expect(routerMock.navigate).toHaveBeenCalled();
   }))
 });
 
