@@ -1,0 +1,52 @@
+.storage-details-container {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  padding-bottom: 50px;
+  main {
+    flex: 1;
+    border-top-right-radius: 34px;
+    margin-top: 15px;
+    box-shadow: 0 2px 6px 0 rgb(0 0 0 / 20%);
+    padding: 15px 12px;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    section.form {
+     mat-form-field {
+       width: 100%;
+     }
+    }
+  }
+
+  .logo-container {
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    $logo-container-size: 150px;
+    width: $logo-container-size;
+    height: $logo-container-size;
+    margin: 30px auto;
+
+    .logo {
+      font-size: 75px;
+      width: 75px;
+    }
+  }
+  .is-open-form {
+    display: flex;
+    justify-content: center;
+    button {
+      margin-right: 10px;
+      margin-top: 10px;
+    }
+  }
+
+  button.submit {
+    width: 80%;
+    margin-top: 60px;
+  }
+}

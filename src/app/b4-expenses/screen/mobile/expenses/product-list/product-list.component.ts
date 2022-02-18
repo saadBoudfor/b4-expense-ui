@@ -1,6 +1,6 @@
 import {Component, Input, OnInit, Output} from '@angular/core';
 import {ProductService} from "../../../../services/product.service";
-import {Product} from "../../../../models/Product";
+import {Product} from "../../../../models/expenses/Product";
 import {environment} from "../../../../../../environments/environment";
 import {EventEmitter} from '@angular/core';
 
@@ -10,7 +10,8 @@ import {EventEmitter} from '@angular/core';
   templateUrl: './product-list.component.html',
   styleUrls: ['./product-list.component.scss']
 })
-export class ProductListComponent implements OnInit {
+export class
+ProductListComponent implements OnInit {
 
   @Input()
   returnSelectedProduct = false;

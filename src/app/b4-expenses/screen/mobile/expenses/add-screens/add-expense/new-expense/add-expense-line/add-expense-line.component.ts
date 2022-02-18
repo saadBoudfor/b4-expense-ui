@@ -1,9 +1,9 @@
 import {Component, OnInit} from '@angular/core';
-import {Product} from "../../../../../../../models/Product";
+import {Product} from "../../../../../../../models/expenses/Product";
 import {TranslateService} from "@ngx-translate/core";
-import {ExpenseLine} from "../../../../../../../models/ExpenseLine";
+import {ExpenseLine} from "../../../../../../../models/expenses/ExpenseLine";
 import {ExpenseRepository} from "../../../../../../../repositories/expenses/expense-repository.service";
-import {Expense} from "../../../../../../../models/Expense";
+import {Expense} from "../../../../../../../models/expenses/Expense";
 import {Router} from "@angular/router";
 import {ProductService} from "../../../../../../../services/product.service";
 import {ExpenseService} from "../../../../../../../services/expenses/expense.service";

@@ -1,12 +1,12 @@
 import {Component, OnDestroy, OnInit} from '@angular/core';
 import {ExpenseRepository} from "../../../../repositories/expenses/expense-repository.service";
-import {Expense} from "../../../../models/Expense";
+import {Expense} from "../../../../models/expenses/Expense";
 import * as _ from 'lodash';
 import {Dictionary} from 'lodash';
 import {Router} from "@angular/router";
 import {flatMap} from "rxjs/operators";
 import {Subscription} from "rxjs";
-import {ExpenseBasicStats} from "../../../../models/ExpenseBasicStats";
+import {ExpenseBasicStats} from "../../../../models/expenses/ExpenseBasicStats";
 import {ExpenseStatsRepository} from "../../../../repositories/expenses/expense-stats-repository.service";
 
 @Component({

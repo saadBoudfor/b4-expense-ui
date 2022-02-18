@@ -1,25 +1,28 @@
-@import "src/styles";
 nav {
   display: flex;
   justify-content: space-between;
-  padding: 12px 20px;
+  padding: 12px 0;
   align-items: center;
-  color: $primary-color;
 
-  span.title {
-    font-weight: 400;
-  }
-
-  i {
-    min-width: 24px;
+  .title-container {
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
     text-align: center;
-    &.title-wrapper {
-      padding: 12px;
+
+    .logo {
+      margin-right: 5px;
+    }
+
+    .title {
+      font-size: 18px;
+      font-weight: bold;
     }
   }
+
 }
 
-:host{
+:host {
   display: block;
 }
 

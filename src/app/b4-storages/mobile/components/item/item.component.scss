@@ -1,0 +1,35 @@
+.item {
+  padding: 10px;
+  .name {
+    //font-size: 16px;
+  }
+  section.row {
+    display: flex;
+    padding: 5px 0;
+    margin-bottom: 7px;
+    justify-content: space-between;
+    .key {
+      width: 150px;
+      font-weight: 600;
+    }
+
+    .value {
+      width: 100%;
+      text-align: right;
+
+      mat-progress-bar {
+        padding: 5px 0;
+        width: 100%;
+      }
+    }
+  }
+
+  .badge {
+      padding: 2px 8px;
+  }
+}
+
+
+:host {
+  display: block;
+}

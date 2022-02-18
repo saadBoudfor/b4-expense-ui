@@ -2,7 +2,7 @@ import {AfterViewInit, Component, ElementRef, OnInit, ViewChild} from '@angular/
 import KeenSlider from "keen-slider";
 import {DomSanitizer} from "@angular/platform-browser";
 import {MatIconRegistry} from "@angular/material/icon";
-import {Product} from "../../../../../models/Product";
+import {Product} from "../../../../../models/expenses/Product";
 import {ProductService} from "../../../../../services/product.service";
 import {ConfirmationService} from "../../../../../../b4-common/services/confirmation.service";
 import {TranslateService} from "@ngx-translate/core";
@@ -63,7 +63,7 @@ export class NewProductComponent implements OnInit, AfterViewInit {
   submit() {
     this.productService.save(this.file, this.product).subscribe(saved => {
       console.log('Product saved success', {product: saved});
-      this.confirmationService.displayConfirmationMessage({
+      this.confirmationService.open({
         message: 'Le produit ' + saved.name + ' à été sauvegardé avec succès. Merci de contribuer à la base de données B4Expenses 😇😇',
         steps: 2,
         active: 2,
@@ -73,7 +73,7 @@ export class NewProductComponent implements OnInit, AfterViewInit {
       })
     }, error => {
       console.error({error})
-      this.confirmationService.displayConfirmationMessage({
+      this.confirmationService.open({
         message: 'Le produit ' + this.product.name + "n'as pas pu être ajouté",
         steps: 2,
         active: 2,

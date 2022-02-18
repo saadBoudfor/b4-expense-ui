@@ -1,7 +1,7 @@
 import {Injectable} from '@angular/core';
 import {HttpClient} from "@angular/common/http";
 import {environment} from "../../../../environments/environment";
-import {Budget} from "../../models/Budget";
+import {Budget} from "../../models/expenses/Budget";
 import {Observable} from "rxjs";
 import {NGXLogger} from "ngx-logger";
 

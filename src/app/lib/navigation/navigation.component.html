@@ -1,9 +1,17 @@
-<nav [style.color]="color">
-  <i>
-    <mat-icon *ngIf="enableLeft || leftAction" (click)="left.emit('left')" [routerLink]="leftAction"> {{leftIcon}} </mat-icon>
-  </i>
-  <i class="title-wrapper"><span class="title title-font" *ngIf="title">{{ title | uppercase}}</span></i>
-  <i>
-    <mat-icon *ngIf="enableRight || rightAction"   (click)="right.emit('right')"  [routerLink]="rightAction"> {{rightIcon}} </mat-icon>
-  </i>
+<nav [style.color]="color" class="color-{{ngColor}}">
+  <a mat-button>
+    <mat-icon *ngIf="enableLeft || leftAction" (click)="left.emit('left')"
+              [routerLink]="leftAction"> {{leftIcon}} </mat-icon>
+  </a>
+
+  <span class="title-container">
+    <mat-icon *ngIf="titleIcon" class="logo">{{titleIcon}}</mat-icon>
+    <span class="title">{{ title }}</span>
+  </span>
+
+  <a mat-button>
+    <mat-icon *ngIf="enableRight || rightAction" (click)="right.emit('right')"
+              [routerLink]="rightAction"> {{rightIcon}} </mat-icon>
+  </a>
 </nav>
+

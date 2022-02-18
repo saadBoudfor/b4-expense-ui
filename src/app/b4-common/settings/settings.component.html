@@ -1,0 +1,38 @@
+<navigation [title]="'Profile'"></navigation>
+
+<button mat-button mat-raised-button class="logo-container">
+  <span class="initial">BS</span>
+</button>
+
+
+<section class="profile">
+  <section class="profile-item theme">
+    <div class="key">Nom</div>
+    <div class="value">Boudfor</div>
+  </section>
+  <mat-divider></mat-divider>
+
+  <section class="profile-item theme">
+    <div class="key">Prénom</div>
+    <div class="value">Saad</div>
+  </section>
+  <mat-divider></mat-divider>
+
+  <section class="profile-item theme">
+    <div class="key">Email</div>
+    <div class="value">sboudfor@gmail.com</div>
+  </section>
+  <mat-divider></mat-divider>
+  <section class="profile-item theme">
+    <div class="key">Thème</div>
+    <div class="value">
+      <mat-slide-toggle [checked]="isDark" (toggleChange)="changeTheme()">Sombre</mat-slide-toggle>
+    </div>
+  </section>
+  <mat-divider></mat-divider>
+</section>
+
+
+<footer>
+  <button mat-button mat-raised-button color="accent">Modifier</button>
+</footer>

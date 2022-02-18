@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {ExpenseBasicStats} from "../../../../../../models/ExpenseBasicStats";
+import {ExpenseBasicStats} from "../../../../../../models/expenses/ExpenseBasicStats";
 import {ExpenseStatsRepository} from "../../../../../../repositories/expenses/expense-stats-repository.service";
 import {flatMap} from "rxjs/operators";
 import {NGXLogger} from "ngx-logger";

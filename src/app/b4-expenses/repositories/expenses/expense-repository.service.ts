@@ -1,6 +1,6 @@
 import {Injectable} from '@angular/core';
 import {HttpClient} from "@angular/common/http";
-import {Expense} from "../../models/Expense";
+import {Expense} from "../../models/expenses/Expense";
 import {Observable} from "rxjs";
 import {environment} from "../../../../environments/environment";
 import {NGXLogger} from "ngx-logger";

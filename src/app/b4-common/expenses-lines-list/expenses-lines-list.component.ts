@@ -1,6 +1,6 @@
 import { EventEmitter } from '@angular/core';
 import {Component, Input, OnInit, Output} from '@angular/core';
-import {ExpenseLine} from "../../b4-expenses/models/ExpenseLine";
+import {ExpenseLine} from "../../b4-expenses/models/expenses/ExpenseLine";
 
 @Component({
   selector: 'expenses-lines-list',

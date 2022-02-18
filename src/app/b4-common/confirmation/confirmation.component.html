@@ -1,9 +1,15 @@
 <navigation [title]="data.title"></navigation>
 
 <main>
-  <section class="icon"><mat-icon [inline]="false">{{data.success ? 'check' : 'close'}}</mat-icon></section>
+  <section class="icon">
+    <mat-icon [inline]="false">{{data.success ? 'check' : 'close'}}</mat-icon>
+  </section>
   <section class="message"> {{data.message}} </section>
-  <button mat-raised-button mat-button color="primary" [routerLink]="data.page">{{"retour à l'acceuil" | uppercase}}</button>
+  <button mat-raised-button mat-button
+          color="primary"
+          [routerLink]="data.page">
+    {{ (!!data.backButton ? data.backButton : "retour à l'acceuil") | uppercase}}
+  </button>
 </main>
 
 <footer>

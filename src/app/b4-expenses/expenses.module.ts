@@ -31,54 +31,58 @@ import { LastExpensesComponent } from './screen/mobile/expenses/home/sections/la
 import { ExpensesByTypeSummarySectionComponent } from './screen/mobile/expenses/home/sections/expenses-by-type-summary-section/expenses-by-type-summary-section.component';
 import { ExpensesByNutrientsStatsSectionComponent } from './screen/mobile/expenses/home/sections/expenses-by-nutrients-stats-section/expenses-by-nutrients-stats-section.component';
 import { ExpensesByMonthStatsSectionComponent } from './screen/mobile/expenses/home/sections/expenses-by-month-stats-section/expenses-by-month-stats-section.component';
+import { ProductPhotoPipe } from './pipes/product-photo.pipe';
 
 @NgModule({
-  declarations: [
-    NewProductComponent,
-    NewExpenseUnitComponent,
-    SearchProductComponent,
-    NewExpenseComponent,
-    AddExpenseLineComponent,
-    ExpenseLinesComponent,
-    ExpensesTypeComponent,
-    HoldhouseExpensesTypeComponent,
-    HomeComponent,
-    AddActionComponent,
-    AllExpensesComponent,
-    ExpensesByPlaceComponent,
-    ExpenseDetailsComponent,
-    BudgetComponent,
-    DefineBudgetComponent,
-    ProductDetailsComponent,
-    ProductListComponent,
-    LastExpensesComponent,
-    ExpensesByTypeSummarySectionComponent,
-    ExpensesByNutrientsStatsSectionComponent,
-    ExpensesByMonthStatsSectionComponent
-
-  ],
-  imports: [
-    CommonModule,
-    LibModule,
-    AngularImports,
-    WebcamModule,
-    TranslateModule.forRoot({
-      defaultLanguage: 'fr',
-      loader: {
-        provide: TranslateLoader,
-        useFactory: HttpLoaderFactory,
-        deps: [HttpClient]
-      }
-    }),
-    FormsModule,
-    B4CommonModule,
-    RouterModule,
-    LoggerModule.forRoot({
-      // serverLoggingUrl: '/api/logs',
-      level: NgxLoggerLevel.DEBUG,
-      serverLogLevel: NgxLoggerLevel.ERROR
-    }),
-  ]
+    declarations: [
+        NewProductComponent,
+        NewExpenseUnitComponent,
+        SearchProductComponent,
+        NewExpenseComponent,
+        AddExpenseLineComponent,
+        ExpenseLinesComponent,
+        ExpensesTypeComponent,
+        HoldhouseExpensesTypeComponent,
+        HomeComponent,
+        AddActionComponent,
+        AllExpensesComponent,
+        ExpensesByPlaceComponent,
+        ExpenseDetailsComponent,
+        BudgetComponent,
+        DefineBudgetComponent,
+        ProductDetailsComponent,
+        ProductListComponent,
+        LastExpensesComponent,
+        ExpensesByTypeSummarySectionComponent,
+        ExpensesByNutrientsStatsSectionComponent,
+        ExpensesByMonthStatsSectionComponent,
+        ProductPhotoPipe,
+    ],
+    exports: [
+        SearchProductComponent
+    ],
+    imports: [
+        CommonModule,
+        LibModule,
+        AngularImports,
+        WebcamModule,
+        TranslateModule.forRoot({
+            defaultLanguage: 'fr',
+            loader: {
+                provide: TranslateLoader,
+                useFactory: HttpLoaderFactory,
+                deps: [HttpClient]
+            }
+        }),
+        FormsModule,
+        B4CommonModule,
+        RouterModule,
+        LoggerModule.forRoot({
+            // serverLoggingUrl: '/api/logs',
+            level: NgxLoggerLevel.DEBUG,
+            serverLogLevel: NgxLoggerLevel.ERROR
+        }),
+    ]
 })
 export class ExpensesModule {
 }

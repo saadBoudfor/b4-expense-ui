@@ -40,7 +40,7 @@ describe('ConfirmationService', () => {
       title: 'my test'
     };
 
-    service.displayConfirmationMessage(newMessage);
+    service.open(newMessage);
 
     // Then
     expect(routerMock.navigate).toHaveBeenCalledTimes(1);

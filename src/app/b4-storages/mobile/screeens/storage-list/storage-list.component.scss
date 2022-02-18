@@ -1,0 +1,52 @@
+.storage-details-container {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+
+  main {
+    flex: 1;
+    border-top-right-radius: 34px;
+    margin-top: 15px;
+    box-shadow: 0 2px 6px 0 rgb(0 0 0 / 20%);
+    padding: 15px 0;
+  }
+
+  .search-wrapper {
+    padding: 12px;
+
+    mat-form-field {
+      width: 100%;
+
+    }
+  }
+
+  .storage-container {
+    display: flex;
+    width: 100%;
+
+    .icon {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+
+      mat-icon {
+        font-size: 35px;
+      }
+    }
+
+    .storage {
+      flex: 1;
+
+      .storage-name {
+        display: flex;
+        justify-content: space-between;
+        padding: 20px 12px 20px 0;
+
+        mat-icon {
+          font-size: 21px;
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,37 @@
+
+.logo-container {
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  $logo-container-size: 150px;
+  width: $logo-container-size;
+  height: $logo-container-size;
+  margin: 30px auto;
+
+  .logo, .initial {
+    width: 75px;
+    font-size: 51px;
+    font-weight: 700;
+  }
+}
+
+.profile {
+  .profile-item {
+    display: flex;
+    flex-direction: row;
+    padding: 12px;
+
+    .key {
+      width: 150px;
+    }
+  }
+}
+
+footer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 12px;
+  margin-top: 15px;
+}

@@ -1,0 +1,44 @@
+<div class="storage-details-container background-color-accent">
+  <navigation [enableLeft]="true"
+              [enableRight]="true"
+              [rightIcon]="'add'"
+              [leftAction]="'/storage'"
+              [rightAction]="'/storage/new'"
+              ngColor="white"
+              [title]="'Storage'"
+              [titleIcon]="'local_fire_department'"></navigation>
+
+
+  <main class="mat-app-background">
+    <section class="search-wrapper">
+      <mat-form-field class="mat-app-background search" appearance="outline" color="accent">
+        <mat-label>Nom espace de stockage</mat-label>
+        <input type="text"
+               matInput
+               autocomplete="false"
+               [(ngModel)]="searchedTerm"
+               (ngModelChange)="onFilterStorage()"
+               placeholder="Ex. bac légumes">
+        <mat-icon matSuffix>search</mat-icon>
+      </mat-form-field>
+    </section>
+
+    <section class="storages">
+      <ng-container *ngFor="let storage of filtered | async">
+        <div class="storage-container" (click)="updateSelectedStorageId(storage)">
+          <div class="icon">
+            <mat-icon color="accent" inline>kitchen</mat-icon>
+          </div>
+          <div class="storage">
+            <div class="storage-name">
+              <span>{{storage.name}}</span>
+              <span><mat-icon *ngIf="selectedStorageId === storage.id" color="accent" inline>swap_horizontal_circle</mat-icon></span>
+            </div>
+            <mat-divider></mat-divider>
+          </div>
+        </div>
+      </ng-container>
+    </section>
+  </main>
+</div>
+

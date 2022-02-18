@@ -1,0 +1,50 @@
+@use "../../../node_modules/@angular/material/index" as mat;
+
+@include mat.core();
+
+
+$b4-app-primary: mat.define-palette(mat.$grey-palette);
+$b4-app-accent: mat.define-palette(mat.$brown-palette);
+$b4-app-warn: mat.define-palette(mat.$red-palette);
+
+$b4-theme: mat.define-light-theme($b4-app-primary, $b4-app-accent, $b4-app-warn);
+
+$primary-color: mat.get-color-from-palette($b4-app-primary);
+$accent-color: mat.get-color-from-palette($b4-app-accent);
+$warn-color: mat.get-color-from-palette($b4-app-warn);
+@include mat.all-component-themes($b4-theme);
+.background-color-primary {
+  background-color: mat.get-color-from-palette($b4-app-primary);
+}
+
+.background-color-accent {
+  background-color: mat.get-color-from-palette($b4-app-accent);
+}
+
+.background-color-warn {
+  background-color: mat.get-color-from-palette($b4-app-warn);
+}
+
+.color-primary {
+  color: mat.get-color-from-palette($b4-app-primary);
+}
+
+.color-accent {
+  color: mat.get-color-from-palette($b4-app-accent);
+}
+
+.color-warn {
+  color: mat.get-color-from-palette($b4-app-warn);
+}
+
+.color-white {
+  color: white;
+}
+
+.background-success {
+  background-color: forestgreen;
+}
+
+.background-gray {
+  background-color: #cccccc;
+}

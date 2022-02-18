@@ -1,4 +1,4 @@
-<mat-icon>qr_code_scanner</mat-icon>
+<navigation [enableRight]="true" titleIcon="qr_code_scanner" (right)="close.emit(true)"></navigation>
 
 <ng-container *ngIf="!setBarCodeManually">
   <div id="reader">loading ....</div>
@@ -17,7 +17,7 @@
   </mat-form-field>
   <button mat-button mat-raised-button
           [disabled]="barCode.length <= 6"
-          (click)="scanned.emit(barCode)"
+          (click)="scanned.emit(barCode); getProduct(barCode);"
           color="accent">{{'valider' | uppercase}}</button>
 
   <button mat-button

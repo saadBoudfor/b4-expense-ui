@@ -26,7 +26,6 @@ $icon-size: 78px;
 }
 
 .fill {
-  color: white;
 
   &.primary {
     background: $primary-color;
@@ -38,7 +37,6 @@ $icon-size: 78px;
 }
 
 .empty {
-  background: white;
 
   &.primary {
     color: $primary-color;

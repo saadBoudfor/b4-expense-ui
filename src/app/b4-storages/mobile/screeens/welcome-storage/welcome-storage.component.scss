@@ -1,0 +1,58 @@
+$margin-between-section: 30px;
+
+header {
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  padding: 12px;
+
+  .logo {
+    margin-right: 5px;
+  }
+
+  .title {
+    font-size: 18px;
+    font-weight: bold;
+  }
+}
+
+main {
+  padding: 12px;
+
+  .description {
+    text-align: center;
+    margin-top: $margin-between-section;
+    padding: 12px;
+
+    .user-firstname {
+      font-weight: 500;
+    }
+  }
+
+  .logo-container {
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    $logo-container-size: 150px;
+    width: $logo-container-size;
+    height: $logo-container-size;
+    margin: $margin-between-section auto auto;
+
+    .logo {
+      font-size: 75px;
+      width: 75px;
+    }
+  }
+}
+
+footer {
+  display: flex;
+  justify-content: center;
+}
+
+:host {
+  display: flex;
+  flex-direction: column;
+  align-content: space-around;
+}

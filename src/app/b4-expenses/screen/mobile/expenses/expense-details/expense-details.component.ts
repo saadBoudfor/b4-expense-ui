@@ -1,11 +1,11 @@
 import {Component, OnInit} from '@angular/core';
 import {ExpenseRepository} from "../../../../repositories/expenses/expense-repository.service";
 import {ActivatedRoute, Router} from "@angular/router";
-import {Expense} from "../../../../models/Expense";
+import {Expense} from "../../../../models/expenses/Expense";
 import {environment} from "../../../../../../environments/environment";
 import {Location} from "@angular/common";
 import {ExpenseUtils} from "../../../../../b4-common/util/ExpenseUtils";
-import {ExpenseLine} from "../../../../models/ExpenseLine";
+import {ExpenseLine} from "../../../../models/expenses/ExpenseLine";
 import {DownloadUtils} from "../../../../../lib/utils/DownloadUtils";
 import {NGXLogger} from "ngx-logger";
 

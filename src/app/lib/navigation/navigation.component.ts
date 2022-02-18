@@ -12,6 +12,9 @@ export class NavigationComponent implements OnInit {
   title: string | undefined;
 
   @Input()
+  titleIcon: string | undefined;
+
+  @Input()
   leftAction: string | undefined;
 
   @Input()
@@ -23,8 +26,12 @@ export class NavigationComponent implements OnInit {
   @Input()
   rightIcon = 'close';
 
+  // deprecated
   @Input()
   color!: string;
+
+  @Input()
+  ngColor: 'white' | 'primary' | 'accent' | 'warn' | '' = '';
 
   @Output()
   left = new EventEmitter();

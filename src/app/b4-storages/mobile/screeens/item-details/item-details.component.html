@@ -1,0 +1,54 @@
+<div class="storage-details-container background-color-accent">
+  <navigation [enableLeft]="true"
+              [leftAction]="'/storage'"
+              ngColor="white"
+              [title]="'Storage'"
+              [titleIcon]="'local_fire_department'"></navigation>
+
+  <main class="mat-app-background">
+    <section class="img"
+             *ngIf="product_photo"
+             [style]="'background-image: url(' + product_photo + ');'">
+    </section>
+
+    <section class="product-details">
+<!--      <h4> Détails produit</h4>-->
+
+      <ng-container *ngFor="let information of itemInformation">
+        <div class="information">
+          <span class="key">{{information.key}}</span>
+          <span class="value">{{information.value}}
+            <button *ngIf="information.action === 'update_quantity'"
+                    class="update-quantity"
+                    mat-raised-button
+                    (click)="updateQuantity()"
+                    mat-button>
+              <mat-icon matSuffix color="accent">edit</mat-icon>
+            </button>
+          </span>
+        </div>
+        <mat-divider></mat-divider>
+      </ng-container>
+    </section>
+
+
+    <section class="nutritional-information">
+      <h4> Information nutritionelle</h4>
+
+      <ng-container *ngFor="let information of nutritionalInformation">
+        <div class="information">
+          <span class="key">{{information.key}}</span>
+          <span class="value">
+            {{information.value}}
+          </span>
+        </div>
+        <mat-divider></mat-divider>
+      </ng-container>
+
+    </section>
+    <section class="action">
+      <button mat-button mat-raised-button color="accent">Mettre à jour</button>
+    </section>
+  </main>
+</div>
+

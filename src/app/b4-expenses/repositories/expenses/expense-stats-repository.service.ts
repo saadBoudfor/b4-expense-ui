@@ -3,7 +3,7 @@ import {environment} from "../../../../environments/environment";
 import {HttpClient} from "@angular/common/http";
 import {NGXLogger} from "ngx-logger";
 import {Observable} from "rxjs";
-import {ExpenseBasicStats} from "../../models/ExpenseBasicStats";
+import {ExpenseBasicStats} from "../../models/expenses/ExpenseBasicStats";
 
 @Injectable({
   providedIn: 'root'

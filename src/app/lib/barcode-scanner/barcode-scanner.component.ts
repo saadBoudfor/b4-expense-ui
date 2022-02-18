@@ -1,6 +1,9 @@
 import {EventEmitter, OnInit} from '@angular/core';
 import {Component, Output} from '@angular/core';
 import {Html5Qrcode} from "html5-qrcode"
+import {ProductService} from "../../b4-expenses/services/product.service";
+import {Product} from "../../b4-expenses/models/expenses/Product";
+import {Location} from "@angular/common";
 
 @Component({
   selector: 'barcode-scanner',
@@ -12,8 +15,17 @@ export class BarcodeScannerComponent implements OnInit {
   @Output()
   scanned = new EventEmitter<string>();
 
+  @Output()
+  scannedProduct = new EventEmitter<Product>();
+
+  @Output()
+  close = new EventEmitter<boolean>();
+
   setBarCodeManually = false;
   barCode: string = '';
+
+  constructor(private productService: ProductService, public location: Location) {
+  }
 
   ngOnInit() {
     Html5Qrcode.getCameras().then(devices => {
@@ -41,6 +53,7 @@ export class BarcodeScannerComponent implements OnInit {
           },
           (decodedText, decodedResult) => {
             this.scanned.emit(decodedText);
+            this.getProduct(decodedText);
           },
           (errorMessage) => {
             // parse error, ignore it.
@@ -50,6 +63,12 @@ export class BarcodeScannerComponent implements OnInit {
       }
     }).catch(err => {
     });
+  }
+
+  getProduct(barCode: string) {
+    this.productService.getByCode(barCode).subscribe(product => {
+      this.scannedProduct.emit(product);
+    })
   }
 
 }

@@ -1,0 +1,29 @@
+<h1 mat-dialog-title>Durée de péremption</h1>
+<div mat-dialog-content>
+  <p>Durée de validité de votre produit apres son ouverture ?</p>
+
+  <main class="form">
+    <mat-form-field appearance="outline" color="accent">
+      <mat-label>Jours</mat-label>
+      <input type="number" min="0" [(ngModel)]="expirationDuration.days" matInput
+             autocomplete="false">
+    </mat-form-field>
+
+    <mat-form-field appearance="outline" color="accent">
+      <mat-label>Heures</mat-label>
+      <input type="number" min="0" [(ngModel)]="expirationDuration.hours" matInput
+             autocomplete="false">
+    </mat-form-field>
+
+    <mat-form-field appearance="outline" color="accent">
+      <mat-label>Minutes</mat-label>
+      <input type="number" min="0" [(ngModel)]="expirationDuration.minutes" matInput
+             autocomplete="false">
+    </mat-form-field>
+  </main>
+</div>
+<div mat-dialog-actions>
+  <button mat-button (click)="onNoClick()">Annuler</button>
+  <button mat-button [mat-dialog-close]="expirationDuration" cdkFocusInitial>Valider</button>
+</div>
+
