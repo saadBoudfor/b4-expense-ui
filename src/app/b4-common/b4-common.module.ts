@@ -17,6 +17,8 @@ import {BarChartItemComponent} from './bar-chart-item/bar-chart-item.component';
 import {BarChartExpenseComponent} from './bar-chart-expense/bar-chart-expense.component';
 import {ExpensesLinesListComponent} from './expenses-lines-list/expenses-lines-list.component';
 import { DatePipe } from './pipes/date/date.pipe';
+import { MobileLateralMenuComponent } from './mobile-lateral-menu/mobile-lateral-menu.component';
+import { SettingsComponent } from './settings/settings.component';
 
 @NgModule({
   declarations: [
@@ -28,7 +30,9 @@ import { DatePipe } from './pipes/date/date.pipe';
     BarChartItemComponent,
     BarChartExpenseComponent,
     ExpensesLinesListComponent,
-    DatePipe
+    DatePipe,
+    MobileLateralMenuComponent,
+    SettingsComponent
   ],
   exports: [
     PlaceAutocompleteComponent,
@@ -37,7 +41,8 @@ import { DatePipe } from './pipes/date/date.pipe';
     ExpenseCardComponent,
     BarChartExpenseComponent,
     ExpensesLinesListComponent,
-    DatePipe
+    DatePipe,
+    MobileLateralMenuComponent
 
   ],
   imports: [

@@ -1,0 +1,33 @@
+<div class="storage-details-container background-color-accent">
+  <navigation [enableLeft]="true"
+              [leftAction]="'/storage'"
+              ngColor="white"
+              [title]="'Storage'"
+              [titleIcon]="'local_fire_department'"></navigation>
+
+  <button mat-button mat-raised-button class="logo-container">
+    <mat-icon class="logo" inline="inline" color="accent">inventory_2</mat-icon>
+  </button>
+
+  <main class="mat-app-background">
+
+    <h4 class="color-accent">Nouveau compartiment</h4>
+
+    <mat-form-field appearance="outline" color="accent">
+      <mat-label>Nom compartiement</mat-label>
+      <input type="text" matInput autocomplete="false" [(ngModel)]="bucket.name" (ngModelChange)="checkIfExist()"
+             required placeholder="Ex. bac légumes">
+    </mat-form-field>
+
+    <p *ngIf="isUsed" class="color-warn">Ce nom est déjà utilisé</p>
+    <button mat-button
+            mat-raised-button
+            class="submit"
+            color="accent"
+            (click)="add()"
+            [disabled]="!bucket.name || bucket.name.length < 3 || isUsed">Valider
+    </button>
+
+  </main>
+</div>
+

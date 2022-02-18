@@ -1,0 +1,26 @@
+<div class="item" *ngIf="item">
+  <section class="row name " [class.color-accent]="!expired">{{item?.product?.name}}
+    <span class="background-color-warn color-white badge" *ngIf="expired">EXP </span>
+    <span class="background-success color-white badge" *ngIf="open">O </span>
+    <span class="background-gray color-white badge" *ngIf="finish">F </span>
+  </section>
+  <section class="row">
+    <span class="key">Quantité</span>
+    <span class="value">{{item?.remaining + '/' + totalQuantity}} {{item?.product?.unit}}</span>
+  </section>
+  <section class="row" *ngIf="quantityProgressValue !== 100">
+    <span class="value" *ngIf="finish"><mat-progress-bar
+      [value]="quantityProgressValue"></mat-progress-bar></span>
+  </section>
+
+  <ng-container *ngIf="expirationDate && !finish">
+    <section class="row">
+      <span class="key">Expiration</span>
+      <span class="value">{{expirationDate?.toISOString() | dateFormat}}</span>
+    </section>
+    <section class="row" *ngIf="expirationDateProgressValue && expirationDateProgressValue !== 100 && !expired">
+      <span class="value"><mat-progress-bar
+        [value]="expirationDateProgressValue"></mat-progress-bar></span>
+    </section>
+  </ng-container>
+</div>

@@ -1,12 +1,12 @@
 import {Component, OnInit} from '@angular/core';
 import {ExpenseRepository} from "../../../../../repositories/expenses/expense-repository.service";
-import {Expense} from "../../../../../models/Expense";
+import {Expense} from "../../../../../models/expenses/Expense";
 import {DomSanitizer, SafeResourceUrl} from "@angular/platform-browser";
 import {PlaceService} from "../../../../../../b4-common/services/place.service";
 import {PlaceExpense} from "../../../../../../b4-common/models/PlaceExpense";
 import {Address} from "../../../../../../b4-common/models/Address";
 import {Router} from "@angular/router";
-import {ExpenseBasicStats} from "../../../../../models/ExpenseBasicStats";
+import {ExpenseBasicStats} from "../../../../../models/expenses/ExpenseBasicStats";
 import {ExpenseStatsRepository} from "../../../../../repositories/expenses/expense-stats-repository.service";
 
 @Component({

@@ -1,6 +1,6 @@
 import {Injectable} from '@angular/core';
 import {NGXLogger} from "ngx-logger";
-import {Expense} from "../../models/Expense";
+import {Expense} from "../../models/expenses/Expense";
 import {StringUtils} from "../../../b4-common/util/StringUtils";
 
 @Injectable({

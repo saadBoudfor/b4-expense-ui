@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {BudgetRepository} from "../../../../../repositories/budgets/budget-repository.service";
-import {Budget} from "../../../../../models/Budget";
-import {ExpenseBasicStats} from "../../../../../models/ExpenseBasicStats";
+import {Budget} from "../../../../../models/expenses/Budget";
+import {ExpenseBasicStats} from "../../../../../models/expenses/ExpenseBasicStats";
 import {ExpenseStatsRepository} from "../../../../../repositories/expenses/expense-stats-repository.service";
 import {NGXLogger} from "ngx-logger";
 

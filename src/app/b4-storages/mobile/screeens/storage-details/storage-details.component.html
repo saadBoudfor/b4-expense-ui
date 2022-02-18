@@ -1,0 +1,22 @@
+<div class="storage-details-container background-color-accent">
+  <navigation [enableLeft]="true"
+              [enableRight]="true"
+              [rightIcon]="'add'"
+              [leftIcon]="'swap_horizontal_circle'"
+              [leftAction]="'/storage/list'"
+              (right)="newBucket()"
+              ngColor="white"
+              [title]="'Storage'"
+              [titleIcon]="'local_fire_department'"></navigation>
+
+  <main class="mat-app-background">
+    <ng-container  *ngIf="storage">
+      <bucket-summary *ngFor="let bucket of storage.buckets"
+                      [bucket]="bucket"
+                      (openItemDetails)="openDetails($event)"
+                      (newItem)="addNewItem(bucket)"></bucket-summary>
+    </ng-container>
+  </main>
+
+</div>
+

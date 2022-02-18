@@ -1,5 +1,5 @@
 import {Injectable} from '@angular/core';
-import {Product} from "../models/Product";
+import {Product} from "../models/expenses/Product";
 import {HttpClient} from "@angular/common/http";
 import {Observable} from "rxjs";
 import {Router} from "@angular/router";
@@ -28,6 +28,7 @@ export class ProductService {
   }
 
   requestSearchProduct(name: string | null): Observable<Product[]> {
+    if (!name) name = 'all';
     return this.httpClient.get<Product[]>(environment.baseUrl + '/products/' + name);
   }
 

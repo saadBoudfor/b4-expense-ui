@@ -1,0 +1,17 @@
+<ng-container *ngIf="bucket">
+  <header class="background-color-accent color-white">
+    <span>Stockage</span> <span class="bucket name "> {{bucket.name}}</span>
+  </header>
+  <main>
+    <ng-container *ngFor="let item of bucket.items">
+      <item [value]="item" (click)="openItemDetails.emit(item)"></item>
+      <mat-divider></mat-divider>
+    </ng-container>
+  </main>
+  <footer>
+    <button mat-button (click)="newItem.emit('click')">
+      <mat-icon matPrefix>add</mat-icon>
+      Ajouter une nouveau produit
+    </button>
+  </footer>
+</ng-container>

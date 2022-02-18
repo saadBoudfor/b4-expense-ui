@@ -18,6 +18,14 @@ import {ExpenseDetailsComponent} from "./b4-expenses/screen/mobile/expenses/expe
 import {BudgetComponent} from "./b4-expenses/screen/mobile/expenses/budget/display-budget/budget.component";
 import {DefineBudgetComponent} from "./b4-expenses/screen/mobile/expenses/budget/define-budget/define-budget.component";
 import {ProductListComponent} from "./b4-expenses/screen/mobile/expenses/product-list/product-list.component";
+import {WelcomeStorageComponent} from "./b4-storages/mobile/screeens/welcome-storage/welcome-storage.component";
+import {StorageDetailsComponent} from "./b4-storages/mobile/screeens/storage-details/storage-details.component";
+import {StorageListComponent} from "./b4-storages/mobile/screeens/storage-list/storage-list.component";
+import {NewStorageComponent} from "./b4-storages/mobile/screeens/new-storage/new-storage.component";
+import {ItemDetailsComponent} from "./b4-storages/mobile/screeens/item-details/item-details.component";
+import {NewItemComponent} from "./b4-storages/mobile/screeens/new-item/new-item.component";
+import {NewBucketComponent} from "./b4-storages/mobile/screeens/new-bucket/new-bucket.component";
+import {SettingsComponent} from "./b4-common/settings/settings.component";
 
 const routes: Routes = [
   {path: 'expenses', component: HomeComponent},
@@ -40,7 +48,15 @@ const routes: Routes = [
   {path: 'budget', component: BudgetComponent},
   {path: 'budget/define', component: DefineBudgetComponent},
   {path: 'product-list', component: ProductListComponent},
-  {path: '**', redirectTo: 'expenses'}
+  {path: 'storage', component: StorageDetailsComponent},
+  {path: 'storage/welcome', component: WelcomeStorageComponent},
+  {path: 'storage/list', component: StorageListComponent},
+  {path: 'storage/new', component: NewStorageComponent},
+  {path: 'storage/item', component: ItemDetailsComponent},
+  {path: 'storage/item/new', component: NewItemComponent},
+  {path: 'storage/bucket/new', component: NewBucketComponent},
+  {path: 'settings', component: SettingsComponent},
+  //storage module
 ];
 
 @NgModule({

@@ -1,5 +1,5 @@
-import {User} from "../../b4-common/models/User";
-import {Place} from "../../b4-common/models/Place";
+import {User} from "../../../b4-common/models/User";
+import {Place} from "../../../b4-common/models/Place";
 import {ExpenseLine} from "./ExpenseLine";
 
 export class Expense {

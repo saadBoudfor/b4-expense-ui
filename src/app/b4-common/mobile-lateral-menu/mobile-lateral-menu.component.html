@@ -1,0 +1,9 @@
+<mat-divider></mat-divider>
+<nav class="apps mat-app-background {{theme}}">
+  <ng-container *ngFor="let app of apps">
+    <div class="app wave-effect" [class.active]="app.active" [class.color-accent]="app.active"  (click)="select(app)">
+      <mat-icon>{{app.icon}}</mat-icon>
+      <span>{{app.label}}</span>
+    </div>
+  </ng-container>
+</nav>

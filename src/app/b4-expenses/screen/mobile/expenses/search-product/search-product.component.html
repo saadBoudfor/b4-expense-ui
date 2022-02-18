@@ -1,4 +1,4 @@
-<navigation [title]="'Recheche produits'"></navigation>
+<navigation [title]="'Recheche produits'" [enableRight]="true" (right)="close.emit(true)"></navigation>
 <header>
   <mat-form-field appearance="standard">
     <mat-label>{{"screen.new.expense.form.product" | translate}}</mat-label>
@@ -8,18 +8,18 @@
   </mat-form-field>
 </header>
 <p>Résultats correspondant à votre recherche:</p>
+<main *ngIf="searching">
+  <p>Recherche en cours ...</p>
+</main>
 <main *ngIf="productList">
   <ng-container *ngFor="let product of productList">
     <div class="product" (click)="selectProduct(product)">
-      <!--        <img src="{{getIcon(product)}}" alt="">-->
       <div class="description">
         <div class="basic-information">
           <span>{{product.name}}</span>
           <span class="secondary">{{product.brand + ' - ' + product.displayQuantity | lowercase}}</span>
         </div>
-        <img
-          src="{{product.photo && product.photo.indexOf('https') !== -1 ? product.photo : photoBaseURl + product.photo}}"
-          alt="">
+        <img src="{{product | productPhoto}}" alt="">
       </div>
       <mat-divider></mat-divider>
     </div>

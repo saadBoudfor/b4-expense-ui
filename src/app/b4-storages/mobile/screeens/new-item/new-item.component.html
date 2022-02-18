@@ -1,0 +1,84 @@
+<div *ngIf="!isFilteringProduct && !isScanningProduct" class="storage-details-container background-color-accent">
+  <navigation [enableLeft]="true"
+              [leftAction]="'/storage'"
+              ngColor="white"
+              [title]="'Storage'"
+              [titleIcon]="'local_fire_department'"></navigation>
+
+  <button mat-button mat-raised-button class="logo-container">
+    <mat-icon class="logo" inline="inline" color="accent">takeout_dining</mat-icon>
+  </button>
+
+  <main class="mat-app-background">
+
+    <h4 class="color-accent">Nouveau produit</h4>
+
+    <section class="form">
+      <mat-form-field (click)="isFilteringProduct = true" appearance="outline" color="accent">
+        <mat-label>Produit</mat-label>
+        <input type="text"
+               matInput
+               [(ngModel)]="productName"
+               autocomplete="false"
+               required placeholder="Ex. Cuisine">
+        <mat-icon (click)="isScanningProduct = true;" matSuffix>qr_code</mat-icon>
+        <mat-hint *ngIf="item.product && item.product.displayQuantity">
+          Quantité du produit: {{item.product.displayQuantity}}
+        </mat-hint>
+      </mat-form-field>
+
+      <mat-form-field appearance="outline" color="accent">
+        <mat-label>Quantité achetée</mat-label>
+        <input type="text" [(ngModel)]="item.quantity" (ngModelChange)="updateAvailableQuantity()" matInput
+               autocomplete="false" required placeholder="Ex. Cuisine">
+      </mat-form-field>
+
+      <mat-form-field *ngIf="item.product" appearance="outline" color="accent">
+        <mat-label>Quantité restante en {{item?.product?.unit}}</mat-label>
+        <input type="text" [(ngModel)]="availableQuantity"
+               matInput
+               autocomplete="false" required placeholder="Ex. Cuisine">
+      </mat-form-field>
+
+      <mat-form-field appearance="outline" color="accent">
+        <mat-label>Date d'expiration</mat-label>
+        <input matInput [matDatepicker]="picker" [(ngModel)]="expirationDate">
+        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-datepicker #picker></mat-datepicker>
+      </mat-form-field>
+
+      <mat-form-field appearance="outline" (click)="updateExpiration()" color="accent">
+        <mat-label>Durée expiration après ouverture</mat-label>
+        <input type="text" disabled matInput autocomplete="false"
+               [(ngModel)]="expirationDuration">
+      </mat-form-field>
+
+
+      <ng-container *ngIf="!item.state">
+        <p>Le produit à été ouvert ? </p>
+        <div class="is-open-form">
+          <button mat-button mat-stroked-button (click)="item.state = 'open'">Oui</button>
+          <button mat-button mat-stroked-button color="accent">Non</button>
+        </div>
+      </ng-container>
+
+      <mat-form-field *ngIf="item && item.state === 'open'" appearance="outline" color="accent">
+        <mat-label>Date d'ouverture</mat-label>
+        <input matInput [matDatepicker]="picker" [(ngModel)]="openDate">
+        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-datepicker #picker></mat-datepicker>
+      </mat-form-field>
+
+    </section>
+    <button mat-button mat-raised-button color="accent" class="submit" (click)="add()">Ajouter</button>
+  </main>
+</div>
+
+<search-product *ngIf="isFilteringProduct"
+                (selected)="selected($event)"
+                (close)="isFilteringProduct = false"></search-product>
+
+<barcode-scanner *ngIf="isScanningProduct"
+                 (scannedProduct)="onScanProduct($event)"
+                 (close)="isScanningProduct = false"></barcode-scanner>
+

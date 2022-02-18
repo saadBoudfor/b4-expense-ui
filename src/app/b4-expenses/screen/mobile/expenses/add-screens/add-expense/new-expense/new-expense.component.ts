@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {TranslateService} from "@ngx-translate/core";
-import {Expense} from "../../../../../../models/Expense";
+import {Expense} from "../../../../../../models/expenses/Expense";
 import {ExpenseRepository} from "../../../../../../repositories/expenses/expense-repository.service";
 import {Router} from "@angular/router";
 import {Place} from "../../../../../../../b4-common/models/Place";

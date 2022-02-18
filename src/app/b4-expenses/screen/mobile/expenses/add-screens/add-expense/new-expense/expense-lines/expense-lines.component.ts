@@ -1,10 +1,10 @@
 import {Component, OnInit} from '@angular/core';
 import {TranslateService} from "@ngx-translate/core";
-import {Expense} from "../../../../../../../models/Expense";
-import {Product} from "../../../../../../../models/Product";
+import {Expense} from "../../../../../../../models/expenses/Expense";
+import {Product} from "../../../../../../../models/expenses/Product";
 import {ExpenseRepository} from "../../../../../../../repositories/expenses/expense-repository.service";
 import {ConfirmationService} from "../../../../../../../../b4-common/services/confirmation.service";
-import {ExpenseLine} from "../../../../../../../models/ExpenseLine";
+import {ExpenseLine} from "../../../../../../../models/expenses/ExpenseLine";
 import {ExpenseService} from "../../../../../../../services/expenses/expense.service";
 
 @Component({
@@ -35,7 +35,7 @@ export class ExpenseLinesComponent implements OnInit {
 
   submit() {
     this.expenseRepository.save(this.expense, this.expense.bill).subscribe(saved => {
-      this.confirmationService.displayConfirmationMessage({
+      this.confirmationService.open({
         message: "C'est dans la poche. Votre déponse " + saved.name + ' à été sauvegardé avec succès.',
         steps: 2,
         active: 2,
@@ -45,7 +45,7 @@ export class ExpenseLinesComponent implements OnInit {
       })
     }, (error) => {
       console.error("Erreur on add new expense ", {expense: this.expense, error: error});
-      this.confirmationService.displayConfirmationMessage({
+      this.confirmationService.open({
         message: "Erreur " + error.code + " La dépense " + this.expense.name + " n'à pas été sauvegardé. Merci de contacter votre administrateur",
         steps: 2,
         active: 2,

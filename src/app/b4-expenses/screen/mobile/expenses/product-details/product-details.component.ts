@@ -1,6 +1,6 @@
 import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
-import {ExpenseLine} from "../../../../models/ExpenseLine";
-import {Product} from "../../../../models/Product";
+import {ExpenseLine} from "../../../../models/expenses/ExpenseLine";
+import {Product} from "../../../../models/expenses/Product";
 
 @Component({
   selector: 'product-details',

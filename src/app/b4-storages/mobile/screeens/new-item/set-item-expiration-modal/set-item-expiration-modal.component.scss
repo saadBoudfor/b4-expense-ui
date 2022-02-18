@@ -1,0 +1,11 @@
+main.form {
+  display: flex;
+  justify-content: space-around;
+  mat-form-field {
+    max-width: 72px;
+  }
+}
+
+:host {
+  display: block;
+}

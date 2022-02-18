@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {Expense} from "../../../../../../models/Expense";
+import {Expense} from "../../../../../../models/expenses/Expense";
 import {Router} from "@angular/router";
 import {ExpenseRepository} from "../../../../../../repositories/expenses/expense-repository.service";
 import {NGXLogger} from "ngx-logger";

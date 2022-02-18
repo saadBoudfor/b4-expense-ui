@@ -12,8 +12,8 @@ export class ConfirmationService {
   constructor(private routerService: Router) {
   }
 
-  public displayConfirmationMessage(confirmationPageModel: ConfirmationPageModel): void {
-    this.$data.next(confirmationPageModel);
+  public open(message: ConfirmationPageModel): void {
+    this.$data.next(message);
     this.routerService.navigate(['/confirmation'])
   }
 
@@ -42,4 +42,5 @@ export interface ConfirmationPageModel {
   active: number;
   page: string;
   success: boolean;
+  backButton?: string;
 }

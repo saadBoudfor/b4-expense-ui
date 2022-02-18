@@ -1,5 +1,5 @@
 import {Component, Input, OnInit} from '@angular/core';
-import {ExpenseBasicStats} from "../../../../../../models/ExpenseBasicStats";
+import {ExpenseBasicStats} from "../../../../../../models/expenses/ExpenseBasicStats";
 
 @Component({
   selector: 'expenses-by-month-stats-section',
