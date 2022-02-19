@@ -29,7 +29,7 @@ export class SetItemExpirationModalComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.configService.theme.subscribe(selected => {
+    this.configService.getSelectedTheme().subscribe(selected => {
       this.overlayContainer.getContainerElement().classList.add(selected);
     });
   }

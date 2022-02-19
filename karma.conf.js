@@ -28,8 +28,9 @@ module.exports = function (config) {
       dir: require('path').join(__dirname, './coverage/b4-b4-expenses-ui'),
       subdir: '.',
       reporters: [
-        { type: 'html' },
-        { type: 'text-summary' }
+        {type: 'lcov'},
+        {type: 'html'},
+        {type: 'text-summary'}
       ]
     },
     reporters: ['progress', 'kjhtml'],

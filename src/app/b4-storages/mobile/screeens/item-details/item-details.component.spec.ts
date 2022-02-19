@@ -3,7 +3,6 @@ import {ComponentFixture, fakeAsync, TestBed, tick} from '@angular/core/testing'
 import {ItemDetailsComponent} from './item-details.component';
 import {ActivatedRoute, Router} from "@angular/router";
 import {NGXLogger} from "ngx-logger";
-import {Product} from "../../../../b4-expenses/models/expenses/Product";
 import {Item} from "../../../data-models/Item";
 import {ItemRepository} from "../../../repositories/item-repository.service";
 import {of} from "rxjs";
@@ -70,20 +69,6 @@ fdescribe('ItemDetailsComponent', () => {
 
     it('[Isolated] should redirect to home page if ItemId is null', fakeAsync(() => {
       activatedRouteServiceMock = {snapshot: {queryParams: {itemId: null}}};
-
-      component = new ItemDetailsComponent(itemRepositoryMock,
-        loggerMock,
-        routerMock,
-        activatedRouteServiceMock);
-
-      component.ngOnInit();
-
-      expect(routerMock.navigate).toHaveBeenCalledWith(['/storage']);
-      expect(loggerMock.error).toHaveBeenCalled();
-    }))
-
-    it('[Isolated] should redirect to home page if failed to extract itemId from url', fakeAsync(() => {
-      activatedRouteServiceMock = {snapshot: {queryParams: {itemId: 'invalid_id'}}};
 
       component = new ItemDetailsComponent(itemRepositoryMock,
         loggerMock,

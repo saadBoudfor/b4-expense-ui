@@ -75,7 +75,7 @@
 </div>
 
 <search-product *ngIf="isFilteringProduct"
-                (selected)="selected($event)"
+                (selected)="onSelectProduct($event)"
                 (close)="isFilteringProduct = false"></search-product>
 
 <barcode-scanner *ngIf="isScanningProduct"

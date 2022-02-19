@@ -7,7 +7,8 @@
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
-    "sonar": "sonar-scanner -D\"sonar.projectKey=b4_expenses_ui\" -D\"sonar.sources=.\" -D\"sonar.host.url=http://apps.boudfor.fr:9000\" -D\"sonar.login=b9b0bb0db0cdd8e00d4e1ccdd829af4abfe4ab0e\""
+    "test-coverage": "ng test --watch=false --code-coverage",
+    "sonar": "sonar-scanner"
   },
   "private": true,
   "dependencies": {

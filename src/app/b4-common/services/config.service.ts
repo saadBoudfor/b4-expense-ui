@@ -1,5 +1,5 @@
 import {Injectable, OnInit} from '@angular/core';
-import {BehaviorSubject} from "rxjs";
+import {BehaviorSubject, Observable} from "rxjs";
 
 @Injectable({
   providedIn: 'root'
@@ -7,6 +7,11 @@ import {BehaviorSubject} from "rxjs";
 export class ConfigService {
 
   public theme = new BehaviorSubject<string>('default');
+
+
+  public getSelectedTheme(): Observable<string> {
+    return this.theme;
+  }
 
   constructor() {
   }

@@ -2,10 +2,11 @@ import {Component, OnInit} from '@angular/core';
 import {Item} from "../../../data-models/Item";
 import {MatDialog} from "@angular/material/dialog";
 import {SetItemExpirationModalComponent} from "./set-item-expiration-modal/set-item-expiration-modal.component";
-import {ActivatedRoute, Router} from "@angular/router";
+import {Router} from "@angular/router";
 import {ItemRepository} from "../../../repositories/item-repository.service";
 import {NGXLogger} from "ngx-logger";
 import {Product} from "../../../../b4-expenses/models/expenses/Product";
+import {NavigationService} from "../../../services/navigation.service";
 
 @Component({
   selector: 'new-item',
@@ -27,21 +28,13 @@ export class NewItemComponent implements OnInit {
               private itemRepository: ItemRepository,
               private logger: NGXLogger,
               private router: Router,
-              private activatedRoute: ActivatedRoute) {
+              private navigationService: NavigationService) {
   }
 
   ngOnInit(): void {
-    const bucketId = this.activatedRoute.snapshot.queryParams['bucketId'];
+    const bucketId = this.navigationService.getQueryParam('bucketId', {redirectionURL: 'storage'});
     this.item.location = {id: bucketId};
     this.item.author = {id: 1};
-  }
-
-
-  selected(product: any) {
-    this.productName = product.name;
-    this.item.product = product;
-    this.updateAvailableQuantity();
-    this.isFilteringProduct = false;
   }
 
   updateAvailableQuantity() {
@@ -92,8 +85,17 @@ export class NewItemComponent implements OnInit {
   }
 
   onScanProduct(product: Product) {
+    this.productName = product.name;
     this.item.product = product;
+    this.updateAvailableQuantity();
     this.isScanningProduct = false;
+  }
+
+  onSelectProduct(product: any) {
+    this.productName = product.name;
+    this.item.product = product;
+    this.updateAvailableQuantity();
+    this.isFilteringProduct = false;
   }
 
 

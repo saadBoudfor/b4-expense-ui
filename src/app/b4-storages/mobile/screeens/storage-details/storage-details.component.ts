@@ -19,7 +19,6 @@ export class StorageDetailsComponent implements OnInit {
 
   constructor(private ngxLogger: NGXLogger,
               private storageService: StorageService,
-              private bucketRepository: BucketRepository,
               private storageRepository: StorageRepository,
               private router: Router) {
   }
@@ -36,15 +35,24 @@ export class StorageDetailsComponent implements OnInit {
 
   addNewItem(bucket: Bucket) {
     this.router.navigate(['/storage/item/new'], {queryParams: {bucketId: bucket.id}})
+      .then(() => {
+        this.ngxLogger.debug('user request add new item to bucket: ' + bucket.id);
+      })
   }
 
   newBucket() {
-    this.router.navigate(['/storage/bucket/new'], {queryParams: {storageId: this.storageId}});
+    this.router.navigate(['/storage/bucket/new'], {queryParams: {storageId: this.storageId}})
+      .then(() => {
+        this.ngxLogger.debug('user request add new bucket for storage: ' + this.storageId);
+      })
   }
 
   openDetails(item: Item) {
     this.ngxLogger.info('open item "' + item?.product?.name + '" (id=' + item?.id + ') details');
-    this.router.navigate(['/storage/item'], {queryParams: {itemId: item.id}});
+    this.router.navigate(['/storage/item'], {queryParams: {itemId: item.id}})
+      .then(() => {
+        this.ngxLogger.debug('user request open item details: ' + item.id);
+      })
   }
 }
 
