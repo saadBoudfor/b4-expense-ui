@@ -7,6 +7,10 @@ import {Item} from "../../data-models/Item";
 export class TotalQuantityPipe implements PipeTransform {
 
   transform(item: Item): unknown {
+
+    if (!item || (!!item && !item.product)) {
+      return '';
+    }
     if (item.quantity && item.product && item.product.productQuantity) {
       return (item.quantity * item.product.productQuantity) + ' ' + item?.product?.unit;
     }
