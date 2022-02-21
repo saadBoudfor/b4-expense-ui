@@ -44,7 +44,7 @@ export class ItemDetailsComponent implements OnInit, OnDestroy {
 
   updateQuantity() {
     if (!!this.itemId) {
-      this.router.navigate(['/storage/item/update-quantity'], {queryParams: {itemId: this.itemId}})
+      this.router.navigate(['/storage/item/update'], {queryParams: {itemId: this.itemId}})
         .then(() => {
           this.logger.info('redirect to update quantity page. item id: ' + this.itemId);
         }).catch(() => {

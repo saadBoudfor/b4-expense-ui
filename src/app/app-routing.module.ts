@@ -26,6 +26,7 @@ import {ItemDetailsComponent} from "./b4-storages/mobile/screeens/item-details/i
 import {NewItemComponent} from "./b4-storages/mobile/screeens/new-item/new-item.component";
 import {NewBucketComponent} from "./b4-storages/mobile/screeens/new-bucket/new-bucket.component";
 import {SettingsComponent} from "./b4-common/settings/settings.component";
+import {UpdateQuantityComponent} from "./b4-storages/mobile/screeens/item-details/update-quantity/update-quantity.component";
 
 const routes: Routes = [
   {path: 'expenses', component: HomeComponent},
@@ -54,8 +55,10 @@ const routes: Routes = [
   {path: 'storage/new', component: NewStorageComponent},
   {path: 'storage/item', component: ItemDetailsComponent},
   {path: 'storage/item/new', component: NewItemComponent},
+  {path: 'storage/item/update', component: UpdateQuantityComponent},
   {path: 'storage/bucket/new', component: NewBucketComponent},
   {path: 'settings', component: SettingsComponent},
+
   //storage module
 ];
 

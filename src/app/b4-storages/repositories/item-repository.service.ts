@@ -3,6 +3,7 @@ import {Item} from "../data-models/Item";
 import {environment} from "../../../environments/environment";
 import {Observable} from "rxjs";
 import {HttpClient} from "@angular/common/http";
+import {UpdateQuantity} from "../data-models/UpdateQuantity";
 
 @Injectable({
   providedIn: 'root'
@@ -40,6 +41,11 @@ export class ItemRepository {
       throw new Error('invalid id: ' + itemId);
     }
     return this.httpClient.get<Item>(baseUrl + '/' + itemId);
+  }
+
+  updateQuantity(updateQuantity: UpdateQuantity, itemId: number): Observable<UpdateQuantity> {
+    return this.httpClient
+      .post<UpdateQuantity>(baseUrl + '/' + itemId + '/quantity', updateQuantity);
   }
 }
 

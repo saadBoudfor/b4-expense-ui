@@ -17,7 +17,7 @@ fdescribe('NewStorageComponent', () => {
 
   // mocks:
   const storageRepositoryMock: any = jasmine.createSpyObj(['save']);
-  const storageServiceMock: any = jasmine.createSpyObj(['isValid', 'updateSelectedStorageId']);
+  const storageServiceMock: any = jasmine.createSpyObj(['check', 'updateSelectedStorageId']);
   const confirmationServiceMock: any = jasmine.createSpyObj(['open']);
   const loggerMock: any = jasmine.createSpyObj(['info', 'error']);
   const matSnackBarMock: any = jasmine.createSpyObj(['open']);
@@ -53,7 +53,7 @@ fdescribe('NewStorageComponent', () => {
 
   it('should check storage success', fakeAsync(() => {
     // Given
-    storageServiceMock.isValid.and.returnValue(of({
+    storageServiceMock.check.and.returnValue(of({
       valid: true, usedName: false
     }))
 
@@ -64,7 +64,7 @@ fdescribe('NewStorageComponent', () => {
     // then
     expect(component.isStorageValid).toBeTrue();
     expect(component.isNameAlreadyUsed).toBeFalse();
-    expect(storageServiceMock.isValid).toHaveBeenCalled();
+    expect(storageServiceMock.check).toHaveBeenCalled();
   }))
 
   it('should open confirmation screen on storage success', fakeAsync(() => {
@@ -105,7 +105,7 @@ fdescribe('NewStorageComponent', () => {
   }))
 
   it('should trigger check storage on update storage name ', fakeAsync(() => {
-    storageServiceMock.isValid.and.returnValue(of({
+    storageServiceMock.check.and.returnValue(of({
       valid: true, usedName: false
     }))
 
@@ -120,7 +120,7 @@ fdescribe('NewStorageComponent', () => {
     tick();
 
     // Then
-    expect(storageServiceMock.isValid).toHaveBeenCalled();
+    expect(storageServiceMock.check).toHaveBeenCalled();
     expect(component.storage.buckets?.length).toEqual(1);
     // @ts-ignore
     expect(component.storage.buckets[0].name).toEqual('bucket468');
@@ -129,7 +129,7 @@ fdescribe('NewStorageComponent', () => {
 
   it('should trigger check storage on update bucket name ', fakeAsync(() => {
     // Given
-    storageServiceMock.isValid.and.returnValue(of({
+    storageServiceMock.check.and.returnValue(of({
       valid: true, usedName: false
     }))
     const nameInput = fixture.debugElement.query(By.css('#name')).nativeElement;
@@ -142,7 +142,7 @@ fdescribe('NewStorageComponent', () => {
     tick();
 
     // Then
-    expect(storageServiceMock.isValid).toHaveBeenCalled();
+    expect(storageServiceMock.check).toHaveBeenCalled();
     expect(component.storage.buckets?.length).toEqual(1);
     // @ts-ignore
     expect(component.storage.name).toEqual('storage468');

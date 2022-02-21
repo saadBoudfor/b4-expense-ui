@@ -3,9 +3,9 @@ export class IdValidator {
     return !!id && id > 0;
   }
 
-  public static isValidStr(id: string): boolean {
+  public static isValidStr(id?: string | null): boolean {
     try {
-      return IdValidator.isValid(parseInt(id));
+      return IdValidator.isValid(parseInt(typeof id === "string" ? id :''));
     } catch (error) {
       return false;
     }

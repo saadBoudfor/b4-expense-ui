@@ -31,7 +31,7 @@ export class NewStorageComponent implements OnInit {
   }
 
   checkStorage() {
-    this.storageService.isValid(this.storage).subscribe(response => {
+    this.storageService.check(this.storage).subscribe(response => {
       this.isStorageValid = response.valid;
       this.isNameAlreadyUsed = response.usedName;
     });

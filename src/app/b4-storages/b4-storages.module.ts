@@ -23,6 +23,7 @@ import {ExpensesModule} from "../b4-expenses/expenses.module";
 import { SetItemExpirationModalComponent } from './mobile/screeens/new-item/set-item-expiration-modal/set-item-expiration-modal.component';
 import { TotalQuantityPipe } from './mobile/pipes/total-quantity.pipe';
 import { ItemComponent } from './mobile/components/item/item.component';
+import { UpdateQuantityComponent } from './mobile/screeens/item-details/update-quantity/update-quantity.component';
 
 
 @NgModule({
@@ -38,7 +39,8 @@ import { ItemComponent } from './mobile/components/item/item.component';
     NewBucketComponent,
     SetItemExpirationModalComponent,
     TotalQuantityPipe,
-    ItemComponent
+    ItemComponent,
+    UpdateQuantityComponent
   ],
     imports: [
         CommonModule,
