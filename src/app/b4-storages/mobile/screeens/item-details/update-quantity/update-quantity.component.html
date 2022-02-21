@@ -1,0 +1,23 @@
+<div class="storage-details-container background-color-accent">
+  <navigation [enableLeft]="true"
+              (left)="backToItem()"
+              ngColor="white"
+              [title]="'Storage'"
+              [titleIcon]="'local_fire_department'"></navigation>
+
+  <main class="mat-app-background">
+    <p>Nouvelle quantité</p>
+    <mat-form-field appearance="standard">
+      <mat-label>Quantité</mat-label>
+      <input matInput class="quantity" type="number" [(ngModel)]="quantity" autocomplete="off" placeholder="ex 300">
+    </mat-form-field>
+
+    <mat-form-field appearance="standard">
+      <mat-label>Remarque</mat-label>
+      <textarea [(ngModel)]="comment" matInput autocomplete="off"></textarea>
+    </mat-form-field>
+
+    <button class="submit" mat-raised-button mat-button color="accent" [disabled]="!quantity || quantity < 0">valider</button>
+  </main>
+
+</div>

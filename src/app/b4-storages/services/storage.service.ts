@@ -13,18 +13,22 @@ export class StorageService {
   constructor(private storageRepository: StorageRepository) {
   }
 
-  isValid(storage: Storage): Observable<{ usedName: boolean, valid: boolean }> {
+  /**
+   * Check storage validity
+   * @param storage to save
+   */
+  check(storage: Storage): Observable<{ usedName: boolean, valid: boolean }> {
     if (utils.isEmpty(storage.name)) {
       return of({usedName: false, valid: false});
     }
+    const isStorageValid = !!storage.buckets
+      && !utils.isEmpty(storage.buckets)
+      && !utils.isEmpty(storage.buckets[0].name)
+      && !!storage.name
+      && storage.name.length > 3;
+
     return this.storageRepository.existsByName(storage.name).pipe(map(response => {
-      const isStorageValid = !!storage.buckets
-        && !utils.isEmpty(storage.buckets)
-        && !utils.isEmpty(storage.buckets[0].name)
-        && !!storage.name
-        && storage.name.length > 3;
-      const isStorageNameAlreadyInUse = response.existByName;
-      return {usedName: isStorageNameAlreadyInUse, valid: isStorageValid}
+      return {usedName: response.existByName, valid: isStorageValid}
     }));
   }
 

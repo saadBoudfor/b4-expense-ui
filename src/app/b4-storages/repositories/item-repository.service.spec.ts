@@ -4,6 +4,7 @@ import {ItemRepository} from './item-repository.service';
 import {Item} from "../data-models/Item";
 import {of} from "rxjs";
 import {Product} from "../../b4-expenses/models/expenses/Product";
+import {environment} from "../../../environments/environment";
 
 fdescribe('ItemRepositoryService', () => {
   let service: ItemRepository;
@@ -130,6 +131,17 @@ fdescribe('ItemRepositoryService', () => {
 
   }))
 
+
+  it('should update quantity success', fakeAsync(() => {
+    // Given
+    httpClientMock.post.and.returnValue(of({quantity: 300, comment: '', id: '8'}));
+    service = new ItemRepository(httpClientMock);
+    service.updateQuantity({quantity: 300, comment: ''}, 9)
+      .subscribe(saved => {
+        expect(saved).toEqual({quantity: 300, comment: '', id: '8'});
+        expect(httpClientMock.post).toHaveBeenCalledWith(environment.baseUrl + '/items/9/quantity', {quantity: 300, comment: ''})
+      })
+  }))
 });
 
 

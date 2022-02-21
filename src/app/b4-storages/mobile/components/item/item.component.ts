@@ -1,6 +1,7 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {Item} from "../../../data-models/Item";
 import {NGXLogger} from "ngx-logger";
+import {ItemUtils} from "../../../utils/ItemUtils";
 
 @Component({
   selector: 'item',
@@ -25,10 +26,10 @@ export class ItemComponent implements OnInit {
   set value(_item: Item) {
     if (!!_item) {
       this.item = _item;
-      const expirationDate = computeExpirationDate(_item);
+      const expirationDate = ItemUtils.computeExpirationDate(_item);
       if (!!expirationDate) {
         this.expirationDate = expirationDate;
-        switch (getStat(this.item, expirationDate)) {
+        switch (ItemUtils.getStat(this.item, expirationDate)) {
           case "expired":
             this.expired = true;
             break;
@@ -63,53 +64,4 @@ export class ItemComponent implements OnInit {
 
 }
 
-function computeExpirationDate(item: Item): Date | null {
-  if (item.expirationAfter && item.expirationDate && item.openDate) {
-    const openDate = new Date(item.openDate);
-    const expirationAfterOpenDate = new Date(openDate.getTime() + durationToMs(item.expirationAfter));
-    const productExpirationDate = new Date(item.expirationDate);
-
-    if (productExpirationDate.getTime() - expirationAfterOpenDate.getTime() < 0) {
-      return productExpirationDate;
-    } else {
-      return expirationAfterOpenDate;
-    }
-  }
-  return !!item?.expirationDate ? new Date(item.expirationDate) : null;
-}
-
-
-function getStat(item: Item, expirationDate: Date): 'open' | 'default' | 'expired' | 'finish' {
-  if (expirationDate) {
-    const now = new Date();
-
-    if (item.remaining == 0) {
-      return 'finish';
-    }
-
-    // if expiration date < now => expired
-    if (expirationDate.getTime() - now.getTime() < 0) {
-      return 'expired';
-    }
-
-    if (!!item.openDate) {
-      return 'open';
-    }
-  }
-  return 'default'
-}
-
-function durationToMs(duration: { days?: number, hours?: number, minutes?: number }) {
-  let res = 0;
-  if (duration.days) {
-    res += duration.days * 24 * 60;
-  }
-  if (duration.hours) {
-    res += duration.hours * 60;
-  }
-  if (duration.minutes) {
-    res += duration.minutes;
-  }
-  return res * 60000;
-}
 
