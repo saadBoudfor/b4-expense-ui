@@ -12,7 +12,7 @@
     </section>
 
     <section class="product-details">
-<!--      <h4> Détails produit</h4>-->
+      <!--      <h4> Détails produit</h4>-->
 
       <ng-container *ngFor="let information of itemInformation">
         <div class="information">
@@ -38,16 +38,39 @@
       <ng-container *ngFor="let information of nutritionalInformation">
         <div class="information">
           <span class="key">{{information.key}}</span>
-          <span class="value">
-            {{information.value}}
+          <span
+            class="value nutritional-value">
+            <span
+              class="indicator"
+              [class.background-color-accent]="information.value === 'moderate'"
+              [class.background-color-primary]="information.value === 'low'"
+              [class.background-color-warn]="information.value === 'high'">
+              </span>
+            <span
+              [class.color-accent]="information.value === 'C'"
+              [class.color-warn]="information.value === 'D'|| information.value === 'E'">
+              {{information.value}}
+            </span>
           </span>
         </div>
         <mat-divider></mat-divider>
       </ng-container>
 
     </section>
-    <section class="action">
-      <button mat-button mat-raised-button color="accent">Mettre à jour</button>
+
+    <section *ngIf="updateHistory" class="nutritional-information">
+      <h4> Historique mise à jour</h4>
+
+      <ng-container *ngFor="let history of updateHistory">
+        <ng-container *ngIf="history && history.updateTime">
+          <div *ngIf="history.updateTime" class="information">
+            <span class="key">{{history.updateTime | dateFormat}}</span>
+            <span class="value quantity">{{history.quantity}} {{unit}} <span class="comment">{{history.comment}}</span></span>
+          </div>
+          <mat-divider></mat-divider>
+        </ng-container>
+      </ng-container>
+
     </section>
   </main>
 </div>

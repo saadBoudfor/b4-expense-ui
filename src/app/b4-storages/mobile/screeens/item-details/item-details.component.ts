@@ -4,6 +4,7 @@ import {ActivatedRoute, Router} from "@angular/router";
 import {NGXLogger} from "ngx-logger";
 import {Item} from "../../../data-models/Item";
 import {Subscription} from "rxjs";
+import {UpdateQuantity} from "../../../data-models/UpdateQuantity";
 
 @Component({
   selector: 'item-details',
@@ -20,6 +21,9 @@ export class ItemDetailsComponent implements OnInit, OnDestroy {
   // components vars
   private $itemFetchDetailRq!: Subscription;
   private itemId!: number;
+  private remaining: number | undefined;
+  updateHistory!: UpdateQuantity[] | undefined;
+  unit: string | undefined;
 
   constructor(private itemRepository: ItemRepository,
               private logger: NGXLogger,
@@ -44,7 +48,7 @@ export class ItemDetailsComponent implements OnInit, OnDestroy {
 
   updateQuantity() {
     if (!!this.itemId) {
-      this.router.navigate(['/storage/item/update'], {queryParams: {itemId: this.itemId}})
+      this.router.navigate(['/storage/item/update'], {queryParams: {itemId: this.itemId, remaining: this.remaining}})
         .then(() => {
           this.logger.info('redirect to update quantity page. item id: ' + this.itemId);
         }).catch(() => {
@@ -88,18 +92,21 @@ export class ItemDetailsComponent implements OnInit, OnDestroy {
       {key: 'Quantité', value: totalQuantity},
       {key: 'Quantité restante', value: item?.remaining + ' ' + item?.product?.unit, action: 'update_quantity'},
       {key: 'Expire le', value: item?.expirationDate},
-      {key: 'Expiration apres ouverture', value: '3j'}
+      {key: 'Expiration apres ouverture', value: '3 j'}
     ]
 
     this.nutritionalInformation = [
       {key: 'Calories', value: item?.product?.calories + ' kcal'},
+      {key: 'Nutri-score', value: item?.product?.score?.toUpperCase()},
       {key: 'Matière grasses', value: item?.product?.nutrientLevels?.fat},
       {key: 'Glucides', value: item?.product?.nutrientLevels?.saturatedFat},
       {key: 'Sucres', value: item?.product?.nutrientLevels?.sugars},
       {key: 'Sel', value: item?.product?.nutrientLevels?.salt},
     ]
-
+    this.remaining = item?.remaining;
     this.product_photo = item.product?.photo;
+    this.updateHistory = item?.quantityHistory;
+    this.unit = item?.product?.unit;
   }
 
   private redirectToStorageHomePage() {

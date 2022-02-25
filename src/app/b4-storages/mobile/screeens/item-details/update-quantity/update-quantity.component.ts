@@ -11,7 +11,7 @@ import {ItemRepository} from "../../../../repositories/item-repository.service";
 })
 export class UpdateQuantityComponent implements OnInit {
   id!: number;
-  quantity: number = -5;
+  quantity: number = 0;
   comment: string = '';
 
   constructor(private navigationService: NavigationService,
@@ -21,7 +21,11 @@ export class UpdateQuantityComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.id = this.navigationService.getQueryParam('itemId', {redirectionURL: '/storage'})
+    this.id = this.navigationService.getQueryParam('itemId', {redirectionURL: '/storage'});
+    const remaining = this.navigationService.getParamIgnoreChecks('remaining');
+    if (!!remaining) {
+      this.quantity = remaining;
+    }
   }
 
   backToItem() {

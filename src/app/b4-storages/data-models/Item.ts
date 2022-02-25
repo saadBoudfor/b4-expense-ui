@@ -2,6 +2,7 @@ import {Expense} from "../../b4-expenses/models/expenses/Expense";
 import {Product} from "../../b4-expenses/models/expenses/Product";
 import {Bucket} from "./Bucket";
 import {User} from "../../b4-common/models/User";
+import {UpdateQuantity} from "./UpdateQuantity";
 
 export class Item {
   id?: number;
@@ -16,4 +17,5 @@ export class Item {
   state?: 'open' | 'closed';
   location?: Bucket;
   author?: User;
+  quantityHistory?: UpdateQuantity[];
 }

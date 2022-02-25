@@ -22,7 +22,7 @@ fdescribe('UpdateQuantityComponent', () => {
     // init mocks
     loggerMock = jasmine.createSpyObj(['error', 'debug', 'info']);
     itemRepositoryMock = jasmine.createSpyObj(['updateQuantity']);
-    navigationServiceMock = jasmine.createSpyObj(['getQueryParam']);
+    navigationServiceMock = jasmine.createSpyObj(['getQueryParam', 'getParamIgnoreChecks']);
     routerMock = jasmine.createSpyObj(['navigate']);
 
     await TestBed.configureTestingModule({
@@ -50,8 +50,13 @@ fdescribe('UpdateQuantityComponent', () => {
   });
 
   it('should create and extract item id', () => {
+    navigationServiceMock.getParamIgnoreChecks.and.returnValue(99);
+
+    initComponent();
+
     expect(component).toBeTruthy();
     expect(component.id).toEqual(8);
+    expect(component.quantity).toEqual(99);
   });
 
   it('should redirect to item details success', () => fakeAsync(() => {

@@ -9,7 +9,10 @@
     <p>Nouvelle quantité</p>
     <mat-form-field appearance="standard">
       <mat-label>Quantité</mat-label>
-      <input matInput class="quantity" type="number" [(ngModel)]="quantity" autocomplete="off" placeholder="ex 300">
+      <input matInput class="quantity"
+             [min]="0"
+             type="number" [(ngModel)]="quantity"
+             autocomplete="off" placeholder="ex 300">
     </mat-form-field>
 
     <mat-form-field appearance="standard">
@@ -17,7 +20,10 @@
       <textarea [(ngModel)]="comment" matInput autocomplete="off"></textarea>
     </mat-form-field>
 
-    <button class="submit" mat-raised-button mat-button color="accent" [disabled]="!quantity || quantity < 0">valider</button>
+    <button class="submit"
+            (click)="updateQuantity()"
+            mat-raised-button mat-button color="accent"
+            [disabled]="!quantity || quantity <= 0">valider</button>
   </main>
 
 </div>

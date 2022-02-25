@@ -41,4 +41,8 @@ export class NavigationService {
     return id;
   }
 
+  getParamIgnoreChecks(name: string) {
+    return this.activatedRoute.snapshot.queryParams[name];
+  }
+
 }

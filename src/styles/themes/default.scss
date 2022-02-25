@@ -4,7 +4,7 @@
 
 
 $b4-app-primary: mat.define-palette(mat.$grey-palette);
-$b4-app-accent: mat.define-palette(mat.$brown-palette);
+$b4-app-accent: mat.define-palette(mat.$blue-palette);
 $b4-app-warn: mat.define-palette(mat.$red-palette);
 
 $b4-theme: mat.define-light-theme($b4-app-primary, $b4-app-accent, $b4-app-warn);

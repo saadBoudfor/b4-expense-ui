@@ -23,7 +23,7 @@ export class ItemRepository {
     if (!item.remaining || (item.remaining && item.remaining < 0)) {
       throw new Error('cannot save item. Required item\'s remaining missing or negative value');
     }
-    if (!item.product || (item.product && !item.product.id)) {
+    if (!item.product) {
       throw new Error('cannot save item. Required  item\'s product  missing');
     }
     return this.httpClient.post<Item>(baseUrl, item);
