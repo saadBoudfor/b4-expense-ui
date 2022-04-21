@@ -24,7 +24,7 @@ export class PlaceService {
   }
 
   findStores(searchStr: string): Observable<Place[]> {
-    return this.httpClient.get<Place[]>(environment.baseUrl + '/places/storage/' + searchStr)
+    return this.httpClient.get<Place[]>(environment.baseUrl + '/places/stores/' + searchStr)
   }
 
   getStoresRanking(): Observable<PlaceExpense[]> {

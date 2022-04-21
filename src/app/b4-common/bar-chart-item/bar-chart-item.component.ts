@@ -1,4 +1,5 @@
 import {Component, Input, OnInit} from '@angular/core';
+import {ConfigService} from "../services/config.service";
 
 @Component({
   selector: 'bar-chart-item',
@@ -15,11 +16,13 @@ export class BarChartItemComponent implements OnInit {
   @Input()
   total = 300;
 
-  constructor() {
+  theme!: string;
+
+  constructor(private configService: ConfigService) {
   }
 
   ngOnInit(): void {
-
+    this.configService.getSelectedTheme().subscribe(theme => this.theme = theme)
   }
 
 }

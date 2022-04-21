@@ -1,5 +1,5 @@
-import { NgModule } from '@angular/core';
-import { RouterModule, Routes } from '@angular/router';
+import {NgModule} from '@angular/core';
+import {RouterModule, Routes} from '@angular/router';
 import {NewProductComponent} from "./b4-expenses/screen/mobile/expenses/add-screens/new-product/new-product.component";
 import {ConfirmationComponent} from "./b4-common/confirmation/confirmation.component";
 import {NewExpenseUnitComponent} from "./b4-expenses/screen/mobile/expenses/add-screens/add-expense/new-expense-unit/new-expense-unit.component";
@@ -27,6 +27,7 @@ import {NewItemComponent} from "./b4-storages/mobile/screeens/new-item/new-item.
 import {NewBucketComponent} from "./b4-storages/mobile/screeens/new-bucket/new-bucket.component";
 import {SettingsComponent} from "./b4-common/settings/settings.component";
 import {UpdateQuantityComponent} from "./b4-storages/mobile/screeens/item-details/update-quantity/update-quantity.component";
+import {ExpensesHomeComponent} from "./my-expenses/screens/expenses-home/expenses-home.component";
 
 const routes: Routes = [
   {path: 'expenses', component: HomeComponent},
@@ -49,6 +50,8 @@ const routes: Routes = [
   {path: 'budget', component: BudgetComponent},
   {path: 'budget/define', component: DefineBudgetComponent},
   {path: 'product-list', component: ProductListComponent},
+
+  // Storage endpoints
   {path: 'storage', component: StorageDetailsComponent},
   {path: 'storage/welcome', component: WelcomeStorageComponent},
   {path: 'storage/list', component: StorageListComponent},
@@ -57,7 +60,12 @@ const routes: Routes = [
   {path: 'storage/item/new', component: NewItemComponent},
   {path: 'storage/item/update', component: UpdateQuantityComponent},
   {path: 'storage/bucket/new', component: NewBucketComponent},
+
+  // Expenses endpoints
+
+  // Other endpoints
   {path: 'settings', component: SettingsComponent},
+  {path: 'expenses/home', component: ExpensesHomeComponent}
 
   //storage module
 ];
@@ -66,4 +74,5 @@ const routes: Routes = [
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule]
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {
+}

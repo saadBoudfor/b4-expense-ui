@@ -102,11 +102,12 @@ fdescribe('ItemDetailsComponent', () => {
       {key: 'Quantité', value: '1000 g'},
       {key: 'Quantité restante', value: 400 + ' g', action: 'update_quantity'},
       {key: 'Expire le', value: '2022-10-03'},
-      {key: 'Expiration apres ouverture', value: '3j'}
+      {key: 'Expiration apres ouverture', value: '3 j'}
     ])
     expect(component.product_photo).toEqual(item.product?.photo);
     expect(component.nutritionalInformation).toEqual([
       {key: 'Calories', value: item?.product?.calories + ' kcal'},
+      {key: 'Nutri-score', value: item?.product?.score?.toUpperCase()},
       {key: 'Matière grasses', value: item?.product?.nutrientLevels?.fat},
       {key: 'Glucides', value: item?.product?.nutrientLevels?.saturatedFat},
       {key: 'Sucres', value: item?.product?.nutrientLevels?.sugars},
@@ -119,7 +120,8 @@ fdescribe('ItemDetailsComponent', () => {
     expect(productDetailSection.innerHTML).toContain('1000 g');
     expect(productDetailSection.innerHTML).toContain(400 + ' g');
     expect(productDetailSection.innerHTML).toContain('2022-10-03');
-    expect(productDetailSection.innerHTML).toContain('3j');
+
+    expect(productDetailSection.innerHTML).toContain('3 j');
 
     const nutritionalInformationSection = fixture.debugElement
       .query(By.css('section.nutritional-information'))

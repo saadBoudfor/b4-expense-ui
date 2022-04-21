@@ -4,7 +4,7 @@
 
 .dark-theme {
   $b4-dark-primary: mat.define-palette(mat.$yellow-palette, 100);
-  $b4-dark-accent: mat.define-palette(mat.$orange-palette);
+  $b4-dark-accent: mat.define-palette(mat.$blue-grey-palette);
   $b4-dark-warn: mat.define-palette(mat.$red-palette);
 
   $b4-dark-theme: mat.define-dark-theme($b4-dark-primary, $b4-dark-accent, $b4-dark-warn);

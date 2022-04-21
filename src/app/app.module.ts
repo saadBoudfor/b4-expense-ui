@@ -11,6 +11,7 @@ import {TranslateHttpLoader} from "@ngx-translate/http-loader";
 import {AngularImports} from "./angular-imports";
 import {B4CommonModule} from "./b4-common/b4-common.module";
 import {B4StoragesModule} from "./b4-storages/b4-storages.module";
+import {MyExpensesModule} from "./my-expenses/my-expenses.module";
 
 // AoT requires an exported function for factories
 export function HttpLoaderFactory(http: HttpClient) {
@@ -27,6 +28,7 @@ export function HttpLoaderFactory(http: HttpClient) {
     ExpensesModule,
     B4StoragesModule,
     B4CommonModule,
+    MyExpensesModule,
     AngularImports,
     HttpClientModule,
     TranslateModule.forRoot({

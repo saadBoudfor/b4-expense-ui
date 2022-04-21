@@ -1,0 +1,9 @@
+<section *ngIf="!error" class="container background-color-accent">
+  <section
+    [style]="{width: size, height: size}"
+    class="inner-container mat-app-background">
+    <span class="current">{{current}} €</span>
+    <mat-divider></mat-divider>
+    <span class="target color-accent">{{target}} €</span>
+  </section>
+</section>

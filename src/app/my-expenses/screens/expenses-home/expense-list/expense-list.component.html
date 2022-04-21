@@ -1,0 +1,11 @@
+<ng-container *ngIf="!error && expenses">
+  <ng-container *ngIf="expenses.length !== 0">
+    <expense *ngFor="let expense of expenses" [value]="expense"></expense>
+  </ng-container>
+</ng-container>
+
+<ng-container *ngIf="!error && loading">
+  <ng-container *ngFor="let i of [0,1,2]">
+    <expense [placeholder]="true"></expense>
+  </ng-container>
+</ng-container>

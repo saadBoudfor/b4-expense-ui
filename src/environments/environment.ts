@@ -4,7 +4,7 @@
 
 export const environment = {
   production: false,
-  baseUrl: 'http://localhost:9090',
+  baseUrl: 'http://localhost:8084',
   fileServerURL: 'http://localhost:8887/',
   appVersion: '1.0.0'
 };

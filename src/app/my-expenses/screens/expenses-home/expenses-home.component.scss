@@ -1,0 +1,19 @@
+.link-container {
+  display: flex;
+  justify-content: flex-end;
+  padding: 12px;
+
+  .link {
+    display: flex;
+    align-items: center;
+
+    .icon {
+      margin-left: 10px;
+      font-size: 18px;
+    }
+  }
+}
+
+expense-list {
+  margin-top: 15px;
+}

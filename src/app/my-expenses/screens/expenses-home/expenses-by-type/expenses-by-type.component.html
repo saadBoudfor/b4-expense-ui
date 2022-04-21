@@ -1,0 +1,39 @@
+<h5 class="title">Dérniére dépenses</h5>
+
+<p>
+  Cliquez sur les cartes pour avoir plus de détails sur vos statistiques de dépense
+</p>
+
+<mat-card>
+  <div class="content-container">
+    <div class="icon-container color-accent">
+      <span class="icon material-icons">restaurant</span>
+    </div>
+    <div class="content">
+      <span class="title">Aux restaurants</span>
+      <span>{{restaurantStats?.count}} Dépenses en 2021</span>
+      <span>{{restaurantStats?.total}} euros</span>
+    </div>
+  </div>
+
+  <div class="key color-accent">
+    {{percentageRestaurant}} %
+  </div>
+</mat-card>
+
+
+<mat-card>
+  <div class="content-container">
+    <div class="icon-container color-accent">
+      <span class="icon material-icons">storefront</span>
+    </div>
+    <div class="content">
+      <span class="title">Aux supermarchés</span>
+      <span>{{storesStats?.count}} Dépenses en 2021</span>
+      <span>{{storesStats?.total}} euros</span>
+    </div>
+  </div>
+  <div class="key color-accent">
+    {{percentageStores}} %
+  </div>
+</mat-card>

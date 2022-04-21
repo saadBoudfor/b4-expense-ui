@@ -1,0 +1,51 @@
+:host {
+  display: block;
+  width: fit-content;
+  margin: auto;
+  padding: 15px;
+}
+
+@keyframes showAnimation {
+  from {
+    opacity: 0;
+  }
+
+  50% {
+    opacity: 0.5;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 15px;
+  border-radius: 50%;
+  font-family: "Proza Libre", serif;
+
+  .inner-container {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    justify-content: center;
+    padding: 20px;
+    border-radius: 50%;
+
+    .target {
+      font-size: 22px;
+      font-weight: 600;
+      margin-top: 8px;
+
+      animation: 1s showAnimation;
+    }
+
+    .current {
+      margin-bottom: 8px;
+      animation: 2s showAnimation;
+    }
+  }
+}

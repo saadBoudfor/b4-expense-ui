@@ -30,9 +30,9 @@ export class ExpenseRepository {
   }
 
 
-  fetchExpenses(page: number, size: number): Observable<Expense[]> {
+  fetchExpenses(page?: number, size?: number): Observable<Expense[]> {
     let url = this.expenseURL;
-    if (size !== 0) {
+    if (!!size && !!page) {
       url += '?size=' + size + '&page=' + page;
     }
     return this.httpClient.get<Expense[]>(url, {headers: {'access-token': '1'}});

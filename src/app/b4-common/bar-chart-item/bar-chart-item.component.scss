@@ -15,7 +15,6 @@ $chart-size: 30px;
   height: 100px;
 
   .left {
-    background: $accent-color;
     height: 100%;
     width: $chart-size;
     margin: 0;
@@ -24,7 +23,6 @@ $chart-size: 30px;
   }
 
   .right {
-
     background: $primary-color;
     height: 100%;
     width: $chart-size;
@@ -39,8 +37,4 @@ $chart-size: 30px;
   flex-direction: column;
   align-items: center;
   margin-top: 10px;
-
-  .budget {
-    color: $accent-color;
-  }
 }
