@@ -6,7 +6,7 @@ import {Expense} from "../../b4-expenses/models/expenses/Expense";
 })
 export class ExpensePricePipe implements PipeTransform {
 
-  transform(expense: Expense | undefined | null): unknown {
+  transform(expense: Expense | undefined | null): string {
     if (expense && expense.expenseLines) {
       let price = 0;
       expense?.expenseLines.forEach(item => {
