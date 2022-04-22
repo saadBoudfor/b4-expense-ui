@@ -1,0 +1,15 @@
+<action-container
+  title="Expenses"
+  icon="payment"
+  leftLink="/expenses/home">
+
+  <choice [title]="'Nouveau produit'"
+          [icon]="'add_shopping_cart'"
+          [subTitle]="'ajouter un nouveau produit à la base de données'"
+          [routerLink]="'/new-product'"></choice>
+  <choice [title]="'Nouvelle dépense'"
+          [icon]="'storefront'"
+          [subTitle]="'dépense magasin, dépense réstaurant'"
+          [routerLink]="'/expenses-type'"></choice>
+
+</action-container>

@@ -1,20 +1,10 @@
-@import "src/styles";
-
 $icon-size: 3em;
 
 :host {
   display: block;
 }
 
-a.card-wrapper {
-  display: block;
-  padding: 12px 20px;
-  box-shadow: 0 2px 2px 0 lighten($primary-color, 40%), 0 3px 1px -2px lighten($primary-color, 40%), 0 1px 5px 0 lighten($primary-color, 40%);
-  border-radius: 4px;
-  border: 1px solid $primary-color;
-}
-
-.card {
+.choice {
   display: flex;
   align-items: center;
   text-align: left;
@@ -31,7 +21,6 @@ a.card-wrapper {
 
     mat-icon {
       font-size: $icon-size;
-      color: $accent-color;
     }
   }
 
@@ -41,11 +30,6 @@ a.card-wrapper {
 
     .title {
       font-weight: 500;
-      color: $primary-color;
-    }
-
-    .sub-title {
-      color: $accent-color;
     }
   }
 }

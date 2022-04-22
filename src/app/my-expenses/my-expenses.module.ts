@@ -18,6 +18,7 @@ import { ExpensesByTypeComponent } from './screens/expenses-home/expenses-by-typ
 import { ExpensesByScoreChartComponent } from './screens/expenses-home/expenses-by-score-chart/expenses-by-score-chart.component';
 import {ExpensesByMonthStatsSectionComponent} from "./screens/expenses-home/expenses-by-month-stats-section/expenses-by-month-stats-section.component";
 import {B4CommonModule} from "../b4-common/b4-common.module";
+import { ExpensesActionComponent } from './screens/expenses-action/expenses-action.component';
 
 @NgModule({
   declarations: [
@@ -29,7 +30,8 @@ import {B4CommonModule} from "../b4-common/b4-common.module";
     ContentPlaceholderComponent,
     ExpensesByTypeComponent,
     ExpensesByScoreChartComponent,
-    ExpensesByMonthStatsSectionComponent
+    ExpensesByMonthStatsSectionComponent,
+    ExpensesActionComponent
   ],
   imports: [
     CommonModule,

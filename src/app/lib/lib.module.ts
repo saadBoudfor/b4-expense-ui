@@ -13,6 +13,7 @@ import {BarcodeScannerComponent} from "./barcode-scanner/barcode-scanner.compone
 import {FormsModule} from "@angular/forms";
 import {NutrientsStatsComponent} from './nutrients-stats/nutrients-stats.component';
 import {NgxEchartsModule} from "ngx-echarts";
+import { ActionContainerComponent } from './action-container/action-container.component';
 
 @NgModule({
   declarations: [
@@ -23,7 +24,8 @@ import {NgxEchartsModule} from "ngx-echarts";
     ChoiceComponent,
     BarcodeScannerComponent,
     MoreInfoComponent,
-    NutrientsStatsComponent
+    NutrientsStatsComponent,
+    ActionContainerComponent,
   ],
   imports: [
     CommonModule,
@@ -40,7 +42,7 @@ import {NgxEchartsModule} from "ngx-echarts";
       echarts: () => import('echarts'), // or import('./path-to-my-custom-echarts')
     }),
   ],
-  exports: [NutrientsStatsComponent, NavigationComponent, MoreInfoComponent, ProgressComponent, PhotoUploaderComponent, RoundedIconComponent, ChoiceComponent, BarcodeScannerComponent]
+  exports: [NutrientsStatsComponent, NavigationComponent, MoreInfoComponent, ProgressComponent, PhotoUploaderComponent, RoundedIconComponent, ChoiceComponent, BarcodeScannerComponent, ActionContainerComponent]
 })
 export class LibModule {
 }

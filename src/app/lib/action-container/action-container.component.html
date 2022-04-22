@@ -1,0 +1,15 @@
+<div class="storage-details-container background-color-accent">
+  <navigation [enableLeft]="true"
+              [leftAction]="leftLink"
+              ngColor="white"
+              [title]="title"
+              [titleIcon]="icon"></navigation>
+
+  <button mat-button mat-raised-button class="logo-container">
+    <mat-icon class="logo" inline="inline" color="accent">inventory_2</mat-icon>
+  </button>
+
+  <main class="mat-app-background">
+    <ng-content></ng-content>
+  </main>
+</div>
