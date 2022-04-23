@@ -2,6 +2,7 @@ import {Component, Input, OnDestroy, OnInit} from '@angular/core';
 import {ExpenseBasicStats} from "../../../../b4-expenses/models/expenses/ExpenseBasicStats";
 import {ExpenseRepository} from "../../../repositories/expense-repository.service";
 import {Subscription} from "rxjs";
+import {NGXLogger} from "ngx-logger";
 
 @Component({
   selector: 'expenses-by-month-stats-section',
@@ -12,14 +13,23 @@ export class ExpensesByMonthStatsSectionComponent implements OnInit, OnDestroy {
 
   @Input()
   expenseBasicStats!: ExpenseBasicStats;
+  error = false;
   private $rq!: Subscription;
 
-  constructor(private expenseRepository: ExpenseRepository) {
+  constructor(private expenseRepository: ExpenseRepository,
+              private logger: NGXLogger) {
   }
 
   ngOnInit(): void {
     this.$rq = this.expenseRepository.getStats()
-      .subscribe(data => this.expenseBasicStats = data)
+      .subscribe(data => {
+        this.expenseBasicStats = data;
+        this.logger.info(logId + 'Load expenses chart data: expenses by month', {data});
+        this.error = false;
+      }, reason => {
+        this.logger.error(logId + 'failed to load chart (expenses by month) data', {reason})
+        this.error = true;
+      })
   }
 
   ngOnDestroy(): void {
@@ -28,3 +38,5 @@ export class ExpensesByMonthStatsSectionComponent implements OnInit, OnDestroy {
   }
 
 }
+
+const logId = '[ExpensesByMonthStatsSectionComponent] ';
