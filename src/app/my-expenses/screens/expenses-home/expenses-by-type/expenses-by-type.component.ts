@@ -13,8 +13,8 @@ export class ExpensesByTypeComponent implements OnInit {
 
   restaurantStats!: ExpenseBasicStats;
   storesStats!: ExpenseBasicStats;
-  percentageStores!: number;
-  percentageRestaurant!: number;
+  percentageStores: number = 0;
+  percentageRestaurant: number = 0;
   error: boolean = false;
 
   constructor(private expenseStatsRepository: ExpensesStatsRepository,
@@ -30,22 +30,22 @@ export class ExpensesByTypeComponent implements OnInit {
       this.restaurantStats = stats;
       this.setPercentageValues();
       this.error = false;
-      this.logger.error(logId + 'load expenses stats data', {
+      this.logger.info('load expenses stats data', {
         restaurants: this.restaurantStats,
         stores: this.storesStats
       });
     }, reason => {
       this.error = true;
-      this.logger.error(logId + 'failed to load expenses stats data', {reason});
+      this.logger.error('failed to load expenses stats data', {reason});
     })
   }
 
   setPercentageValues() {
-    if (this.restaurantStats && this.storesStats) {
-      const total = this.restaurantStats.total + this.storesStats.total;
-      this.percentageRestaurant = this.restaurantStats.total / total * 100;
-      this.percentageStores = this.storesStats.total / total * 100;
-    }
+    if (!this.restaurantStats || !this.storesStats) return;
+    const total = this.restaurantStats.total + this.storesStats.total;
+    if (!total || total === 0) return;
+    this.percentageRestaurant = this.restaurantStats.total / total * 100;
+    this.percentageStores = this.storesStats.total / total * 100;
   }
 
 }

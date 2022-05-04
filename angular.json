@@ -75,10 +75,12 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "browserTarget": "b4-expenses-ui:build:production"
+              "browserTarget": "b4-expenses-ui:build:production",
+              "sourceMap": true
             },
             "development": {
-              "browserTarget": "b4-expenses-ui:build:development"
+              "browserTarget": "b4-expenses-ui:build:development",
+              "sourceMap": true
             }
           },
           "defaultConfiguration": "development"

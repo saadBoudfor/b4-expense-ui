@@ -1,0 +1,60 @@
+<action-container *ngIf="!isFilteringProduct && !isScanningProduct" title="Expenses" icon="local_fire_department" leftLink="/expenses/household-expense/select">
+  <h3 class="color-accent">Nouvelle dépense unitaire</h3>
+
+  <section class="new-store-expense">
+
+    <section class="form">
+      <mat-form-field appearance="standard">
+        <mat-label>{{"screen.new.expense.form.name" | translate}}</mat-label>
+        <input matInput required autocomplete="off" [(ngModel)]="expense.name">
+      </mat-form-field>
+
+      <mat-form-field (click)="isFilteringProduct = true" appearance="standard" color="accent">
+        <mat-label>Produit</mat-label>
+        <input type="text"
+               matInput
+               [(ngModel)]="productName"
+               autocomplete="false"
+               required placeholder="Ex. Cuisine">
+        <mat-icon (click)="isScanningProduct = true;" matSuffix>qr_code</mat-icon>
+      </mat-form-field>
+
+      <mat-form-field appearance="standard">
+        <mat-label>{{"screen.new.expense.form.date" | translate}}</mat-label>
+        <input matInput type="date" [max]="maxDate" [(ngModel)]="expense.date" autocomplete="off" required>
+      </mat-form-field>
+      <!--  bill-->
+      <photo-uploader (upload)="uploadBill($event)"></photo-uploader>
+
+      <place-autocomplete [type]="'store'" (selected)="onSelectPlace($event)"></place-autocomplete>
+
+      <mat-form-field appearance="standard">
+        <mat-label>{{"screen.new.expense.form.price" | translate}}</mat-label>
+        <input matInput [min]="0" type="number" [(ngModel)]="expense.expenseLines[0].price" autocomplete="off">
+      </mat-form-field>
+
+      <mat-form-field appearance="standard">
+        <mat-label>{{"screen.new.expense.form.quantity" | translate}}</mat-label>
+        <input matInput [min]="0" type="number" [(ngModel)]="expense.expenseLines[0].quantity" autocomplete="off" required>
+      </mat-form-field>
+
+      <mat-form-field appearance="standard">
+        <mat-label>{{"screen.new.expense.form.comment" | translate}}</mat-label>
+        <textarea matInput [(ngModel)]="expense.comment" autocomplete="off"></textarea>
+      </mat-form-field>
+    </section>
+    <footer class="action">
+      <button mat-raised-button mat-button
+              (click)="validate()"
+              color="accent">{{"screen.new.expense.action.submit" | translate | uppercase}}</button>
+    </footer>
+  </section>
+</action-container>
+
+<search-product *ngIf="isFilteringProduct"
+                (selected)="onSelectProduct($event)"
+                (close)="isFilteringProduct = false"></search-product>
+
+<barcode-scanner *ngIf="isScanningProduct"
+                 (scannedProduct)="onScanProduct($event)"
+                 (close)="isScanningProduct = false"></barcode-scanner>

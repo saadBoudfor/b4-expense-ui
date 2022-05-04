@@ -6,6 +6,7 @@ export const environment = {
   production: false,
   baseUrl: 'http://localhost:8084',
   fileServerURL: 'http://localhost:8887/',
+  logServer: 'http://localhost:3005',
   appVersion: '1.0.0'
 };
 

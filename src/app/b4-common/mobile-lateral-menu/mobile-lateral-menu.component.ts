@@ -39,7 +39,7 @@ export class MobileLateralMenuComponent implements OnInit {
 }
 
 const apps = [
-  {icon: 'shopping_basket', label: 'Dépenses', path: '/expenses', active: true},
+  {icon: 'account_balance_wallet', label: 'Dépenses', path: '/expenses/home', active: true},
   {icon: 'food_bank', path: '/storage', label: 'Stockage'},
   {icon: 'date_range', label: 'Planning'},
   {icon: 'person', label: 'Profile', path: '/settings'}

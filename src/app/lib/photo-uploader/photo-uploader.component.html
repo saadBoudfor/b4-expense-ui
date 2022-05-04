@@ -1,9 +1,9 @@
-<section *ngIf="!file" class="photo">
+<section *ngIf="!file" class="photo mat-app-background" [class.dark-theme]="isDark">
   <mat-form-field appearance="standard">
     <mat-label>{{title}}</mat-label>
     <input matInput disabled>
   </mat-form-field>
-  <button mat-raised-button color="primary" [color]="color" (click)="input.click()">
+  <button mat-raised-button color="accent" (click)="input.click()">
     <mat-icon >camera</mat-icon>
   </button>
 </section>
@@ -15,6 +15,5 @@
     <a  class="update photo" (click)="input.click()" mat-button>Modifier Photo</a>
   </section>
 </section>
-
 
 <input #input style="display: none;" type="file" accept="image/*" capture="environment" (change)="processPhoto($event)">

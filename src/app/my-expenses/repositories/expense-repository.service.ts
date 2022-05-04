@@ -6,6 +6,7 @@ import {environment} from "../../../environments/environment";
 import {NGXLogger} from "ngx-logger";
 import {catchError} from "rxjs/operators";
 import {Expense} from "../../b4-expenses/models/expenses/Expense";
+import {Budget} from "../../b4-expenses/models/expenses/Budget";
 
 @Injectable({
   providedIn: 'root'
@@ -17,8 +18,9 @@ export class ExpenseRepository {
               private logger: NGXLogger) {
   }
 
+
   public getStats(): Observable<ExpenseBasicStats> {
-    this.logger.debug(logId + 'Request expenses basic stats for user: ' + authenticatedUserId)
+    this.logger.debug('Request expenses basic stats for user: ' + authenticatedUserId)
 
     // Build request and log messages (success and error case)
     const successMsq = 'Get expenses basic stats success for user: ' + authenticatedUserId;
@@ -47,12 +49,19 @@ export class ExpenseRepository {
     return this.handleRequest<Expense[]>($rq, $successMgs, $errorMsg);
   }
 
+  getExpensesByPlaceId(id: number) {
+    const $successMgs = 'get expenses success for user: ' + authenticatedUserId + ' and place: ' + id;
+    const $errorMsg = 'get expenses failed for user: ' + authenticatedUserId + ' and place: ' + id;
+    const $rq = this.httpClient.get<Expense[]>(expenseUrl + '/place/' + id, {headers});
+    return this.handleRequest<Expense[]>($rq, $successMgs, $errorMsg);
+  }
+
   private handleRequest<Type>(rq: Observable<Type>, logSuccess: string, logFailed: string): Observable<Type> {
     return rq.pipe(response => {
-      this.logger.debug(logId + logSuccess, {response});
+      this.logger.debug(logSuccess, {response});
       return response;
     }, catchError(err => {
-      this.logger.error(logId + logFailed, {err});
+      this.logger.error(logFailed, {err});
       return throwError(err);
     }));
   }

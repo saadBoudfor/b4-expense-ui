@@ -14,7 +14,6 @@ import {AddActionComponent} from "./b4-expenses/screen/mobile/expenses/add-scree
 import {BarcodeScannerComponent} from "./lib/barcode-scanner/barcode-scanner.component";
 import {AllExpensesComponent} from "./b4-expenses/screen/mobile/expenses/all-expenses/all-expenses.component";
 import {ExpensesByPlaceComponent} from "./b4-expenses/screen/mobile/expenses/add-screens/expenses-by-place/expenses-by-place.component";
-import {ExpenseDetailsComponent} from "./b4-expenses/screen/mobile/expenses/expense-details/expense-details.component";
 import {BudgetComponent} from "./b4-expenses/screen/mobile/expenses/budget/display-budget/budget.component";
 import {DefineBudgetComponent} from "./b4-expenses/screen/mobile/expenses/budget/define-budget/define-budget.component";
 import {ProductListComponent} from "./b4-expenses/screen/mobile/expenses/product-list/product-list.component";
@@ -29,6 +28,18 @@ import {SettingsComponent} from "./b4-common/settings/settings.component";
 import {UpdateQuantityComponent} from "./b4-storages/mobile/screeens/item-details/update-quantity/update-quantity.component";
 import {ExpensesHomeComponent} from "./my-expenses/screens/expenses-home/expenses-home.component";
 import {ExpensesActionComponent} from "./my-expenses/screens/expenses-action/expenses-action.component";
+import {AddRestaurantExpenseComponent} from "./my-expenses/screens/add-restaurant-expense/add-restaurant-expense.component";
+import {SelectHouseholdExpenseComponent} from "./my-expenses/screens/select-household-expense/select-household-expense.component";
+import {AddHouseholdExpenseUnitComponent} from "./my-expenses/screens/add-household-expense-unit/add-household-expense-unit.component";
+import {AddHouseholdExpenseListComponent} from "./my-expenses/screens/expense-list/add-household-expense-list/add-household-expense-list.component";
+import {AddHouseholdExpenseLigneComponent} from "./my-expenses/screens/expense-list/add-household-expense-ligne/add-household-expense-ligne.component";
+import {ValidateHouseholdExpenseListComponent} from "./my-expenses/screens/validate-household-expense-list/validate-household-expense-list.component";
+import {SelectExpenseTypeComponent} from "./my-expenses/screens/select-expense-type/select-expense-type.component";
+import {DisplayHouseholdExpenseListComponent} from "./my-expenses/screens/expense-list/display-household-expense-list/display-household-expense-list.component";
+import {ExpenseDetailsComponent} from "./my-expenses/screens/expense-details/expense-details.component";
+import {TopExpensesComponent} from "./my-expenses/screens/top-expenses/top-expenses.component";
+import {DisplayBudgetComponent} from "./my-expenses/screens/display-budget/display-budget.component";
+import {UpdateBudgetComponent} from "./my-expenses/screens/update-budget/update-budget.component";
 
 const routes: Routes = [
   {path: 'expenses', component: HomeComponent},
@@ -62,14 +73,26 @@ const routes: Routes = [
   {path: 'storage/item/update', component: UpdateQuantityComponent},
   {path: 'storage/bucket/new', component: NewBucketComponent},
 
-  // Expenses endpoints
 
   // Other endpoints
   {path: 'settings', component: SettingsComponent},
-  {path: 'expenses/home', component: ExpensesHomeComponent},
-  {path: 'expenses/action', component: ExpensesActionComponent}
 
-  //storage module
+  // Expenses endpoints
+  {path: 'expenses/home', component: ExpensesHomeComponent},
+  {path: 'expenses/action', component: ExpensesActionComponent},
+  {path: 'expenses/details', component: ExpenseDetailsComponent},
+  {path: 'expenses/select', component: SelectExpenseTypeComponent},
+  {path: 'expenses/restaurant-expense/new', component: AddRestaurantExpenseComponent},
+  {path: 'expenses/household-expense/select', component: SelectHouseholdExpenseComponent},
+  {path: 'expenses/household-expense-unit/new', component: AddHouseholdExpenseUnitComponent},
+  {path: 'expenses/household-expense-list/new', component: AddHouseholdExpenseListComponent},
+  {path: 'expenses/household-expense-list/expense-line/new', component: AddHouseholdExpenseLigneComponent},
+  {path: 'expenses/household-expense-list/expense-line/list', component: DisplayHouseholdExpenseListComponent},
+  {path: 'expenses/household-expense-list/validate', component: ValidateHouseholdExpenseListComponent},
+  {path: 'expenses/top/restaurants', component: TopExpensesComponent},
+  {path: 'expenses/top/stores', component: TopExpensesComponent},
+  {path: 'expenses/budget', component: DisplayBudgetComponent},
+  {path: 'expenses/budget/update', component: UpdateBudgetComponent}
 ];
 
 @NgModule({

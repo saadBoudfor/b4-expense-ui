@@ -1,0 +1,34 @@
+.place {
+  display: flex;
+  align-items: center;
+  padding: 10px 0;
+
+  .rank {
+    font-size: 40px;
+    padding: 0 10px;
+  }
+
+  .details {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+
+    .description {
+      display: flex;
+      flex-direction: column;
+    }
+  }
+}
+
+.place-details {
+  margin-top: 25px;
+}
+
+.container {
+  padding-bottom: 25px;
+}
+
+.map {
+  margin-bottom: 10px;
+}

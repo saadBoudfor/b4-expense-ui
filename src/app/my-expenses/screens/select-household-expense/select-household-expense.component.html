@@ -1,0 +1,16 @@
+<action-container
+  title="Expenses"
+  icon="local_fire_department"
+  mainIcon="account_balance_wallet"
+  leftLink="/expenses/action">
+
+  <choice [title]="'Nouvelle dépenses unitaire'"
+          [icon]="'credit_card'"
+          [subTitle]="'Baguette pain complet ...'"
+          [routerLink]="'/expenses/household-expense-unit/new'"></choice>
+  <choice [title]="'Nouvelle liste de dépenses'"
+          [icon]="'receipt_long'"
+          [subTitle]="'Course de la semaine 51 ...'"
+          [routerLink]="'/expenses/household-expense-list/new'"></choice>
+
+</action-container>

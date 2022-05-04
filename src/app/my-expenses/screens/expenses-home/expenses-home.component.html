@@ -1,8 +1,8 @@
-<navigation [enableRight]="true" [rightIcon]="'add'"></navigation>
+<navigation [enableRight]="true" [rightIcon]="'add'" [rightAction]="'/expenses/action'"></navigation>
 
-<budget-tracker></budget-tracker>
+<budget-tracker routerLink="/expenses/budget"></budget-tracker>
 
-<expense-list mode="last5"></expense-list>
+<expense-list [mode]="{mode: 'last5'}" backURL="/expenses/home"></expense-list>
 
 <div class="link-container">
   <span class="link">liste des dépenses <span class="icon material-icons">arrow_forward</span></span>

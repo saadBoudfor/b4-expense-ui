@@ -1,37 +1,35 @@
-<div class="container" [class.dark]="isDark">
-  <ng-container *ngIf="value">
-    <div class="expense">
-      <section class="type">
-        <mat-icon color="accent">{{value?.place?.type === 'RESTAURANT' ? 'dinner_dining' : 'storefront'}}</mat-icon>
-      </section>
-      <section class="details">
-        <div class="main">
-          <span class="main color-accent">{{value.name | uppercase}}</span>
-          <span class="secondary ">{{value.date | date:'dd/MM/yyyy'}}</span>
-        </div>
-        <div class="price">
-          {{value | expensePrice}}
-        </div>
-      </section>
-    </div>
-    <mat-divider></mat-divider>
-  </ng-container>
+<ng-container *ngIf="value">
+  <mat-card class="expense" (click)="openDetails(value)">
+    <section class="type">
+      <mat-icon color="accent">{{value?.place?.type === 'RESTAURANT' ? 'dinner_dining' : 'storefront'}}</mat-icon>
+    </section>
+    <section class="details">
+      <div class="description">
+        <span class="name color-accent">{{value.name}}</span>
+        <span class="date ">{{value.date | date:'dd/MM/yyyy'}}</span>
+      </div>
+      <div class="price">
+        {{value | expensePrice}}
+      </div>
+    </section>
+  </mat-card>
+  <mat-divider></mat-divider>
+</ng-container>
 
-  <ng-container *ngIf="placeholder">
-    <div  class="expense place-holder">
-      <section class="type">
+<ng-container *ngIf="placeholder">
+  <div class="expense place-holder">
+    <section class="type">
+      <content-placeholder></content-placeholder>
+    </section>
+    <section class="details">
+      <div class="main">
+        <span class="main color-accent"> <content-placeholder></content-placeholder></span>
+        <span class="secondary "> <content-placeholder></content-placeholder></span>
+      </div>
+      <div class="price">
         <content-placeholder></content-placeholder>
-      </section>
-      <section class="details">
-        <div class="main">
-          <span class="main color-accent"> <content-placeholder></content-placeholder></span>
-          <span class="secondary "> <content-placeholder></content-placeholder></span>
-        </div>
-        <div class="price">
-          <content-placeholder></content-placeholder>
-        </div>
-      </section>
-    </div>
-    <mat-divider></mat-divider>
-  </ng-container>
-</div>
+      </div>
+    </section>
+  </div>
+  <mat-divider></mat-divider>
+</ng-container>

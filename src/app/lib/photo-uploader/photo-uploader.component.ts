@@ -1,12 +1,14 @@
-import {EventEmitter, Input, Output} from '@angular/core';
+import {EventEmitter, Input, OnDestroy, Output} from '@angular/core';
 import {Component, OnInit} from '@angular/core';
+import {ConfigService} from "../../b4-common/services/config.service";
+import {Subscription} from "rxjs";
 
 @Component({
   selector: 'photo-uploader',
   templateUrl: './photo-uploader.component.html',
   styleUrls: ['./photo-uploader.component.scss']
 })
-export class PhotoUploaderComponent implements OnInit {
+export class PhotoUploaderComponent implements OnInit, OnDestroy {
 
   @Output()
   upload = new EventEmitter();
@@ -20,10 +22,17 @@ export class PhotoUploaderComponent implements OnInit {
   @Input()
   color: 'primary' | 'accent' = 'primary';
 
-  constructor() {
+  private $subscription!: Subscription;
+  isDark: boolean = false;
+
+  constructor(private configService: ConfigService) {
   }
 
   ngOnInit(): void {
+    this.$subscription = this.configService.getSelectedTheme()
+      .subscribe(theme => {
+        this.isDark = (theme == 'dark-theme')
+      })
   }
 
   processPhoto(event: any) {
@@ -36,5 +45,9 @@ export class PhotoUploaderComponent implements OnInit {
       }
       reader.readAsDataURL(this.file);
     }
+  }
+
+  ngOnDestroy(): void {
+    this.$subscription.unsubscribe();
   }
 }

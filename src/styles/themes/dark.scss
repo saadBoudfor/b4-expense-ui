@@ -3,7 +3,7 @@
 @include mat.core();
 
 .dark-theme {
-  $b4-dark-primary: mat.define-palette(mat.$yellow-palette, 100);
+  $b4-dark-primary: mat.define-palette(mat.$blue-grey-palette, 200);
   $b4-dark-accent: mat.define-palette(mat.$blue-grey-palette);
   $b4-dark-warn: mat.define-palette(mat.$red-palette);
 
@@ -31,11 +31,12 @@
     color: mat.get-color-from-palette($b4-dark-primary);
   }
 
-  .color-accent {
+  .color-accent, h5.title, h5.sub-title {
     color: mat.get-color-from-palette($b4-dark-accent);
   }
 
   .color-warn {
     color: mat.get-color-from-palette($b4-dark-warn);
   }
+
 }

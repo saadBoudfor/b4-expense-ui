@@ -1,0 +1,27 @@
+<action-container title="Expenses" icon="local_fire_department" leftLink="/expenses/household-expense/select">
+  <h3 class="color-accent">Nouvelle liste de dépense</h3>
+  <section>
+    <mat-form-field appearance="standard">
+      <mat-label>{{"screen.new.expense.form.name" | translate}}</mat-label>
+      <input matInput required autocomplete="off" [(ngModel)]="expense.name">
+    </mat-form-field>
+    <mat-form-field appearance="standard">
+      <mat-label>{{"screen.new.expense.form.date" | translate}}</mat-label>
+      <input matInput required autocomplete="off" type="date" [max]="maxDate" [(ngModel)]="expense.date">
+    </mat-form-field>
+    <photo-uploader (upload)="onUploadBill($event)"></photo-uploader>
+    <place-autocomplete type="store" (selected)="onSelect($event)"></place-autocomplete>
+    <mat-form-field appearance="standard">
+      <mat-label>{{"screen.new.expense.form.comment" | translate}}</mat-label>
+      <textarea matInput autocomplete="off" [(ngModel)]="expense.comment"></textarea>
+    </mat-form-field>
+  </section>
+
+  <footer class="action">
+    <button mat-raised-button mat-button
+            [routerLink]="'/expenses/household-expense-list/expense-line/list'"
+            [disabled]="!canAddExpenseLine()"
+            (click)="save()"
+            color="accent">{{"global.next" | translate | uppercase}}</button>
+  </footer>
+</action-container>

@@ -73,6 +73,7 @@
     }
   },
   "global": {
-    "next": "suivant"
+    "next": "suivant",
+    "submit": "valider"
   }
 }

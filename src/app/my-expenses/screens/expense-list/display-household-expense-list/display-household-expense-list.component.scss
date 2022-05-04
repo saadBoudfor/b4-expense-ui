@@ -1,0 +1,57 @@
+.expense-lines {
+  margin-top: 15px;
+  margin-bottom: 25px;
+
+  .main, .secondary {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .main {
+    margin-bottom: 5px;
+  }
+
+  .expense-line {
+    padding: 5px 0;
+  }
+
+  .product-name {
+    max-width: 80%;
+  }
+}
+
+
+.action {
+  display: flex;
+  flex-direction: column;
+
+  button {
+    width: 100%;
+    margin-bottom: 10px;
+  }
+}
+
+h5, h6 {
+  margin-bottom: 4px;
+}
+
+h6 {
+  font-size: 14px;
+}
+
+.logo-container {
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 150px;
+  height: 150px;
+  margin: 30px auto 45px;
+
+  .logo {
+    $logo-size: 75px;
+    font-size: $logo-size;
+    width: $logo-size;
+  }
+}

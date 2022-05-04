@@ -16,6 +16,9 @@ export class ActionContainerComponent implements OnInit {
   @Input()
   icon!: string;
 
+  @Input()
+  mainIcon!: string;
+
   constructor() {
   }
 

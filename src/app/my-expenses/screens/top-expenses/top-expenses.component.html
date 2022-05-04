@@ -1,0 +1,38 @@
+<action-container
+  title="Expenses"
+  icon="local_fire_department"
+  [mainIcon]="isRestaurantComponent ? 'restaurant' : 'storefront'"
+  leftLink="/expenses/home">
+
+  <div class="container">
+    <h5 class="title">Top {{isRestaurantComponent ? 'restaurants' : 'magasins'}} les plus fréquenté durant ce mois</h5>
+
+    <div *ngIf="placeExpenses && placeExpenses.length !==0" class="places-container">
+      <ng-container *ngFor="let placeExpense of placeExpenses; let $index=index">
+        <div class="place" (click)="openDetails(placeExpense.place)">
+          <div class="rank color-accent">{{$index + 1}}.</div>
+          <div class="details">
+        <span class="description">
+           <span class="name">{{placeExpense.place.name}}</span>
+           <span class="count color-accent">{{placeExpense.count}} dépenses</span>
+        </span>
+            <span class="total">{{placeExpense.total}} €</span>
+          </div>
+        </div>
+        <mat-divider></mat-divider>
+      </ng-container>
+    </div>
+
+    <div *ngIf="selected" class="place-details">
+      <h5 class="title">Détails du {{isRestaurantComponent ? 'restaurant' : 'magasin'}} {{selected.name}}</h5>
+      <iframe *ngIf="googleMapUrl" width="100%"
+              class="map"
+              height="300" frameborder="0" scrolling="no" marginheight="0" marginwidth="0"
+              [src]="googleMapUrl">
+      </iframe>
+      <h5 class="sub-title">Dépenses</h5>
+      <expense-list [mode]="{mode: 'restaurant', arguments: {id: selected.id}}"></expense-list>
+    </div>
+  </div>
+
+</action-container>

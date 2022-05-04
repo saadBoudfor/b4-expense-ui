@@ -1,0 +1,23 @@
+.information {
+  padding: 12px 0;
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+  align-items: center;
+  .key {
+    width: 150px;
+  }
+}
+
+.action {
+  display: flex;
+  flex-direction: column;
+  margin-top: 15px;
+  button {
+    width: 100%;
+    margin-bottom: 10px;
+    mat-icon {
+      margin-right: 10px;
+    }
+  }
+}

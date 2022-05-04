@@ -1,83 +1,74 @@
-@use 'sass:map';
-@use '~@angular/material' as mat;
-
-.container {
-  background-color: white;
-
-  &.dark {
-    background-color: #424242;
-  }
-}
-
-.expense {
-  display: flex;
-
+.place-holder {
   .type {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 12px;
-
-    mat-icon {
-      $size: 36px;
-      font-size: 36px;
-      height: 36px;
+    content-placeholder {
       width: 36px;
+      height: 36px;
     }
   }
 
   .details {
-    padding: 15px 12px;
-    display: flex;
-    justify-content: space-between;
-    width: 100%;
 
     .main {
-      display: flex;
-      flex-direction: column;
-      font-weight: 600;
-      letter-spacing: 0.3px;
-
-      .secondary {
-        font-size: 12px;
-        font-weight: 100;
-      }
-    }
-  }
-
-  &.place-holder {
-    .type {
-      content-placeholder {
-        width: 36px;
-        height: 36px;
-      }
-    }
-
-    .details {
-
       .main {
-        .main {
-          content-placeholder {
-            width: 100px;
-            height: 15px;
-          }
-        }
-
-        .secondary {
-          content-placeholder {
-            width: 60px;
-            height: 12px;
-            margin-top: 10px;
-          }
-        }
-      }
-
-      .price {
         content-placeholder {
-          width: 36px;
+          width: 100px;
           height: 15px;
         }
       }
+
+      .secondary {
+        content-placeholder {
+          width: 60px;
+          height: 12px;
+          margin-top: 10px;
+        }
+      }
     }
+
+    .price {
+      content-placeholder {
+        width: 36px;
+        height: 15px;
+      }
+    }
+  }
+}
+
+
+.expense {
+  display: flex;
+  align-items: center;
+  padding: 5px 8px;
+  border-radius: 0;
+  margin: 0;
+  //margin-bottom: 1px;
+  border: none;
+  box-shadow: none;
+  .type {
+    $type-icon-size: 48px;
+
+    mat-icon {
+      width: $type-icon-size;
+      height: $type-icon-size;
+      font-size: $type-icon-size;
+    }
+  }
+
+  .details {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    width: 100%;
+    padding-left: 8px;
+
+    .price {
+      white-space: nowrap;
+    }
+
+    .description {
+      display: flex;
+      flex-direction: column;
+    }
+
   }
 }

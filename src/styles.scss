@@ -1,13 +1,14 @@
 @import "styles/themes/dark";
-@import "styles/themes/default";
+@import "styles/themes/brown";
 @import "styles/google-material";
 
-h5.title {
-  //margin-top: 20px;
-  //padding-left: 20px;
+h5.title, h5.sub-title {
   font-size: 16px;
-  color: $primary-color;
   font-weight: 500;
+}
+
+h5.sub-title {
+  font-size: 14px;
 }
 
 .wave-effect {
@@ -31,8 +32,7 @@ body {
   font-family: "Open Sans", Arial, serif;
 }
 
-.title {
+.title, h3, h1, h2, h4, h5 {
   font-family: "Proza Libre", Arial, serif;
 }
-
 

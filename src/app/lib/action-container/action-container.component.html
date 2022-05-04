@@ -5,8 +5,8 @@
               [title]="title"
               [titleIcon]="icon"></navigation>
 
-  <button mat-button mat-raised-button class="logo-container">
-    <mat-icon class="logo" inline="inline" color="accent">inventory_2</mat-icon>
+  <button *ngIf="mainIcon" mat-button mat-raised-button class="logo-container">
+    <mat-icon class="logo" inline="inline" color="accent">{{mainIcon}}</mat-icon>
   </button>
 
   <main class="mat-app-background">

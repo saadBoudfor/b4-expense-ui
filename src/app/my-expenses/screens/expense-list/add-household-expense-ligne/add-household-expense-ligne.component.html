@@ -1,0 +1,47 @@
+<action-container title="Expenses"
+                  *ngIf="!isFilteringProduct && !isScanningProduct"
+                  icon="local_fire_department"
+                  leftLink="/expenses/household-expense-list/expense-line/list">
+  <h3 class="color-accent">Nouvelle ligne de dépense</h3>
+
+  <section>
+    <mat-form-field (click)="isFilteringProduct = true" appearance="standard" color="accent">
+      <mat-label>Produit</mat-label>
+      <input type="text"
+             matInput
+             [(ngModel)]="productName"
+             autocomplete="false"
+             required placeholder="Ex. Cuisine">
+      <mat-icon (click)="isScanningProduct = true;" matSuffix>qr_code</mat-icon>
+    </mat-form-field>
+    <mat-form-field appearance="standard">
+      <mat-label>{{"screen.new.expense.form.price" | translate}}</mat-label>
+      <input matInput type="number" [min]="0" [(ngModel)]="expenseLine.price" autocomplete="off" required>
+    </mat-form-field>
+    <mat-form-field appearance="standard">
+      <mat-label>{{"screen.new.expense.form.quantity" | translate}}</mat-label>
+      <input matInput type="number" [min]="0" [(ngModel)]="expenseLine.quantity" autocomplete="off" required>
+    </mat-form-field>
+
+    <mat-form-field appearance="standard">
+      <mat-label>{{"screen.new.expense.form.comment" | translate}}</mat-label>
+      <textarea matInput [(ngModel)]="expenseLine.comment" autocomplete="off"></textarea>
+    </mat-form-field>
+  </section>
+
+  <footer>
+    <button mat-raised-button mat-button
+            (click)="save()"
+            [routerLink]="'/expenses/household-expense-list/expense-line/list'"
+            color="accent">{{"global.submit" | translate | uppercase}}</button>
+  </footer>
+</action-container>
+
+
+<search-product *ngIf="isFilteringProduct"
+                (selected)="onSelectProduct($event)"
+                (close)="isFilteringProduct = false"></search-product>
+
+<barcode-scanner *ngIf="isScanningProduct"
+                 (scannedProduct)="onScanProduct($event)"
+                 (close)="isScanningProduct = false"></barcode-scanner>

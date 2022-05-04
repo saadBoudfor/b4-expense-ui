@@ -1,6 +1,7 @@
 <action-container
   title="Expenses"
-  icon="payment"
+  icon="local_fire_department"
+  mainIcon="payment"
   leftLink="/expenses/home">
 
   <choice [title]="'Nouveau produit'"
@@ -10,6 +11,6 @@
   <choice [title]="'Nouvelle dépense'"
           [icon]="'storefront'"
           [subTitle]="'dépense magasin, dépense réstaurant'"
-          [routerLink]="'/expenses-type'"></choice>
+          [routerLink]="'/expenses/select'"></choice>
 
 </action-container>

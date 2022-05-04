@@ -1,0 +1,73 @@
+<action-container title="Expenses"
+                  *ngIf="expense"
+                  icon="local_fire_department"
+                  [leftLink]="backURL">
+  <section class="generale-information">
+    <h5 class="title">Informations générales</h5>
+
+    <div class="information">
+      <span class="key color-accent">Nom</span>
+      <span class="value">{{expense.name}}</span>
+    </div>
+    <mat-divider></mat-divider>
+
+    <div class="information">
+      <span class="key color-accent">Date</span>
+      <span class="value">{{expense.date | dateFormat}}</span>
+    </div>
+    <mat-divider></mat-divider>
+
+    <ng-container *ngIf="total !== 0">
+      <div class="information">
+        <span class="key color-accent">Prix</span>
+        <span class="value">{{total.toFixed(2) + ' €'}}</span>
+      </div>
+      <mat-divider></mat-divider>
+    </ng-container>
+
+    <div class="information">
+      <span class="key color-accent">{{expense.place.type === 'RESTAURANT' ? 'Restaurant' :  'Magasin'}}</span>
+      <span class="value">{{expense.place.name}}</span>
+    </div>
+    <mat-divider></mat-divider>
+
+
+    <ng-container *ngIf="expense.author">
+      <div class="information">
+        <span class="key color-accent">Auteur</span>
+        <span class="value">{{expense.author.name}}</span>
+      </div>
+      <mat-divider></mat-divider>
+    </ng-container>
+
+    <ng-container *ngIf="expense.comment">
+      <div class="information">
+        <span class="key color-accent">Commentaire</span>
+        <span class="value">{{expense.comment}}</span>
+      </div>
+      <mat-divider></mat-divider>
+    </ng-container>
+
+    <iframe width="100%"
+            height="300" frameborder="0" scrolling="no" marginheight="0" marginwidth="0"
+            [src]="googleMapUrl">
+    </iframe>
+  </section>
+  <section class="expense-lines" *ngIf="expense && expense.place.type === 'STORE' && expense.expenseLines.length !== 0">
+    <h5 class="title">Liste des lignes des dépenses</h5>
+
+    <ng-container *ngFor="let ep of expense.expenseLines">
+      <div class="expense-line">
+        <div class="main">
+          <span class="product-name">{{ep?.product?.name}}</span>
+          <span class="price color-accent"> {{ep?.price}} €</span>
+        </div>
+        <div class="secondary">
+          <span class="quantity"><span class="color-accent">Quantité achetée:</span> {{ep?.quantity}}</span>
+          <span class="calories">{{ep?.product?.calories}} kcal</span>
+        </div>
+      </div>
+      <mat-divider></mat-divider>
+    </ng-container>
+  </section>
+</action-container>

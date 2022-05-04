@@ -1,6 +1,6 @@
 <ng-container *ngIf="!error && expenses">
   <ng-container *ngIf="expenses.length !== 0">
-    <expense *ngFor="let expense of expenses" [value]="expense"></expense>
+    <expense *ngFor="let expense of expenses" [value]="expense" [backURL]="backURL"></expense>
   </ng-container>
 </ng-container>
 

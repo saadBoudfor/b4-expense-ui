@@ -27,10 +27,10 @@ export class BudgetTrackerComponent implements OnInit, OnDestroy {
       this.error = false;
       this.target = data.target;
       this.current = data.count;
-      this.logger.info(logId + 'Load Expenses stats data success', {data})
+      this.logger.info('Load Expenses stats data success', {data})
     }, error => {
       this.error = true;
-      this.logger.error(logId + 'Failed to load Expenses stats data', {error});
+      this.logger.error('Failed to load Expenses stats data', {error});
     })
   }
 

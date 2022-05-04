@@ -15,12 +15,12 @@ export class ExpensesStatsRepository {
   }
 
   getRestaurants(): Observable<ExpenseBasicStats> {
-    this.logger.info(logId + ' get restaurants stats');
+    this.logger.info(' get restaurants stats');
     return this.httpClient.get<ExpenseBasicStats>(expenseUrl + '/restaurants', {headers});
   }
 
   getStores() {
-    this.logger.info(logId + ' get stores stats');
+    this.logger.info(' get stores stats');
     return this.httpClient.get<ExpenseBasicStats>(expenseUrl + '/stores', {headers});
   }
 }

@@ -24,10 +24,10 @@ export class ExpensesByMonthStatsSectionComponent implements OnInit, OnDestroy {
     this.$rq = this.expenseRepository.getStats()
       .subscribe(data => {
         this.expenseBasicStats = data;
-        this.logger.info(logId + 'Load expenses chart data: expenses by month', {data});
+        this.logger.info('Load expenses chart data: expenses by month', {data});
         this.error = false;
       }, reason => {
-        this.logger.error(logId + 'failed to load chart (expenses by month) data', {reason})
+        this.logger.error('failed to load chart (expenses by month) data', {reason})
         this.error = true;
       })
   }

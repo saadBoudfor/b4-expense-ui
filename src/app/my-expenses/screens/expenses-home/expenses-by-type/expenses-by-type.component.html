@@ -4,9 +4,9 @@
   Cliquez sur les cartes pour avoir plus de détails sur vos statistiques de dépense
 </p>
 
-<mat-card>
-  <div class="content-container">
-    <div class="icon-container color-accent">
+<mat-card class="background-color-accent color-white" routerLink="/expenses/top/restaurants">
+  <div class="content-container ">
+    <div class="icon-container ">
       <span class="icon material-icons">restaurant</span>
     </div>
     <div class="content">
@@ -16,15 +16,15 @@
     </div>
   </div>
 
-  <div class="key color-accent">
-    {{percentageRestaurant}} %
+  <div class="key ">
+    {{percentageRestaurant.toFixed(2)}} %
   </div>
 </mat-card>
 
 
-<mat-card>
+<mat-card class="background-color-accent color-white" routerLink="/expenses/top/stores">
   <div class="content-container">
-    <div class="icon-container color-accent">
+    <div class="icon-container">
       <span class="icon material-icons">storefront</span>
     </div>
     <div class="content">
@@ -33,7 +33,7 @@
       <span>{{storesStats?.total}} euros</span>
     </div>
   </div>
-  <div class="key color-accent">
-    {{percentageStores}} %
+  <div class="key">
+    {{percentageStores.toFixed(2)}} %
   </div>
 </mat-card>

@@ -17,33 +17,40 @@ export class ExpenseListComponent implements OnDestroy {
   loading = false;
 
   @Input()
-  set mode(mode: 'default' | 'last5' | 'all' | 'restaurant' | 'stores') {
-    if (!mode) this.logger.error('mode input is required');
+  backURL!: string;
+
+  @Input()
+  set mode(value: ExpenseListMode) {
+    if (!value.mode) this.logger.error('mode input is required');
     let expenseRq = this.expenseRepository.get();
-    switch (mode) {
+    switch (value.mode) {
       case 'last5':
         expenseRq = this.expenseRepository.getLast();
         break;
       case 'all':
         break;
+      case 'restaurant':
+        if (value.arguments.id) {
+          expenseRq = this.expenseRepository.getExpensesByPlaceId(value.arguments.id)
+        }
+        break;
       default:
-        this.logger.warn('given mode unknown: ' + mode);
+        this.logger.warn('given mode unknown: ' + value.mode);
     }
     this.handleRequest(expenseRq);
   }
 
   private handleRequest(rq: Observable<Expense[]>) {
     this.loading = true;
-    console.log('loading')
     this.$getExpensesSb = rq.subscribe(data => {
       this.error = false;
       this.expenses = data;
       this.loading = false;
-      this.logger.info(logId + 'Get expenses list', {data});
+      this.logger.info('Get expenses list', {data});
     }, error => {
       this.error = true;
       this.loading = false;
-      this.logger.error(logId + 'Failed to get expenses list', {error});
+      this.logger.error('Failed to get expenses list', {error});
     })
   }
 
@@ -59,3 +66,8 @@ export class ExpenseListComponent implements OnDestroy {
 }
 
 const logId = '[ExpenseListComponent] ';
+
+class ExpenseListMode {
+  mode: 'default' | 'last5' | 'all' | 'restaurant' | 'stores' = 'default';
+  arguments?: any;
+}

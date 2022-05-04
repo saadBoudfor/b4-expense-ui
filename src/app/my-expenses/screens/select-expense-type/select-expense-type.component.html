@@ -1,0 +1,16 @@
+<action-container
+  title="Expenses"
+  icon="local_fire_department"
+  mainIcon="payment"
+  leftLink="/expenses/action">
+
+  <choice [title]="'Nouvelle dépenses ménagère'"
+          [icon]="'storefront'"
+          [subTitle]="'Supérmarché, Boulanger, marché ...'"
+          [routerLink]="'/expenses/household-expense/select'"></choice>
+  <choice [title]="'Nouvelle dépenses réstaurant'"
+          [icon]="'restaurant'"
+          [subTitle]="'Food track, déjeuner d\'équipe ...'"
+          [routerLink]="'/expenses/restaurant-expense/new'"></choice>
+
+</action-container>

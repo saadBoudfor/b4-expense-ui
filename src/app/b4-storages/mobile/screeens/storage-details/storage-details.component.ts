@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, OnDestroy, OnInit} from '@angular/core';
 import {NGXLogger} from "ngx-logger";
 import {Router} from "@angular/router";
 import {BucketRepository} from "../../../repositories/bucket-repository.service";
@@ -7,23 +7,26 @@ import {Storage} from "../../../data-models/Storage";
 import {StorageService} from "../../../services/storage.service";
 import {Bucket} from "../../../data-models/Bucket";
 import {Item} from "../../../data-models/Item";
+import {ConfigService} from "../../../../b4-common/services/config.service";
 
 @Component({
   selector: 'storage-details',
   templateUrl: './storage-details.component.html',
   styleUrls: ['./storage-details.component.scss']
 })
-export class StorageDetailsComponent implements OnInit {
+export class StorageDetailsComponent implements OnInit, OnDestroy {
   storage!: Storage;
   private storageId: number | null = null;
 
   constructor(private ngxLogger: NGXLogger,
               private storageService: StorageService,
               private storageRepository: StorageRepository,
+              private configService: ConfigService,
               private router: Router) {
   }
 
   ngOnInit(): void {
+    this.configService.showNavBar();
     this.ngxLogger.info('load data for default storage');
     this.storageId = this.storageService.getSavedStorageId();
     if (!!this.storageId) {
@@ -53,6 +56,10 @@ export class StorageDetailsComponent implements OnInit {
       .then(() => {
         this.ngxLogger.debug('user request open item details: ' + item.id);
       })
+  }
+
+  ngOnDestroy(): void {
+    this.configService.hideNavBar();
   }
 }
 

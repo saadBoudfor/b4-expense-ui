@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, OnDestroy, OnInit} from '@angular/core';
 import {ConfigService} from "../services/config.service";
 
 @Component({
@@ -6,7 +6,7 @@ import {ConfigService} from "../services/config.service";
   templateUrl: './settings.component.html',
   styleUrls: ['./settings.component.scss']
 })
-export class SettingsComponent implements OnInit {
+export class SettingsComponent implements OnInit, OnDestroy {
 
   isDark = false;
 
@@ -14,6 +14,7 @@ export class SettingsComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.configService.showNavBar();
     this.configService.theme.subscribe(theme => {
       if (theme === 'dark-theme') {
         this.isDark = true;
@@ -24,5 +25,9 @@ export class SettingsComponent implements OnInit {
   changeTheme() {
     this.isDark = !this.isDark;
     this.configService.theme.next(this.isDark ? 'dark-theme' : '');
+  }
+
+  ngOnDestroy(): void {
+    this.configService.hideNavBar();
   }
 }

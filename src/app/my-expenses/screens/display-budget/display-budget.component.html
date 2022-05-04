@@ -1,0 +1,38 @@
+<action-container title="Expenses"
+                  icon="local_fire_department"
+                  mainIcon="account_balance_wallet"
+                  leftLink="/expenses/home">
+  <h5 class="title">Mon budget</h5>
+  <div *ngIf="state" class="information-list" >
+    <div class="information">
+      <span class="key">Total dépensé ce mois</span>
+      <span class="value">{{state.total}} €</span>
+    </div>
+    <mat-divider></mat-divider>
+    <div class="information">
+      <span class="key">Total dépensé cette semaine</span>
+      <span class="value">{{state.totalForCurrentWeek}} €</span>
+    </div>
+    <mat-divider></mat-divider>
+    <div class="information">
+      <span class="key">Estimation fin de mois</span>
+      <span class="value">{{state.totalForCurrentWeek + 150}} €</span>
+    </div>
+    <mat-divider></mat-divider>
+    <div class="information">
+      <span class="key">Objectif</span>
+      <span class="value">{{state.target}} €</span>
+    </div>
+    <mat-divider></mat-divider>
+  </div>
+  <div class="action">
+    <button mat-button mat-raised-button color="accent">
+      <mat-icon matSuffix>donut_small</mat-icon>
+      Consulter Historique budget
+    </button>
+    <button mat-button color="accent" routerLink="/expenses/budget/update">
+      <mat-icon matSuffix>insights</mat-icon>
+      Mettre à jour mon objectif financier
+    </button>
+  </div>
+</action-container>
