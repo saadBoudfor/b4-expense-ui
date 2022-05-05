@@ -23,7 +23,7 @@ export class UpdateBudgetComponent implements OnInit {
   }
 
   validate() {
-    this.budgetRepository.updateBudget(this.newTarget + '', 1).subscribe(saved => {
+    this.budgetRepository.updateBudget(this.newTarget).subscribe(saved => {
       this.router.navigate(['/expenses/home']);
     })
   }

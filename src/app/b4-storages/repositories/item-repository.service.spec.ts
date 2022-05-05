@@ -3,8 +3,8 @@ import {fakeAsync} from '@angular/core/testing';
 import {ItemRepository} from './item-repository.service';
 import {Item} from "../data-models/Item";
 import {of} from "rxjs";
-import {Product} from "../../b4-expenses/models/expenses/Product";
 import {environment} from "../../../environments/environment";
+import {Product} from "../../b4-common/models/Product";
 
 fdescribe('ItemRepositoryService', () => {
   let service: ItemRepository;

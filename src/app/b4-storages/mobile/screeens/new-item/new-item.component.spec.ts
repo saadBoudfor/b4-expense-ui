@@ -9,7 +9,7 @@ import {Router} from "@angular/router";
 import {FormsModule} from "@angular/forms";
 import {MatDialog} from "@angular/material/dialog";
 import {of} from "rxjs";
-import {Product} from "../../../../b4-expenses/models/expenses/Product";
+import {Product} from "../../../../b4-common/models/Product";
 
 fdescribe('NewItemComponent', () => {
   let component: NewItemComponent;

@@ -34,21 +34,21 @@ fdescribe('ExpenseListComponent', () => {
   });
 
   it('should load all expenses for current user if mode set to default', fakeAsync(() => {
-    component.mode = 'default';
+    component.mode = {mode: 'default'};
     tick();
     expect(expenseRepositoryMock.get).toHaveBeenCalled();
     expect(component.expenses).toEqual([]);
   }))
 
   it('should load all expenses for current user if mode set to all', fakeAsync(() => {
-    component.mode = 'all';
+    component.mode = {mode: 'all'};
     tick();
     expect(expenseRepositoryMock.get).toHaveBeenCalled();
     expect(component.expenses).toEqual([]);
   }))
 
   it('should load last 5 expenses for current user if mode set to last5', fakeAsync(() => {
-    component.mode = 'last5';
+    component.mode = {mode: 'last5'};
     tick();
     expect(expenseRepositoryMock.getLast).toHaveBeenCalled();
     expect(component.expenses).toEqual([{id: 5} as any]);
@@ -56,14 +56,14 @@ fdescribe('ExpenseListComponent', () => {
 
   it('should log error and set error flag to true if request throw error', fakeAsync(() => {
     expenseRepositoryMock.get.and.returnValue(throwError({reason: 'some error'}))
-    component.mode = 'all';
+    component.mode = {mode: 'all'};
     tick();
     expect(component.error).toBeTrue();
   }))
 
   it('should log error and set error flag to true if request throw error (last5)', fakeAsync(() => {
     expenseRepositoryMock.getLast.and.returnValue(throwError({reason: 'some error'}))
-    component.mode = 'last5';
+    component.mode = {mode: 'last5'};
     tick();
     expect(component.error).toBeTrue();
   }))
