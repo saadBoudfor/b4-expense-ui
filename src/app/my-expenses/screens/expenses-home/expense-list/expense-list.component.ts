@@ -2,7 +2,7 @@ import {Component, Input, OnChanges, OnDestroy, OnInit, SimpleChanges} from '@an
 import {ExpenseRepository} from "../../../repositories/expense-repository.service";
 import {NGXLogger} from "ngx-logger";
 import {Observable, Subscription} from "rxjs";
-import {Expense} from "../../../../b4-expenses/models/expenses/Expense";
+import {Expense} from "../../../models/Expense";
 
 @Component({
   selector: 'expense-list',

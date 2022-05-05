@@ -1,10 +1,10 @@
 import {Injectable} from '@angular/core';
-import {Expense} from "../../b4-expenses/models/expenses/Expense";
 import {NGXLogger} from "ngx-logger";
 import {HttpClient} from "@angular/common/http";
 import {environment} from "../../../environments/environment";
 import {Observable} from "rxjs";
 import {PlaceExpense} from "../../b4-common/models/PlaceExpense";
+import {Expense} from "../models/Expense";
 
 @Injectable({
   providedIn: 'root'

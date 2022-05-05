@@ -1,10 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import {Expense} from "../../../b4-expenses/models/expenses/Expense";
 import {Place} from "../../../b4-common/models/Place";
-import {ExpenseLine} from "../../../b4-expenses/models/expenses/ExpenseLine";
 import {ExpenseService} from "../../services/expense.service";
 import {Router} from "@angular/router";
 import {NGXLogger} from "ngx-logger";
+import {Expense} from "../../models/Expense";
+import {ExpenseLine} from "../../models/ExpenseLine";
 
 @Component({
   selector: 'add-restaurant-expense',

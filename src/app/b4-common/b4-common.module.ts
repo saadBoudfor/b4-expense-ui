@@ -19,6 +19,8 @@ import {ExpensesLinesListComponent} from './expenses-lines-list/expenses-lines-l
 import { DatePipe } from './pipes/date/date.pipe';
 import { MobileLateralMenuComponent } from './mobile-lateral-menu/mobile-lateral-menu.component';
 import { SettingsComponent } from './settings/settings.component';
+import {SearchProductComponent} from "./search-product/search-product.component";
+import {ProductPhotoPipe} from "./pipes/productPhoto/product-photo.pipe";
 
 @NgModule({
   declarations: [
@@ -32,7 +34,9 @@ import { SettingsComponent } from './settings/settings.component';
     ExpensesLinesListComponent,
     DatePipe,
     MobileLateralMenuComponent,
-    SettingsComponent
+    SettingsComponent,
+    SearchProductComponent,
+    ProductPhotoPipe
   ],
   exports: [
     PlaceAutocompleteComponent,
@@ -42,8 +46,8 @@ import { SettingsComponent } from './settings/settings.component';
     BarChartExpenseComponent,
     ExpensesLinesListComponent,
     DatePipe,
-    MobileLateralMenuComponent
-
+    MobileLateralMenuComponent,
+    SearchProductComponent
   ],
   imports: [
     CommonModule,

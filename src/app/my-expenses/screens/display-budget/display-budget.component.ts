@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {ExpenseRepository} from "../../repositories/expense-repository.service";
-import {ExpenseBasicStats} from "../../../b4-expenses/models/expenses/ExpenseBasicStats";
+import {ExpenseBasicStats} from "../../models/ExpenseBasicStats";
 
 @Component({
   selector: 'display-budget',

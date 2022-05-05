@@ -5,7 +5,7 @@ import {ExpenseRepository} from "../../../repositories/expense-repository.servic
 import {NGXLogger} from "ngx-logger";
 import {NO_ERRORS_SCHEMA} from "@angular/core";
 import {of, throwError} from "rxjs";
-import {ExpenseBasicStats} from "../../../../b4-expenses/models/expenses/ExpenseBasicStats";
+import {ExpenseBasicStats} from "../../../models/ExpenseBasicStats";
 
 fdescribe('BudgetTrackerComponent', () => {
   let component: BudgetTrackerComponent;

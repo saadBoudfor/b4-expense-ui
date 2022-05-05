@@ -1,8 +1,8 @@
 import {Component, OnInit} from '@angular/core';
 import {ExpenseRepository} from "../../repositories/expense-repository.service";
-import {ExpenseBasicStats} from "../../../b4-expenses/models/expenses/ExpenseBasicStats";
 import {BudgetRepositoryService} from "../../repositories/budget-repository.service";
 import {Router} from "@angular/router";
+import {ExpenseBasicStats} from "../../models/ExpenseBasicStats";
 
 @Component({
   selector: 'update-budget',

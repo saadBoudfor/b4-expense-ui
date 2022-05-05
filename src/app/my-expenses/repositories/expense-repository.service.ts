@@ -1,12 +1,11 @@
 import {Injectable} from '@angular/core';
 import {HttpClient} from "@angular/common/http";
 import {Observable, throwError} from "rxjs";
-import {ExpenseBasicStats} from "../../b4-expenses/models/expenses/ExpenseBasicStats";
 import {environment} from "../../../environments/environment";
 import {NGXLogger} from "ngx-logger";
 import {catchError} from "rxjs/operators";
-import {Expense} from "../../b4-expenses/models/expenses/Expense";
-import {Budget} from "../../b4-expenses/models/expenses/Budget";
+import {ExpenseBasicStats} from "../models/ExpenseBasicStats";
+import {Expense} from "../models/Expense";
 
 @Injectable({
   providedIn: 'root'

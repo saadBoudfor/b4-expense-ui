@@ -1,4 +1,4 @@
-import {Expense} from "../../b4-expenses/models/expenses/Expense";
+import {Expense} from "../../my-expenses/models/Expense";
 
 export class ExpenseUtils {
   public static getPrice(expense: Expense): string {

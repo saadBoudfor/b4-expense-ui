@@ -1,7 +1,7 @@
 import {ExpensesStatsRepository} from './expenses-stats-repository.service';
 import {fakeAsync} from "@angular/core/testing";
 import {of} from "rxjs";
-import {ExpenseBasicStats} from "../../b4-expenses/models/expenses/ExpenseBasicStats";
+import {ExpenseBasicStats} from "../models/ExpenseBasicStats";
 
 fdescribe('ExpensesStatsRepositoryService', () => {
   let service: ExpensesStatsRepository;
