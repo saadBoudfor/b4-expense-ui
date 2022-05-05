@@ -1,9 +1,8 @@
 import {Component, OnInit} from '@angular/core';
-import {ExpenseLine} from "../../../../b4-expenses/models/expenses/ExpenseLine";
-import {Product} from "../../../../b4-expenses/models/expenses/Product";
 import {ExpenseService} from "../../../services/expense.service";
 import {NGXLogger} from "ngx-logger";
-import {Expense} from "../../../../b4-expenses/models/expenses/Expense";
+import {ExpenseLine} from "../../../models/ExpenseLine";
+import {Expense} from "../../../models/Expense";
 
 @Component({
   selector: 'display-household-expense-list',

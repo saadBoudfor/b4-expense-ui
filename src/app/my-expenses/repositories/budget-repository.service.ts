@@ -1,9 +1,9 @@
 import { Injectable } from '@angular/core';
 import {Observable} from "rxjs";
-import {Budget} from "../../b4-expenses/models/expenses/Budget";
 import {environment} from "../../../environments/environment";
 import {HttpClient} from "@angular/common/http";
 import {NGXLogger} from "ngx-logger";
+import {Budget} from "../models/Budget";
 
 @Injectable({
   providedIn: 'root'

@@ -11,9 +11,7 @@ import {RouterModule} from "@angular/router";
 import {MoreInfoComponent} from './more-info/more-info.component';
 import {BarcodeScannerComponent} from "./barcode-scanner/barcode-scanner.component";
 import {FormsModule} from "@angular/forms";
-import {NutrientsStatsComponent} from './nutrients-stats/nutrients-stats.component';
-import {NgxEchartsModule} from "ngx-echarts";
-import { ActionContainerComponent } from './action-container/action-container.component';
+import {ActionContainerComponent} from './action-container/action-container.component';
 
 @NgModule({
   declarations: [
@@ -24,7 +22,6 @@ import { ActionContainerComponent } from './action-container/action-container.co
     ChoiceComponent,
     BarcodeScannerComponent,
     MoreInfoComponent,
-    NutrientsStatsComponent,
     ActionContainerComponent,
   ],
   imports: [
@@ -32,17 +29,18 @@ import { ActionContainerComponent } from './action-container/action-container.co
     TranslateModule,
     AngularImports,
     RouterModule,
-    FormsModule,
-    NgxEchartsModule.forRoot({
-      /**
-       * This will import all modules from echarts.
-       * If you only need custom modules,
-       * please refer to [Custom Build] section.
-       */
-      echarts: () => import('echarts'), // or import('./path-to-my-custom-echarts')
-    }),
+    FormsModule
   ],
-  exports: [NutrientsStatsComponent, NavigationComponent, MoreInfoComponent, ProgressComponent, PhotoUploaderComponent, RoundedIconComponent, ChoiceComponent, BarcodeScannerComponent, ActionContainerComponent]
+  exports: [
+    NavigationComponent,
+    MoreInfoComponent,
+    ProgressComponent,
+    PhotoUploaderComponent,
+    RoundedIconComponent,
+    ChoiceComponent,
+    BarcodeScannerComponent,
+    ActionContainerComponent
+  ]
 })
 export class LibModule {
 }

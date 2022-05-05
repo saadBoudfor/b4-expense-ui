@@ -1,9 +1,9 @@
 import {EventEmitter, OnInit} from '@angular/core';
 import {Component, Output} from '@angular/core';
 import {Html5Qrcode} from "html5-qrcode"
-import {ProductService} from "../../b4-expenses/services/product.service";
-import {Product} from "../../b4-expenses/models/expenses/Product";
 import {Location} from "@angular/common";
+import {ProductService} from "../../b4-common/services/product.service";
+import {Product} from "../../b4-common/models/Product";
 
 @Component({
   selector: 'barcode-scanner',

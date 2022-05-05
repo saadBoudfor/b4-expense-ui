@@ -1,8 +1,8 @@
 import {Component, OnInit} from '@angular/core';
 import {ExpensesStatsRepository} from "../../../repositories/expenses-stats-repository.service";
-import {ExpenseBasicStats} from "../../../../b4-expenses/models/expenses/ExpenseBasicStats";
 import {flatMap} from "rxjs/internal/operators";
 import {NGXLogger} from "ngx-logger";
+import {ExpenseBasicStats} from "../../../models/ExpenseBasicStats";
 
 @Component({
   selector: 'expenses-by-type',

@@ -1,7 +1,7 @@
 import {Component, Input, OnInit} from '@angular/core';
-import {Expense} from "../../../../b4-expenses/models/expenses/Expense";
 import {ConfigService} from "../../../../b4-common/services/config.service";
 import {Router} from "@angular/router";
+import {Expense} from "../../../models/Expense";
 
 @Component({
   selector: 'expense',

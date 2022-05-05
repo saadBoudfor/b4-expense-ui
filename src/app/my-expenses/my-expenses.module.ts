@@ -27,12 +27,13 @@ import {AddHouseholdExpenseLigneComponent} from './screens/expense-list/add-hous
 import {ValidateHouseholdExpenseListComponent} from './screens/validate-household-expense-list/validate-household-expense-list.component';
 import {AddHouseholdExpenseUnitComponent} from './screens/add-household-expense-unit/add-household-expense-unit.component';
 import {SelectExpenseTypeComponent} from './screens/select-expense-type/select-expense-type.component';
-import {ExpensesModule} from "../b4-expenses/expenses.module";
 import {ExpenseDetailsComponent} from './screens/expense-details/expense-details.component';
 import {TopExpensesComponent} from './screens/top-expenses/top-expenses.component';
 import {environment} from "../../environments/environment";
 import { DisplayBudgetComponent } from './screens/display-budget/display-budget.component';
 import { UpdateBudgetComponent } from './screens/update-budget/update-budget.component';
+import {NutrientsStatsComponent} from "./screens/expenses-home/expenses-by-score-chart/nutrients-stats/nutrients-stats.component";
+import {NgxEchartsModule} from "ngx-echarts";
 
 @NgModule({
   declarations: [
@@ -57,7 +58,8 @@ import { UpdateBudgetComponent } from './screens/update-budget/update-budget.com
     ExpenseDetailsComponent,
     TopExpensesComponent,
     DisplayBudgetComponent,
-    UpdateBudgetComponent
+    UpdateBudgetComponent,
+    NutrientsStatsComponent
   ],
   imports: [
     CommonModule,
@@ -80,7 +82,14 @@ import { UpdateBudgetComponent } from './screens/update-budget/update-budget.com
       serverLoggingUrl: environment.logServer
     } as any),
     B4CommonModule,
-    ExpensesModule,
+    NgxEchartsModule.forRoot({
+      /**
+       * This will import all modules from echarts.
+       * If you only need custom modules,
+       * please refer to [Custom Build] section.
+       */
+      echarts: () => import('echarts'), // or import('./path-to-my-custom-echarts')
+    })
   ]
 })
 export class MyExpensesModule {

@@ -1,8 +1,9 @@
-import {Expense} from "../../b4-expenses/models/expenses/Expense";
-import {Product} from "../../b4-expenses/models/expenses/Product";
+
 import {Bucket} from "./Bucket";
 import {User} from "../../b4-common/models/User";
 import {UpdateQuantity} from "./UpdateQuantity";
+import {Expense} from "../../my-expenses/models/Expense";
+import {Product} from "../../b4-common/models/Product";
 
 export class Item {
   id?: number;

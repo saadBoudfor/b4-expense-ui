@@ -1,8 +1,8 @@
 import {Component, Input, OnDestroy, OnInit} from '@angular/core';
-import {ExpenseBasicStats} from "../../../../b4-expenses/models/expenses/ExpenseBasicStats";
 import {ExpenseRepository} from "../../../repositories/expense-repository.service";
 import {Subscription} from "rxjs";
 import {NGXLogger} from "ngx-logger";
+import {ExpenseBasicStats} from "../../../models/ExpenseBasicStats";
 
 @Component({
   selector: 'expenses-by-month-stats-section',

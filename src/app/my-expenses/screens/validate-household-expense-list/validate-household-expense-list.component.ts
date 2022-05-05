@@ -1,10 +1,10 @@
 import {Component, OnInit, Sanitizer} from '@angular/core';
 import {NGXLogger} from "ngx-logger";
 import {ExpenseService} from "../../services/expense.service";
-import {Expense} from "../../../b4-expenses/models/expenses/Expense";
 import {Address} from "../../../b4-common/models/Address";
 import {DomSanitizer, SafeResourceUrl} from "@angular/platform-browser";
 import {Router} from "@angular/router";
+import {Expense} from "../../models/Expense";
 
 @Component({
   selector: 'validate-household-expense-list',

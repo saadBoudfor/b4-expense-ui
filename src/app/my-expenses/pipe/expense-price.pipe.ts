@@ -1,5 +1,5 @@
 import {Pipe, PipeTransform} from '@angular/core';
-import {Expense} from "../../b4-expenses/models/expenses/Expense";
+import {Expense} from "../models/Expense";
 
 @Pipe({
   name: 'expensePrice'

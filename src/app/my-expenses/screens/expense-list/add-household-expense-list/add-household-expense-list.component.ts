@@ -1,9 +1,9 @@
 import {Component, OnInit} from '@angular/core';
-import {Expense} from "../../../../b4-expenses/models/expenses/Expense";
 import {Place} from "../../../../b4-common/models/Place";
 import {StringUtils} from "../../../../b4-common/util/StringUtils";
 import {ExpenseService} from "../../../services/expense.service";
 import {NGXLogger} from "ngx-logger";
+import {Expense} from "../../../models/Expense";
 
 @Component({
   selector: 'add-household-expense-list',

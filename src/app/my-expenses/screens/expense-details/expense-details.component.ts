@@ -1,9 +1,9 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {ActivatedRoute} from "@angular/router";
-import {Expense} from "../../../b4-expenses/models/expenses/Expense";
 import {ExpenseService} from "../../services/expense.service";
 import {DomSanitizer} from "@angular/platform-browser";
 import {Address} from "../../../b4-common/models/Address";
+import {Expense} from "../../models/Expense";
 
 @Component({
   selector: 'expense-details',
