@@ -1,9 +1,5 @@
 import {NgModule} from '@angular/core';
 import {RouterModule, Routes} from '@angular/router';
-import {ConfirmationComponent} from "./b4-common/confirmation/confirmation.component";
-
-import {BarcodeScannerComponent} from "./lib/barcode-scanner/barcode-scanner.component";
-
 import {WelcomeStorageComponent} from "./b4-storages/mobile/screeens/welcome-storage/welcome-storage.component";
 import {StorageDetailsComponent} from "./b4-storages/mobile/screeens/storage-details/storage-details.component";
 import {StorageListComponent} from "./b4-storages/mobile/screeens/storage-list/storage-list.component";

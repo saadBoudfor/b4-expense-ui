@@ -49,11 +49,9 @@ export class ExpenseRepository {
     return this.handleRequest<Expense[]>($rq, $successMgs, $errorMsg);
   }
 
-  getExpensesByPlaceId(id: number) {
-    const $successMgs = 'get expenses success for user: ' + authenticatedUserId + ' and place: ' + id;
-    const $errorMsg = 'get expenses failed for user: ' + authenticatedUserId + ' and place: ' + id;
-    const $rq = this.httpClient.get<Expense[]>(expenseUrl + '/place/' + id, {headers});
-    return this.handleRequest<Expense[]>($rq, $successMgs, $errorMsg);
+  getExpensesByPlaceId(id: number): Observable<Expense[]> {
+    this.logger.debug('get expenses success for user: ' + authenticatedUserId + ' and place: ' + id);
+    return this.httpClient.get<Expense[]>(expenseUrl + '/place/' + id, {headers});
   }
 
   getTopFrequentedRestaurants(): Observable<PlaceExpense[]> {

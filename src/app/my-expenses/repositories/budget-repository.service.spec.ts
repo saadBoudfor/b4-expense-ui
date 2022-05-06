@@ -14,6 +14,7 @@ fdescribe('BudgetRepositoryService', () => {
   })
 
   it('should be created', () => {
+    service = new BudgetRepositoryService(httpClientMock, loggerMock);
     expect(service).toBeTruthy();
   });
 

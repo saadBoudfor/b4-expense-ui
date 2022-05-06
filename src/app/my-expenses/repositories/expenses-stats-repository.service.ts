@@ -15,16 +15,17 @@ export class ExpensesStatsRepository {
   }
 
   getRestaurants(): Observable<ExpenseBasicStats> {
-    this.logger.info(' get restaurants stats');
+    this.logger.debug('get restaurants stats for user: '  + authenticatedUserId);
     return this.httpClient.get<ExpenseBasicStats>(expenseUrl + '/restaurants', {headers});
   }
 
   getStores() {
-    this.logger.info(' get stores stats');
+    this.logger.debug('get stores stats for user: '  + authenticatedUserId);
     return this.httpClient.get<ExpenseBasicStats>(expenseUrl + '/stores', {headers});
   }
 
   getNutrientBasicStats() {
+    this.logger.debug('get nutrients stats for user: '  + authenticatedUserId);
     return this.httpClient.get<{ stats: { count: number, label: string }[] }>(expenseUrl + '/nutrients');
   }
 }

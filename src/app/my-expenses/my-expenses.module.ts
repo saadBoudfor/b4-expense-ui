@@ -79,6 +79,7 @@ import {NgxEchartsModule} from "ngx-echarts";
       level: NgxLoggerLevel.DEBUG,
       serverLogLevel: NgxLoggerLevel.DEBUG,
       enableSourceMaps: true,
+      disableFileDetails: true,
       serverLoggingUrl: environment.logServer
     } as any),
     B4CommonModule,

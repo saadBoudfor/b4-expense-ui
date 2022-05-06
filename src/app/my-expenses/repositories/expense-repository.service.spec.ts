@@ -123,16 +123,22 @@ fdescribe('ExpenseRepositoryService', () => {
 
   it('should get frequented store success', fakeAsync(() => {
     // Given
-    clientHttpMock.get.and.returnValue(of([{place: {id: 1}, total: 5, count: 1}]));
+    clientHttpMock.get.and.returnValue(of([{id: 1}, {id: 2}]));
     repository = new ExpenseRepository(clientHttpMock, loggerMock);
 
     // When - Then
-    repository.getTopFrequentedStores()
-      .subscribe(stats => {
+    repository.getExpensesByPlaceId(5)
+      .subscribe(expenses => {
         expect(loggerMock.debug).toHaveBeenCalledTimes(1);
-        expect(stats[0].total).toEqual(5)
-        expect(stats[0].count).toEqual(1)
+        expect(expenses[0].id).toEqual(1)
+        expect(expenses[1].id).toEqual(2)
       })
+  }))
+
+  it('should get expenses by id success', fakeAsync(() => {
+    clientHttpMock.get.and.returnValue(of([{place: {id: 1}, total: 5, count: 1}]));
+    repository = new ExpenseRepository(clientHttpMock, loggerMock);
+
   }))
 });
 
