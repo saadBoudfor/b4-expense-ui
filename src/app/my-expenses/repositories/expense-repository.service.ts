@@ -6,6 +6,7 @@ import {NGXLogger} from "ngx-logger";
 import {catchError} from "rxjs/operators";
 import {ExpenseBasicStats} from "../models/ExpenseBasicStats";
 import {Expense} from "../models/Expense";
+import {PlaceExpense} from "../../b4-common/models/PlaceExpense";
 
 @Injectable({
   providedIn: 'root'
@@ -53,6 +54,16 @@ export class ExpenseRepository {
     const $errorMsg = 'get expenses failed for user: ' + authenticatedUserId + ' and place: ' + id;
     const $rq = this.httpClient.get<Expense[]>(expenseUrl + '/place/' + id, {headers});
     return this.handleRequest<Expense[]>($rq, $successMgs, $errorMsg);
+  }
+
+  getTopFrequentedRestaurants(): Observable<PlaceExpense[]> {
+    this.logger.debug('get top frequented restaurant for account: ' + authenticatedUserId);
+    return this.httpClient.get<PlaceExpense[]>(environment.baseUrl + '/places/restaurants/ranking');
+  }
+
+  getTopFrequentedStores(): Observable<PlaceExpense[]> {
+    this.logger.debug('get top frequented store for account: ' + authenticatedUserId);
+    return this.httpClient.get<PlaceExpense[]>(environment.baseUrl + '/places/stores/ranking');
   }
 
   private handleRequest<Type>(rq: Observable<Type>, logSuccess: string, logFailed: string): Observable<Type> {

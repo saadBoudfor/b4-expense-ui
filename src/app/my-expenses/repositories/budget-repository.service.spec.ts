@@ -1,16 +1,33 @@
-import { TestBed } from '@angular/core/testing';
+import {fakeAsync} from '@angular/core/testing';
 
-import { BudgetRepositoryService } from './budget-repository.service';
+import {BudgetRepositoryService} from './budget-repository.service';
+import {of} from "rxjs";
 
-describe('BudgetRepositoryService', () => {
+fdescribe('BudgetRepositoryService', () => {
   let service: BudgetRepositoryService;
+  let httpClientMock: any;
+  let loggerMock: any;
 
   beforeEach(() => {
-    TestBed.configureTestingModule({});
-    service = TestBed.inject(BudgetRepositoryService);
-  });
+    httpClientMock = jasmine.createSpyObj(['put']);
+    loggerMock = jasmine.createSpyObj(['info', 'debug', 'warn', 'error']);
+  })
 
   it('should be created', () => {
     expect(service).toBeTruthy();
   });
+
+  it('should update budget success', fakeAsync(() => {
+    // Given
+    httpClientMock.put.and.returnValue(of({id: 2, user: {id: 1}, target: 250} as any));
+    loggerMock.info.and.callFake((data: any) => console.log(data))
+    service = new BudgetRepositoryService(httpClientMock, loggerMock);
+
+    // When - Then
+    service.updateBudget(250).subscribe(budget => {
+      expect(budget.id).toEqual(2);
+      expect(loggerMock.info).toHaveBeenCalledTimes(1);
+    })
+  }))
+
 });

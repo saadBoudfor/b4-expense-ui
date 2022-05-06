@@ -1,11 +1,11 @@
 import {Component, OnInit} from '@angular/core';
 import {ActivatedRoute} from "@angular/router";
-import {ExpenseService} from "../../services/expense.service";
 import {NGXLogger} from "ngx-logger";
 import {PlaceExpense} from "../../../b4-common/models/PlaceExpense";
 import {DomSanitizer} from "@angular/platform-browser";
 import {Place} from "../../../b4-common/models/Place";
 import {Address} from "../../../b4-common/models/Address";
+import {ExpenseRepository} from "../../repositories/expense-repository.service";
 
 @Component({
   selector: 'top-expenses',
@@ -21,15 +21,15 @@ export class TopExpensesComponent implements OnInit {
   constructor(private activatedRoute: ActivatedRoute,
               private logger: NGXLogger,
               private sanitizer: DomSanitizer,
-              private expenseService: ExpenseService) {
+              private expenseRepository: ExpenseRepository) {
   }
 
   ngOnInit(): void {
     const restaurantURL = this.activatedRoute.snapshot.routeConfig?.path;
     this.isRestaurantComponent = restaurantURL?.indexOf('restaurants') !== -1;
-    let request = this.expenseService.getTopFrequentedStores();
+    let request = this.expenseRepository.getTopFrequentedStores();
     if (this.isRestaurantComponent) {
-      request = this.expenseService.getTopFrequentedRestaurants();
+      request = this.expenseRepository.getTopFrequentedRestaurants();
     }
     request.subscribe(places => this.placeExpenses = places);
   }

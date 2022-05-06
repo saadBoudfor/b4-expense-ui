@@ -82,14 +82,6 @@ export class ExpenseService {
     return this.httpClient.get<Expense>(environment.baseUrl + '/expenses/' + id);
   }
 
-  getTopFrequentedRestaurants() {
-    return this.httpClient.get<PlaceExpense[]>(environment.baseUrl + '/places/restaurants/ranking');
-  }
-
-  getTopFrequentedStores() {
-    return this.httpClient.get<PlaceExpense[]>(environment.baseUrl + '/places/stores/ranking');
-  }
-
 }
 
 const logId = '[ExpenseService] ';
