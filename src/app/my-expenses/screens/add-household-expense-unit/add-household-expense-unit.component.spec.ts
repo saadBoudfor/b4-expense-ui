@@ -71,7 +71,7 @@ fdescribe('AddHouseholdExpenseUnitComponent', () => {
 
     // Then
     expect(expenseServiceMock.updateBill).toHaveBeenCalledOnceWith({id: 4});
-    expect(loggerMock.info).toHaveBeenCalledTimes(1)
+    expect(loggerMock.info).toHaveBeenCalledTimes(2)
   }))
 
 
@@ -81,7 +81,7 @@ fdescribe('AddHouseholdExpenseUnitComponent', () => {
 
     // Then
     expect(component.expense.place).toEqual({id: 4, name: '8', address: {street: '4 rue'}, type: "STORE"})
-    expect(loggerMock.info).toHaveBeenCalledTimes(1);
+    expect(loggerMock.info).toHaveBeenCalledTimes(2);
     expect(loggerMock.error).toHaveBeenCalledTimes(0);
   })
 
@@ -91,11 +91,10 @@ fdescribe('AddHouseholdExpenseUnitComponent', () => {
 
     // Then
     expect(component.expense.place).toBeUndefined();
-    expect(loggerMock.info).toHaveBeenCalledTimes(0);
+    expect(loggerMock.info).toHaveBeenCalledTimes(1);
     expect(loggerMock.error).toHaveBeenCalledTimes(1);
     expect(snackBarMock.open).toHaveBeenCalledTimes(1);
   })
-
 
   it('should update product with scanner success', () => {
     // Given
@@ -127,7 +126,7 @@ fdescribe('AddHouseholdExpenseUnitComponent', () => {
     tick();
 
     // Then
-    expect(loggerMock.info).toHaveBeenCalledTimes(1);
+    expect(loggerMock.info).toHaveBeenCalledTimes(2);
     expect(routerMock.navigate).toHaveBeenCalledOnceWith(['/expenses/home']);
   }))
 
@@ -141,7 +140,7 @@ fdescribe('AddHouseholdExpenseUnitComponent', () => {
     tick();
 
     // Then
-    expect(loggerMock.info).toHaveBeenCalledTimes(0);
+    expect(loggerMock.info).toHaveBeenCalledTimes(1);
     expect(loggerMock.error).toHaveBeenCalledTimes(1);
     expect(snackBarMock.open).toHaveBeenCalledTimes(1);
   }))

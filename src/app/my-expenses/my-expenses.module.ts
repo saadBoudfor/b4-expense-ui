@@ -13,7 +13,7 @@ import {BudgetTrackerComponent} from './screens/expenses-home/budget-tracker/bud
 import {ExpenseComponent} from './screens/expenses-home/expense/expense.component';
 import {ExpenseListComponent} from './screens/expenses-home/expense-list/expense-list.component';
 import {ExpensePricePipe} from './pipe/expense-price.pipe';
-import {ContentPlaceholderComponent} from './screens/content-placeholder/content-placeholder.component';
+import {ContentPlaceholderComponent} from './screens/expenses-home/expense/content-placeholder/content-placeholder.component';
 import {ExpensesByTypeComponent} from './screens/expenses-home/expenses-by-type/expenses-by-type.component';
 import {ExpensesByScoreChartComponent} from './screens/expenses-home/expenses-by-score-chart/expenses-by-score-chart.component';
 import {ExpensesByMonthStatsSectionComponent} from "./screens/expenses-home/expenses-by-month-stats-section/expenses-by-month-stats-section.component";

@@ -30,6 +30,7 @@ export class AddHouseholdExpenseUnitComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.logger.info('load add household expense unit page');
     this.expense.expenseLines.push(new ExpenseLine());
     this.expenseService.clear();
   }

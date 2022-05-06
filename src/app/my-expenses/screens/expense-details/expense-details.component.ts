@@ -30,15 +30,28 @@ export class ExpenseDetailsComponent implements OnInit {
     this.backURL = this.activeRouter.snapshot.queryParams['backURL'];
     this.expenseService.getExpenseById(expenseId).subscribe(expense => {
       this.expense = expense;
-      this.expense.expenseLines.forEach(ep => {
-        if (ep.price && ep.quantity)
-          this.total += (ep.price * ep.quantity);
-      })
-      const url = "https://maps.google.com/maps?q=" + convertAddress(this.expense.place.address) + "&t=&z=15&ie=UTF8&iwloc=&output=embed";
+      this.total = getExpenseTotalPrice(expense);
+      const url = getGoogleMapsUrl(expense);
       this.googleMapUrl = this.sanitizer.bypassSecurityTrustResourceUrl(url);
     })
   }
 }
+
 function convertAddress(address: Address) {
   return address.street + " " + address.zipCode + " " + address.city + " " + address.country;
+}
+
+function getGoogleMapsUrl(expense: Expense) {
+  return "https://maps.google.com/maps?q="
+    + convertAddress(expense.place.address)
+    + "&t=&z=15&ie=UTF8&iwloc=&output=embed";
+}
+
+function getExpenseTotalPrice(expense: Expense) {
+  let total = 0;
+  expense.expenseLines.forEach(ep => {
+    if (ep.price && ep.quantity)
+      total += (ep.price * ep.quantity);
+  })
+  return total;
 }
