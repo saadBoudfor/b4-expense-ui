@@ -1,7 +1,6 @@
 import {NgModule} from '@angular/core';
 import {CommonModule} from '@angular/common';
 import {LibModule} from "../lib/lib.module";
-import {ConfirmationComponent} from './confirmation/confirmation.component';
 import {AngularImports} from "../angular-imports";
 import {RouterModule} from "@angular/router";
 import {WebcamModule} from "ngx-webcam";
@@ -11,11 +10,8 @@ import {HttpClient} from "@angular/common/http";
 import {PlaceAutocompleteComponent} from './place-autocomplete/place-autocomplete.component';
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {BudgetTargetDisplayerComponent} from './budget-target-displayer/budget-target-displayer.component';
-import {ExpensesComponent} from './expenses/expenses.component';
-import {ExpenseCardComponent} from './expense-card/expense-card.component';
 import {BarChartItemComponent} from './bar-chart-item/bar-chart-item.component';
 import {BarChartExpenseComponent} from './bar-chart-expense/bar-chart-expense.component';
-import {ExpensesLinesListComponent} from './expenses-lines-list/expenses-lines-list.component';
 import { DatePipe } from './pipes/date/date.pipe';
 import { MobileLateralMenuComponent } from './mobile-lateral-menu/mobile-lateral-menu.component';
 import { SettingsComponent } from './settings/settings.component';
@@ -24,14 +20,10 @@ import {ProductPhotoPipe} from "./pipes/productPhoto/product-photo.pipe";
 
 @NgModule({
   declarations: [
-    ConfirmationComponent,
     PlaceAutocompleteComponent,
     BudgetTargetDisplayerComponent,
-    ExpensesComponent,
-    ExpenseCardComponent,
     BarChartItemComponent,
     BarChartExpenseComponent,
-    ExpensesLinesListComponent,
     DatePipe,
     MobileLateralMenuComponent,
     SettingsComponent,
@@ -41,10 +33,7 @@ import {ProductPhotoPipe} from "./pipes/productPhoto/product-photo.pipe";
   exports: [
     PlaceAutocompleteComponent,
     BudgetTargetDisplayerComponent,
-    ExpensesComponent,
-    ExpenseCardComponent,
     BarChartExpenseComponent,
-    ExpensesLinesListComponent,
     DatePipe,
     MobileLateralMenuComponent,
     SearchProductComponent
