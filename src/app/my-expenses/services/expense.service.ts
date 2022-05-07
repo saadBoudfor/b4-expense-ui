@@ -3,7 +3,6 @@ import {NGXLogger} from "ngx-logger";
 import {HttpClient} from "@angular/common/http";
 import {environment} from "../../../environments/environment";
 import {Observable} from "rxjs";
-import {PlaceExpense} from "../../b4-common/models/PlaceExpense";
 import {Expense} from "../models/Expense";
 
 @Injectable({
@@ -15,28 +14,32 @@ export class ExpenseService {
   // file
   private bill: any;
 
-  constructor(private logger: NGXLogger, private httpClient: HttpClient) {
+  constructor(private logger: NGXLogger,
+              private httpClient: HttpClient) {
   }
 
   createNewDraft(expense: Expense) {
-    this.logger.info('create new expense', {expense})
+    this.logger.debug('create new expense', {expense})
     this.draftExpense = expense;
     localStorage.setItem(localStorageId, JSON.stringify(this.draftExpense));
   }
 
   clear() {
+    this.logger.debug('clear cache');
     localStorage.removeItem(localStorageId);
     localStorage.removeItem(billStorageId);
-    this.bill = false;
+    this.bill = null;
+    this.draftExpense = new Expense();
   }
 
   updateDraft(expense: Expense) {
-    this.logger.info('update draft expense', {expense})
+    this.logger.debug('update draft expense', {expense})
     this.draftExpense = expense;
     localStorage.setItem(localStorageId, JSON.stringify(this.draftExpense));
   }
 
   updateBill(bill: any) {
+    this.logger.debug('update bill');
     this.bill = bill;
     localStorage.setItem(billStorageId, JSON.stringify(bill));
   }
@@ -44,8 +47,10 @@ export class ExpenseService {
   private getBill() {
     if (this.bill) return this.bill;
     const fileStr = localStorage.getItem(billStorageId);
-    if (fileStr) {
-      return JSON.parse(fileStr);
+    try {
+      return JSON.parse(fileStr ? fileStr : '');
+    } catch (error) {
+      this.logger.error('failed to load bill from cache', {error});
     }
   }
 
@@ -54,12 +59,13 @@ export class ExpenseService {
 
     if (!!draftExpense) {
       this.draftExpense = JSON.parse(draftExpense);
-      this.logger.info('Load draft expense from browser cache', {draftExpense: this.draftExpense})
+      this.logger.debug('Load draft expense from browser cache', {draftExpense: this.draftExpense})
     }
     return this.draftExpense;
   }
 
   save(expense: Expense, bill?: any): Observable<Expense> {
+    this.logger.debug('save expense in db', {expense, bill})
     const formData = new FormData();
     if (bill)
       formData.append('file', bill);
@@ -84,6 +90,5 @@ export class ExpenseService {
 
 }
 
-const logId = '[ExpenseService] ';
 const localStorageId = 'draft_expense';
 const billStorageId = 'bill';
