@@ -39,7 +39,6 @@ fdescribe('DisplayHouseholdExpenseListComponent', () => {
         {provide: NGXLogger, useValue: loggerMock},
         {provide: ExpenseService, useValue: expenseServiceMock},
         {provide: MatSnackBar, useValue: snackBarMock}
-
       ],
       schemas: [NO_ERRORS_SCHEMA]
     })

@@ -4,6 +4,8 @@ import {ExpenseService} from "../../services/expense.service";
 import {DomSanitizer} from "@angular/platform-browser";
 import {Address} from "../../../b4-common/models/Address";
 import {Expense} from "../../models/Expense";
+import {MatSnackBar} from "@angular/material/snack-bar";
+import {NGXLogger} from "ngx-logger";
 
 @Component({
   selector: 'expense-details',
@@ -22,17 +24,30 @@ export class ExpenseDetailsComponent implements OnInit {
 
   constructor(private activeRouter: ActivatedRoute,
               private expenseService: ExpenseService,
+              private logger: NGXLogger,
+              private snackBar: MatSnackBar,
               private sanitizer: DomSanitizer) {
   }
 
   ngOnInit(): void {
+    this.logger.info('load expense details page');
     const expenseId = this.activeRouter.snapshot.queryParams['id'];
+
+    if (!expenseId) {
+      this.logger.error('cannot get expense details with invalid id');
+      this.snackBar.open('invalid url: cannot request expense details');
+      return;
+    }
     this.backURL = this.activeRouter.snapshot.queryParams['backURL'];
     this.expenseService.getExpenseById(expenseId).subscribe(expense => {
+      this.logger.info('load expense ' + expenseId + ' details success', {expense})
       this.expense = expense;
       this.total = getExpenseTotalPrice(expense);
       const url = getGoogleMapsUrl(expense);
       this.googleMapUrl = this.sanitizer.bypassSecurityTrustResourceUrl(url);
+    }, error => {
+      this.logger.error('failed to get expense ' + expenseId + ' details', {error});
+      this.snackBar.open('technical error. Please contact your admin');
     })
   }
 }
