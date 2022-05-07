@@ -1,4 +1,4 @@
-import {Component, Input, OnChanges, OnDestroy, OnInit, SimpleChanges} from '@angular/core';
+import {Component, Input, OnDestroy} from '@angular/core';
 import {ExpenseRepository} from "../../../repositories/expense-repository.service";
 import {NGXLogger} from "ngx-logger";
 import {Observable, Subscription} from "rxjs";

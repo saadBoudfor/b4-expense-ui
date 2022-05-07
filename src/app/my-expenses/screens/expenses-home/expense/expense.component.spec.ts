@@ -1,19 +1,21 @@
 import {ComponentFixture, fakeAsync, TestBed} from '@angular/core/testing';
 
 import {ExpenseComponent} from './expense.component';
-import {StorageRepository} from "../../../../b4-storages/repositories/storage-repository.service";
 import {ConfigService} from "../../../../b4-common/services/config.service";
 import {of} from "rxjs";
+import {Router} from "@angular/router";
 
 fdescribe('ExpenseComponent', () => {
   let component: ExpenseComponent;
   let fixture: ComponentFixture<ExpenseComponent>;
   let configServiceMock = jasmine.createSpyObj(['getSelectedTheme']);
+  let routerMock = jasmine.createSpyObj(['navigate']);
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       declarations: [ExpenseComponent],
       providers: [
-        {provide: ConfigService, useValue: configServiceMock}
+        {provide: ConfigService, useValue: configServiceMock},
+        {provide: Router, useValue: routerMock}
       ]
     })
       .compileComponents();

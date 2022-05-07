@@ -4,6 +4,7 @@ import {StringUtils} from "../../../../b4-common/util/StringUtils";
 import {ExpenseService} from "../../../services/expense.service";
 import {NGXLogger} from "ngx-logger";
 import {Expense} from "../../../models/Expense";
+import {MatSnackBar} from "@angular/material/snack-bar";
 
 @Component({
   selector: 'add-household-expense-list',
@@ -17,33 +18,40 @@ export class AddHouseholdExpenseListComponent implements OnInit {
   maxDate = (new Date().toISOString()).split('T')[0];
 
   private bill: any;
+  enableAddExpense!: boolean;
 
-  constructor(private expenseService: ExpenseService, private logger: NGXLogger) {
+  constructor(private expenseService: ExpenseService,
+              private snackBar: MatSnackBar,
+              private logger: NGXLogger) {
   }
 
   ngOnInit(): void {
-    this.logger.info('load component');
+    this.logger.info('load add household list page');
     this.expenseService.clear();
-  }
-
-  onUploadBill(uploadedFile: any) {
-    this.bill = uploadedFile;
-    this.expenseService.updateBill(uploadedFile);
-  }
-
-  onSelect(place: Place) {
-    this.expense.place = place;
-  }
-
-  canAddExpenseLine() {
-    return StringUtils.isNotEmpty(this.expense.name)
+    this.enableAddExpense = StringUtils.isNotEmpty(this.expense.name)
       && !!this.expense.place && !!this.expense.place.type;
   }
 
+  onUploadBill(file: any) {
+    this.logger.info('upload bill for household expense list');
+    this.bill = file;
+    this.expenseService.updateBill(file);
+  }
+
+  onSelect(selectedPlace: Place) {
+    if (!selectedPlace.address || selectedPlace.type != 'RESTAURANT') {
+      const message = 'update expense place invalid';
+      this.logger.error(message);
+      this.snackBar.open(message)
+    } else {
+      this.logger.info('update expense place');
+      this.expense.place = selectedPlace;
+    }
+  }
+
   save() {
+    this.logger.info('create expense list', {expense: this.expense});
     this.expenseService.createNewDraft(this.expense);
   }
 }
 
-
-const logId = '[AddHouseholdExpenseListComponent] ';

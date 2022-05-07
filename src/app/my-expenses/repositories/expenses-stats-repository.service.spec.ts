@@ -58,4 +58,17 @@ fdescribe('ExpensesStatsRepositoryService', () => {
       expect(data.count).toEqual(6);
     })
   }))
+
+  it('should get nutrients stats success', fakeAsync(() => {
+    // Given
+    httpClient.get.and.returnValue(of({stats: [{count: 5, label: 'a'}, {count: 6, label: 'b'}]}));
+    service = new ExpensesStatsRepository(httpClient, loggerMock);
+
+    // When - then
+    service.getNutrientBasicStats().subscribe(data => {
+      expect(data).toEqual({stats: [{count: 5, label: 'a'}, {count: 6, label: 'b'}]})
+      expect(loggerMock.debug).toHaveBeenCalledTimes(1)
+    })
+
+  }))
 });

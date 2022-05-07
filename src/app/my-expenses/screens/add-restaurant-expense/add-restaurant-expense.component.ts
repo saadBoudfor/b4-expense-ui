@@ -1,10 +1,11 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {Place} from "../../../b4-common/models/Place";
 import {ExpenseService} from "../../services/expense.service";
 import {Router} from "@angular/router";
 import {NGXLogger} from "ngx-logger";
 import {Expense} from "../../models/Expense";
 import {ExpenseLine} from "../../models/ExpenseLine";
+import {MatSnackBar} from "@angular/material/snack-bar";
 
 @Component({
   selector: 'add-restaurant-expense',
@@ -18,19 +19,30 @@ export class AddRestaurantExpenseComponent implements OnInit {
 
   constructor(private expenseService: ExpenseService,
               private routerService: Router,
+              private snackBar: MatSnackBar,
               private logger: NGXLogger) {
   }
 
   ngOnInit(): void {
+    this.logger.info('load add restaurant expense page');
     this.expense.expenseLines.push(new ExpenseLine());
+    this.expenseService.clear();
   }
 
   uploadBill(file: any) {
+    this.logger.info('upload expense bill');
     this.expenseService.updateBill(file);
   }
 
   onSelectPlace(selectedPlace: Place) {
-    this.expense.place = selectedPlace;
+    if (!selectedPlace.address || selectedPlace.type != 'RESTAURANT') {
+      const message = 'update expense place invalid';
+      this.logger.error(message);
+      this.snackBar.open(message)
+    } else {
+      this.logger.info('update expense place');
+      this.expense.place = selectedPlace;
+    }
   }
 
   validate() {
@@ -43,8 +55,10 @@ export class AddRestaurantExpenseComponent implements OnInit {
               this.logger.error('failed to redirect to expenses home page');
             }
           })
+      }, error => {
+        const message = 'failed to submit new expense';
+        this.logger.error(message, {error});
+        this.snackBar.open(message);
       })
   }
 }
-
-const logId = '[AddRestaurantExpenseComponent] ';
