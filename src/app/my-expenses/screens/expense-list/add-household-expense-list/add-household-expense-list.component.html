@@ -20,7 +20,7 @@
   <footer class="action">
     <button mat-raised-button mat-button
             [routerLink]="'/expenses/household-expense-list/expense-line/list'"
-            [disabled]="!canAddExpenseLine()"
+            [disabled]="!enableAddExpense"
             (click)="save()"
             color="accent">{{"global.next" | translate | uppercase}}</button>
   </footer>
