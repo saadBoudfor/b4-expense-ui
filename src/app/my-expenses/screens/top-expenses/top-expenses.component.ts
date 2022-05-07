@@ -6,6 +6,7 @@ import {DomSanitizer} from "@angular/platform-browser";
 import {Place} from "../../../b4-common/models/Place";
 import {Address} from "../../../b4-common/models/Address";
 import {ExpenseRepository} from "../../repositories/expense-repository.service";
+import {MatSnackBar} from "@angular/material/snack-bar";
 
 @Component({
   selector: 'top-expenses',
@@ -21,25 +22,27 @@ export class TopExpensesComponent implements OnInit {
   constructor(private activatedRoute: ActivatedRoute,
               private logger: NGXLogger,
               private sanitizer: DomSanitizer,
+              private snackbarService: MatSnackBar,
               private expenseRepository: ExpenseRepository) {
   }
 
   ngOnInit(): void {
+    this.logger.info('load top frequented places (restaurants/store) page')
     const restaurantURL = this.activatedRoute.snapshot.routeConfig?.path;
     this.isRestaurantComponent = restaurantURL?.indexOf('restaurants') !== -1;
     let request = this.expenseRepository.getTopFrequentedStores();
     if (this.isRestaurantComponent) {
       request = this.expenseRepository.getTopFrequentedRestaurants();
     }
-    request.subscribe(places => this.placeExpenses = places);
+    request.subscribe(places => this.placeExpenses = places, error => {
+      const message = 'failed to load top frequented places';
+      this.snackbarService.open(message);
+      this.logger.error(message, {error});
+    });
   }
 
   openDetails(place: Place) {
-    this.setMap(place);
     this.selected = place;
-  }
-
-  setMap(place: Place) {
     const url = "https://maps.google.com/maps?q=" + convertAddress(place.address) + "&t=&z=15&ie=UTF8&iwloc=&output=embed";
     this.googleMapUrl = this.sanitizer.bypassSecurityTrustResourceUrl(url);
   }
@@ -48,5 +51,3 @@ export class TopExpensesComponent implements OnInit {
 function convertAddress(address: Address) {
   return address.street + " " + address.zipCode + " " + address.city + " " + address.country;
 }
-
-const logId = '[TopExpensesComponent] ';

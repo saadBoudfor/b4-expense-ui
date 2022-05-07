@@ -113,7 +113,3 @@ const savedExpense: Expense ={
     }
   }
 }
-
-const validGoogleMapURL= "https://maps.google.com/maps?q="
-  + "some street 0000 city country"
-  + "&t=&z=15&ie=UTF8&iwloc=&output=embed";
