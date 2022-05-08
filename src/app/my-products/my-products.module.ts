@@ -1,5 +1,5 @@
-import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import {NgModule} from '@angular/core';
+import {CommonModule} from '@angular/common';
 import {BarcodeScannerComponent} from "./screens/barcode-scanner/barcode-scanner.component";
 import {SearchProductComponent} from "./screens/search-product/search-product.component";
 import {HttpClient, HttpClientModule} from "@angular/common/http";
@@ -11,10 +11,16 @@ import {LibModule} from "../lib/lib.module";
 import {RouterModule} from "@angular/router";
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {B4CommonModule} from "../b4-common/b4-common.module";
-import {ProductPhotoPipe} from "./screens/productPhoto/product-photo.pipe";
+import {ProductPhotoPipe} from "./pipes/productPhoto/product-photo.pipe";
 
 
-
+/**
+ * Manage products
+ *  - search product
+ *  - update product
+ *  - create new product
+ *  - scan product barcode
+ */
 @NgModule({
   declarations: [BarcodeScannerComponent, SearchProductComponent, ProductPhotoPipe],
   exports: [BarcodeScannerComponent, SearchProductComponent],
@@ -37,4 +43,5 @@ import {ProductPhotoPipe} from "./screens/productPhoto/product-photo.pipe";
     B4CommonModule
   ]
 })
-export class MyProductsModule { }
+export class MyProductsModule {
+}

@@ -39,7 +39,7 @@ export class SearchProductComponent implements OnInit, OnDestroy {
       this.$searchProductRequest.unsubscribe();
     }
     this.$searchProductRequest = this.productService
-      .requestSearchProduct(this.searchedProduct)
+      .getByName(this.searchedProduct)
       .subscribe(found => {
           this.productList = found;
           this.searching = false;

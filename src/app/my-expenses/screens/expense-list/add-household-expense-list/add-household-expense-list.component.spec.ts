@@ -85,7 +85,6 @@ fdescribe('AddHouseholdExpenseListComponent', () => {
     expect(component.expense.place).toBeUndefined();
     expect(loggerMock.info).toHaveBeenCalledTimes(1);
     expect(loggerMock.warn).toHaveBeenCalledTimes(1);
-    expect(snackBarMock.open).toHaveBeenCalledTimes(1);
   })
 
   it('should save success', () => {

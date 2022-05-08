@@ -1,10 +1,10 @@
 import {EventEmitter, OnDestroy, OnInit} from '@angular/core';
 import {Component, Output} from '@angular/core';
 import {Html5Qrcode} from "html5-qrcode"
-import {Location} from "@angular/common";
 import {ProductService} from "../../services/product.service";
 import {Product} from "../../models/Product";
 import {Subscription} from "rxjs";
+import {CameraDevice, Html5QrcodeResult} from "html5-qrcode/core";
 
 @Component({
   selector: 'barcode-scanner',
@@ -24,41 +24,21 @@ export class BarcodeScannerComponent implements OnInit, OnDestroy {
 
   setBarCodeManually = false;
   barCode: string = '';
+
+
   private $productSubscription!: Subscription;
   private html5QrCode!: Html5Qrcode;
 
-  constructor(private productService: ProductService, public location: Location) {
+  constructor(private productService: ProductService) {
   }
 
   ngOnInit() {
     Html5Qrcode.getCameras().then(devices => {
-      /**
-       * devices would be an array of objects of type:
-       * { id: "id", label: "label" }
-       */
       if (devices && devices.length) {
-        let cameraID = devices[0].id;
-        // const cameraBackId = devices[1].id;
-        if (devices.length > 1) {
-          devices.forEach(device => {
-            if (device.label.indexOf('back') !== -1) {
-              cameraID = device.id;
-            }
-          })
-        }
+        const cameraID = extractCameraID(devices);
         this.html5QrCode = new Html5Qrcode("reader", false);
-        this.html5QrCode.start(
-          cameraID,
-          {
-            fps: 10,    // Optional, frame per seconds for qr code scanning
-            qrbox: {width: 250, height: 250}  // Optional, if you want bounded box UI
-          },
-          (decodedText, decodedResult) => {
-            this.scanned.emit(decodedText);
-            this.getProduct(decodedText);
-          },
-          (errorMessage) => {
-            // parse error, ignore it.
+        this.html5QrCode
+          .start(cameraID, cameraConfiguration, this.onReadCodeSuccess, () => {
           })
           .catch((err) => {
             this.cleanCamera();
@@ -66,8 +46,12 @@ export class BarcodeScannerComponent implements OnInit, OnDestroy {
       }
     }).catch(err => {
       this.cleanCamera();
-
     });
+  }
+
+  private onReadCodeSuccess(decodedText: string, decodedResult: Html5QrcodeResult) {
+    this.scanned.emit(decodedText);
+    this.getProduct(decodedText);
   }
 
   getProduct(barCode: string) {
@@ -91,4 +75,22 @@ export class BarcodeScannerComponent implements OnInit, OnDestroy {
     }
   }
 
+}
+
+const cameraConfiguration = {
+  fps: 10,    // Optional, frame per seconds for qr code scanning
+  qrbox: {width: 250, height: 250}  // Optional, if you want bounded box UI
+};
+
+function extractCameraID(devices: Array<CameraDevice>) {
+  let cameraID = devices[0].id;
+  // const cameraBackId = devices[1].id;
+  if (devices.length > 1) {
+    devices.forEach(device => {
+      if (device.label.indexOf('back') !== -1) {
+        cameraID = device.id;
+      }
+    })
+  }
+  return cameraID;
 }

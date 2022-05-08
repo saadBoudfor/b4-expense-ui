@@ -1,13 +1,19 @@
 <navigation [enableRight]="true" titleIcon="qr_code_scanner" (right)="close.emit(true)"></navigation>
 
 <ng-container *ngIf="!setBarCodeManually">
-  <div id="reader">loading ....</div>
-
-  <div>
-    <button mat-button mat-raised-button
-            (click)="setBarCodeManually = true"
-            color="accent">{{'Saisir le code manuellement' | uppercase}}</button>
+  <div class="reader-wrapper">
+    <div id="reader">
+      <div class="loading">
+        loading ...
+      </div>
+    </div>
   </div>
+
+
+  <button mat-button mat-raised-button
+          (click)="setBarCodeManually = true"
+          color="accent">{{'Saisir le code manuellement' | uppercase}}</button>
+
 </ng-container>
 
 <section class="add-barcode" *ngIf="setBarCodeManually">
