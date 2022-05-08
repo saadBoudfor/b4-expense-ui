@@ -3,7 +3,7 @@ import {Bucket} from "./Bucket";
 import {User} from "../../b4-common/models/User";
 import {UpdateQuantity} from "./UpdateQuantity";
 import {Expense} from "../../my-expenses/models/Expense";
-import {Product} from "../../b4-common/models/Product";
+import {Product} from "../../my-products/models/Product";
 
 export class Item {
   id?: number;

@@ -7,16 +7,14 @@ import {WebcamModule} from "ngx-webcam";
 import {TranslateLoader, TranslateModule} from "@ngx-translate/core";
 import {HttpLoaderFactory} from "../app.module";
 import {HttpClient} from "@angular/common/http";
-import {PlaceAutocompleteComponent} from './place-autocomplete/place-autocomplete.component';
+import {PlaceAutocompleteComponent} from './components/place-autocomplete/place-autocomplete.component';
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
-import {BudgetTargetDisplayerComponent} from './budget-target-displayer/budget-target-displayer.component';
-import {BarChartItemComponent} from './bar-chart-item/bar-chart-item.component';
-import {BarChartExpenseComponent} from './bar-chart-expense/bar-chart-expense.component';
+import {BudgetTargetDisplayerComponent} from './components/chart-expenses/budget-target-displayer/budget-target-displayer.component';
+import {BarChartItemComponent} from './components/chart-expenses/bar-chart-item/bar-chart-item.component';
+import {BarChartExpenseComponent} from './components/chart-expenses/bar-chart-expense/bar-chart-expense.component';
 import { DatePipe } from './pipes/date/date.pipe';
-import { MobileLateralMenuComponent } from './mobile-lateral-menu/mobile-lateral-menu.component';
-import { SettingsComponent } from './settings/settings.component';
-import {SearchProductComponent} from "./search-product/search-product.component";
-import {ProductPhotoPipe} from "./pipes/productPhoto/product-photo.pipe";
+import { MobileLateralMenuComponent } from './components/mobile-lateral-menu/mobile-lateral-menu.component';
+import { SettingsComponent } from './screens/settings/settings.component';
 
 @NgModule({
   declarations: [
@@ -27,8 +25,6 @@ import {ProductPhotoPipe} from "./pipes/productPhoto/product-photo.pipe";
     DatePipe,
     MobileLateralMenuComponent,
     SettingsComponent,
-    SearchProductComponent,
-    ProductPhotoPipe
   ],
   exports: [
     PlaceAutocompleteComponent,
@@ -36,7 +32,6 @@ import {ProductPhotoPipe} from "./pipes/productPhoto/product-photo.pipe";
     BarChartExpenseComponent,
     DatePipe,
     MobileLateralMenuComponent,
-    SearchProductComponent
   ],
   imports: [
     CommonModule,

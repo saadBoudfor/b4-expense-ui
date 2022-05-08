@@ -5,7 +5,7 @@ import {NGXLogger} from "ngx-logger";
 import {Router} from "@angular/router";
 import {ExpenseLine} from "../../models/ExpenseLine";
 import {Expense} from "../../models/Expense";
-import {Product} from "../../../b4-common/models/Product";
+import {Product} from "../../../my-products/models/Product";
 import {MatSnackBar} from "@angular/material/snack-bar";
 
 @Component({
@@ -40,7 +40,8 @@ export class AddHouseholdExpenseUnitComponent implements OnInit {
     this.expenseService.updateBill(file);
   }
 
-  onSelectPlace(selectedPlace: Place) {
+  onSelectPlace(selectedPlace: Place | string) {
+    if (!selectedPlace || (typeof selectedPlace === 'string')) return;
     if (!selectedPlace.address || selectedPlace.type != 'STORE') {
       const message = 'update expense place invalid';
       this.logger.error(message);

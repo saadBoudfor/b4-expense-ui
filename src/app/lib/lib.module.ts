@@ -9,7 +9,6 @@ import {RoundedIconComponent} from './rounded-icon/rounded-icon.component';
 import {ChoiceComponent} from './choice/choice.component';
 import {RouterModule} from "@angular/router";
 import {MoreInfoComponent} from './more-info/more-info.component';
-import {BarcodeScannerComponent} from "./barcode-scanner/barcode-scanner.component";
 import {FormsModule} from "@angular/forms";
 import {ActionContainerComponent} from './action-container/action-container.component';
 
@@ -20,7 +19,6 @@ import {ActionContainerComponent} from './action-container/action-container.comp
     PhotoUploaderComponent,
     RoundedIconComponent,
     ChoiceComponent,
-    BarcodeScannerComponent,
     MoreInfoComponent,
     ActionContainerComponent,
   ],
@@ -38,7 +36,6 @@ import {ActionContainerComponent} from './action-container/action-container.comp
     PhotoUploaderComponent,
     RoundedIconComponent,
     ChoiceComponent,
-    BarcodeScannerComponent,
     ActionContainerComponent
   ]
 })

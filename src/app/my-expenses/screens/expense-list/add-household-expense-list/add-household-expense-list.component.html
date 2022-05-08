@@ -1,6 +1,6 @@
 <action-container title="Expenses" icon="local_fire_department" leftLink="/expenses/household-expense/select">
   <h3 class="color-accent">Nouvelle liste de dépense</h3>
-  <section>
+  <section (change)="onUpdateForm()">
     <mat-form-field appearance="standard">
       <mat-label>{{"screen.new.expense.form.name" | translate}}</mat-label>
       <input matInput required autocomplete="off" [(ngModel)]="expense.name">

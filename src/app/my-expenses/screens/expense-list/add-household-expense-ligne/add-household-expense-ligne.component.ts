@@ -3,7 +3,7 @@ import {ExpenseService} from "../../../services/expense.service";
 import {NGXLogger} from "ngx-logger";
 import {ExpenseLine} from "../../../models/ExpenseLine";
 import {Expense} from "../../../models/Expense";
-import {Product} from "../../../../b4-common/models/Product";
+import {Product} from "../../../../my-products/models/Product";
 
 @Component({
   selector: 'add-household-expense-ligne',

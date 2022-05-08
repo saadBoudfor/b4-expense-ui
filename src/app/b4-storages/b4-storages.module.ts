@@ -23,6 +23,7 @@ import {SetItemExpirationModalComponent} from './mobile/screeens/new-item/set-it
 import {TotalQuantityPipe} from './mobile/pipes/total-quantity.pipe';
 import {ItemComponent} from './mobile/components/item/item.component';
 import {UpdateQuantityComponent} from './mobile/screeens/item-details/update-quantity/update-quantity.component';
+import {MyProductsModule} from "../my-products/my-products.module";
 
 
 @NgModule({
@@ -62,6 +63,7 @@ import {UpdateQuantityComponent} from './mobile/screeens/item-details/update-qua
       level: NgxLoggerLevel.DEBUG,
       serverLogLevel: NgxLoggerLevel.ERROR
     }),
+    MyProductsModule,
   ]
 })
 

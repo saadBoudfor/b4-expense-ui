@@ -4,7 +4,7 @@ import {ItemRepository} from './item-repository.service';
 import {Item} from "../data-models/Item";
 import {of} from "rxjs";
 import {environment} from "../../../environments/environment";
-import {Product} from "../../b4-common/models/Product";
+import {Product} from "../../my-products/models/Product";
 
 fdescribe('ItemRepositoryService', () => {
   let service: ItemRepository;

@@ -34,7 +34,8 @@ export class AddRestaurantExpenseComponent implements OnInit {
     this.expenseService.updateBill(file);
   }
 
-  onSelectPlace(selectedPlace: Place) {
+  onSelectPlace(selectedPlace: Place | string) {
+    if (!selectedPlace || (typeof selectedPlace === 'string')) return;
     if (!selectedPlace.address || selectedPlace.type != 'RESTAURANT') {
       const message = 'update expense place invalid';
       this.logger.error(message);

@@ -1,4 +1,4 @@
-import {Product} from "../../b4-common/models/Product";
+import {Product} from "../../my-products/models/Product";
 
 export class ExpenseLine {
   id?: string;

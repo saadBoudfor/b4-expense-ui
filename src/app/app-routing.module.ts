@@ -7,7 +7,7 @@ import {NewStorageComponent} from "./b4-storages/mobile/screeens/new-storage/new
 import {ItemDetailsComponent} from "./b4-storages/mobile/screeens/item-details/item-details.component";
 import {NewItemComponent} from "./b4-storages/mobile/screeens/new-item/new-item.component";
 import {NewBucketComponent} from "./b4-storages/mobile/screeens/new-bucket/new-bucket.component";
-import {SettingsComponent} from "./b4-common/settings/settings.component";
+import {SettingsComponent} from "./b4-common/screens/settings/settings.component";
 import {UpdateQuantityComponent} from "./b4-storages/mobile/screeens/item-details/update-quantity/update-quantity.component";
 import {ExpensesHomeComponent} from "./my-expenses/screens/expenses-home/expenses-home.component";
 import {ExpensesActionComponent} from "./my-expenses/screens/expenses-action/expenses-action.component";
@@ -23,7 +23,7 @@ import {ExpenseDetailsComponent} from "./my-expenses/screens/expense-details/exp
 import {TopExpensesComponent} from "./my-expenses/screens/top-expenses/top-expenses.component";
 import {DisplayBudgetComponent} from "./my-expenses/screens/display-budget/display-budget.component";
 import {UpdateBudgetComponent} from "./my-expenses/screens/update-budget/update-budget.component";
-import {SearchProductComponent} from "./b4-common/search-product/search-product.component";
+import {SearchProductComponent} from "./my-products/screens/search-product/search-product.component";
 
 const routes: Routes = [
   // Product endpoints

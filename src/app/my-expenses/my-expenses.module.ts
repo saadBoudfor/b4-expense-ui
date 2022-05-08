@@ -34,6 +34,7 @@ import { DisplayBudgetComponent } from './screens/display-budget/display-budget.
 import { UpdateBudgetComponent } from './screens/update-budget/update-budget.component';
 import {NutrientsStatsComponent} from "./screens/expenses-home/expenses-by-score-chart/nutrients-stats/nutrients-stats.component";
 import {NgxEchartsModule} from "ngx-echarts";
+import {MyProductsModule} from "../my-products/my-products.module";
 
 @NgModule({
   declarations: [
@@ -61,37 +62,38 @@ import {NgxEchartsModule} from "ngx-echarts";
     UpdateBudgetComponent,
     NutrientsStatsComponent
   ],
-  imports: [
-    CommonModule,
-    LibModule,
-    AngularImports,
-    TranslateModule.forRoot({
-      defaultLanguage: 'fr',
-      loader: {
-        provide: TranslateLoader,
-        useFactory: HttpLoaderFactory,
-        deps: [HttpClient]
-      }
-    }),
-    FormsModule,
-    RouterModule,
-    LoggerModule.forRoot({
-      level: NgxLoggerLevel.DEBUG,
-      serverLogLevel: NgxLoggerLevel.DEBUG,
-      enableSourceMaps: true,
-      disableFileDetails: true,
-      serverLoggingUrl: environment.logServer
-    } as any),
-    B4CommonModule,
-    NgxEchartsModule.forRoot({
-      /**
-       * This will import all modules from echarts.
-       * If you only need custom modules,
-       * please refer to [Custom Build] section.
-       */
-      echarts: () => import('echarts'), // or import('./path-to-my-custom-echarts')
-    })
-  ]
+    imports: [
+        CommonModule,
+        LibModule,
+        AngularImports,
+        TranslateModule.forRoot({
+            defaultLanguage: 'fr',
+            loader: {
+                provide: TranslateLoader,
+                useFactory: HttpLoaderFactory,
+                deps: [HttpClient]
+            }
+        }),
+        FormsModule,
+        RouterModule,
+        LoggerModule.forRoot({
+            level: NgxLoggerLevel.DEBUG,
+            serverLogLevel: NgxLoggerLevel.DEBUG,
+            enableSourceMaps: true,
+            disableFileDetails: false,
+            serverLoggingUrl: environment.logServer
+        } as any),
+        B4CommonModule,
+        NgxEchartsModule.forRoot({
+            /**
+             * This will import all modules from echarts.
+             * If you only need custom modules,
+             * please refer to [Custom Build] section.
+             */
+            echarts: () => import('echarts'), // or import('./path-to-my-custom-echarts')
+        }),
+        MyProductsModule
+    ]
 })
 export class MyExpensesModule {
 }

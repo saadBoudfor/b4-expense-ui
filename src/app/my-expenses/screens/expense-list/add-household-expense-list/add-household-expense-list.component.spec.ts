@@ -69,22 +69,22 @@ fdescribe('AddHouseholdExpenseListComponent', () => {
 
   it('should update expense place success', () => {
     // Given
-    component.onSelect({id: 4, name: '8', address: {street: '4 rue'}, type: "RESTAURANT"});
+    component.onSelect({id: 4, name: '8', address: {street: '4 rue'}, type: "STORE"});
 
     // Then
-    expect(component.expense.place).toEqual({id: 4, name: '8', address: {street: '4 rue'}, type: "RESTAURANT"})
+    expect(component.expense.place).toEqual({id: 4, name: '8', address: {street: '4 rue'}, type: "STORE"})
     expect(loggerMock.info).toHaveBeenCalledTimes(2);
     expect(loggerMock.error).toHaveBeenCalledTimes(0);
   })
 
   it('should log error (snackbar and console) if given expense place invalid', () => {
     // Given
-    component.onSelect({id: 4, name: '8', address: null, type: "RESTAURANT"} as any);
+    component.onSelect({id: 4, name: '8', address: null, type: "STORE"} as any);
 
     // Then
     expect(component.expense.place).toBeUndefined();
     expect(loggerMock.info).toHaveBeenCalledTimes(1);
-    expect(loggerMock.error).toHaveBeenCalledTimes(1);
+    expect(loggerMock.warn).toHaveBeenCalledTimes(1);
     expect(snackBarMock.open).toHaveBeenCalledTimes(1);
   })
 

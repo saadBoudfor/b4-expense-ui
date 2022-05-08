@@ -1,16 +1,17 @@
-import {EventEmitter, OnInit} from '@angular/core';
+import {EventEmitter, OnDestroy, OnInit} from '@angular/core';
 import {Component, Output} from '@angular/core';
 import {Html5Qrcode} from "html5-qrcode"
 import {Location} from "@angular/common";
-import {ProductService} from "../../b4-common/services/product.service";
-import {Product} from "../../b4-common/models/Product";
+import {ProductService} from "../../services/product.service";
+import {Product} from "../../models/Product";
+import {Subscription} from "rxjs";
 
 @Component({
   selector: 'barcode-scanner',
   templateUrl: './barcode-scanner.component.html',
   styleUrls: ['./barcode-scanner.component.scss']
 })
-export class BarcodeScannerComponent implements OnInit {
+export class BarcodeScannerComponent implements OnInit, OnDestroy {
 
   @Output()
   scanned = new EventEmitter<string>();
@@ -23,6 +24,8 @@ export class BarcodeScannerComponent implements OnInit {
 
   setBarCodeManually = false;
   barCode: string = '';
+  private $productSubscription!: Subscription;
+  private html5QrCode!: Html5Qrcode;
 
   constructor(private productService: ProductService, public location: Location) {
   }
@@ -43,9 +46,8 @@ export class BarcodeScannerComponent implements OnInit {
             }
           })
         }
-        console.log(devices);
-        const html5QrCode = new Html5Qrcode("reader", false);
-        html5QrCode.start(
+        this.html5QrCode = new Html5Qrcode("reader", false);
+        this.html5QrCode.start(
           cameraID,
           {
             fps: 10,    // Optional, frame per seconds for qr code scanning
@@ -59,16 +61,34 @@ export class BarcodeScannerComponent implements OnInit {
             // parse error, ignore it.
           })
           .catch((err) => {
+            this.cleanCamera();
           });
       }
     }).catch(err => {
+      this.cleanCamera();
+
     });
   }
 
   getProduct(barCode: string) {
-    this.productService.getByCode(barCode).subscribe(product => {
+    this.$productSubscription = this.productService.getByCode(barCode).subscribe(product => {
       this.scannedProduct.emit(product);
     })
+  }
+
+  ngOnDestroy(): void {
+    if (!!this.$productSubscription) {
+      this.$productSubscription.unsubscribe();
+    }
+
+    this.cleanCamera();
+  }
+
+  cleanCamera() {
+    if (!!this.html5QrCode) {
+      this.html5QrCode.stop();
+      this.html5QrCode.clear();
+    }
   }
 
 }

@@ -1,9 +1,9 @@
 import {Component, Input, OnInit, Output} from '@angular/core';
-import {AddressGov, PlaceService} from "../services/place.service";
+import {AddressGov, PlaceService} from "../../services/place.service";
 import {FormControl} from "@angular/forms";
 import {Observable} from "rxjs";
-import {Place} from "../models/Place";
-import {Address} from "../models/Address";
+import {Place} from "../../models/Place";
+import {Address} from "../../models/Address";
 import {EventEmitter} from '@angular/core';
 
 

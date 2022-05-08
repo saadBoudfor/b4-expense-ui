@@ -1,5 +1,5 @@
 import {Component, Input, OnInit} from '@angular/core';
-import {ConfigService} from "../services/config.service";
+import {ConfigService} from "../../../services/config.service";
 
 @Component({
   selector: 'bar-chart-item',

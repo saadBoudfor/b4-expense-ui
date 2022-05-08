@@ -28,6 +28,10 @@ export class AddHouseholdExpenseListComponent implements OnInit {
   ngOnInit(): void {
     this.logger.info('load add household list page');
     this.expenseService.clear();
+
+  }
+
+  onUpdateForm() {
     this.enableAddExpense = StringUtils.isNotEmpty(this.expense.name)
       && !!this.expense.place && !!this.expense.place.type;
   }
@@ -38,15 +42,16 @@ export class AddHouseholdExpenseListComponent implements OnInit {
     this.expenseService.updateBill(file);
   }
 
-  onSelect(selectedPlace: Place) {
-    if (!selectedPlace.address || selectedPlace.type != 'RESTAURANT') {
+  onSelect(selectedPlace: Place | string) {
+    if (!selectedPlace || (typeof selectedPlace === 'string')) return;
+    if (!selectedPlace.address || selectedPlace.type != 'STORE') {
       const message = 'update expense place invalid';
-      this.logger.error(message);
-      this.snackBar.open(message)
+      this.logger.warn(message, {selectedPlace});
     } else {
       this.logger.info('update expense place');
       this.expense.place = selectedPlace;
     }
+    this.onUpdateForm();
   }
 
   save() {

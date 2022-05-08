@@ -6,7 +6,7 @@ import {Router} from "@angular/router";
 import {ItemRepository} from "../../../repositories/item-repository.service";
 import {NGXLogger} from "ngx-logger";
 import {NavigationService} from "../../../services/navigation.service";
-import {Product} from "../../../../b4-common/models/Product";
+import {Product} from "../../../../my-products/models/Product";
 
 @Component({
   selector: 'new-item',
