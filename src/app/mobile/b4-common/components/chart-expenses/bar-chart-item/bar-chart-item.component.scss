@@ -1,0 +1,40 @@
+@import "../../../../../../styles";
+
+$chart-size: 30px;
+
+:host {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: fit-content;
+}
+
+.chart {
+  display: flex;
+  align-items: flex-end;
+  height: 100px;
+
+  .left {
+    height: 100%;
+    width: $chart-size;
+    margin: 0;
+    outline: none;
+    border: none;
+  }
+
+  .right {
+    //background: $primary-color;
+    height: 100%;
+    width: $chart-size;
+    margin: 0;
+    outline: none;
+    border: none;
+  }
+}
+
+.description {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 10px;
+}

@@ -1,6 +1,6 @@
 import {EventEmitter, Input, OnDestroy, Output} from '@angular/core';
 import {Component, OnInit} from '@angular/core';
-import {ConfigService} from "../../b4-common/services/config.service";
+import {ConfigService} from "../../services/common/config.service";
 import {Subscription} from "rxjs";
 
 @Component({

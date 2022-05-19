@@ -1,0 +1,21 @@
+<navigation title="Categories" [enableRight]="true" (right)="close.emit()"></navigation>
+
+<main class="categories" *ngIf="categories && categories.length !== 0">
+  <ng-container *ngFor="let category of categories">
+    <div class="category" (click)="selected.emit(category.label)">
+      <div class="img">
+        <img *ngIf="!category.imgError"
+             [src]="baseURL + category.imgURL"
+             (error)="category.imgError = true" alt="category logo">
+        <mat-icon *ngIf="category.imgError">category</mat-icon>
+      </div>
+      <div class="name">{{category.label}}</div>
+    </div>
+    <mat-divider></mat-divider>
+  </ng-container>
+</main>
+
+<div *ngIf="!categories && loading" class="loading">
+  loading ...
+</div>
+

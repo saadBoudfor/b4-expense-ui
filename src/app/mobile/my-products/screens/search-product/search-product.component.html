@@ -1,0 +1,26 @@
+<navigation [title]="'Recheche produits'" [enableRight]="true" (right)="close.emit(true)"></navigation>
+<header>
+  <mat-form-field appearance="standard">
+    <mat-label>{{"screen.new.expense.form.product" | translate}}</mat-label>
+    <input matInput type="text" placeholder="Ex: Coca cola light 30cl" [(ngModel)]="searchedProduct"
+           (keyup)="searchProduct()" autocomplete="off">
+    <mat-icon matSuffix>search</mat-icon>
+  </mat-form-field>
+</header>
+<p>Résultats correspondant à votre recherche:</p>
+<main *ngIf="searching">
+  <p>Recherche en cours ...</p>
+</main>
+<main *ngIf="productList && !searching">
+  <ng-container *ngFor="let product of productList">
+    <!--  product details  -->
+    <mat-card class="product" (click)="selectProduct(product)">
+      <img src="{{product | productPhoto}}" alt="">
+      <div class="description">
+        <span class="name">{{product.name}}</span>
+        <span class="details">{{product.brand + ' - ' + product.displayQuantity | lowercase}}</span>
+      </div>
+    </mat-card>
+  </ng-container>
+</main>
+

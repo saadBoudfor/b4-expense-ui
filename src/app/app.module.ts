@@ -8,9 +8,9 @@ import {TranslateLoader, TranslateModule} from "@ngx-translate/core";
 import {HttpClient, HttpClientModule} from "@angular/common/http";
 import {TranslateHttpLoader} from "@ngx-translate/http-loader";
 import {AngularImports} from "./angular-imports";
-import {B4CommonModule} from "./b4-common/b4-common.module";
-import {B4StoragesModule} from "./b4-storages/b4-storages.module";
-import {MyExpensesModule} from "./my-expenses/my-expenses.module";
+import {B4CommonModule} from "./mobile/b4-common/b4-common.module";
+import {B4StoragesModule} from "./mobile/b4-storages/b4-storages.module";
+import {MyExpensesModule} from "./mobile/my-expenses/my-expenses.module";
 
 // AoT requires an exported function for factories
 export function HttpLoaderFactory(http: HttpClient) {

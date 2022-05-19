@@ -1,6 +1,8 @@
 <div class="storage-details-container background-color-accent">
-  <navigation [enableLeft]="true"
-              [leftAction]="leftLink"
+  <navigation [leftAction]="leftLink"
+              [rightAction]="rightLink"
+              [enableRight]="enableRightAction"
+              (right)="rightAction.emit('close')"
               ngColor="white"
               [title]="title"
               [titleIcon]="icon"></navigation>

@@ -1,0 +1,115 @@
+<action-container
+  *ngIf="!isScanningProduct && !selectCategory"
+  title="Products"
+  leftLink="/expenses/action"
+  icon="local_fire_department">
+
+  <h5 class="title">Nouveau produit</h5>
+
+  <mat-form-field appearance="standard">
+    <mat-label>Nom</mat-label>
+    <input matInput type="text" [(ngModel)]="product.name" autocomplete="off">
+  </mat-form-field>
+
+  <mat-form-field appearance="standard">
+    <mat-label>Marque</mat-label>
+    <input matInput type="text" [(ngModel)]="product.brand" autocomplete="off">
+  </mat-form-field>
+
+  <mat-form-field appearance="standard" color="accent">
+    <mat-label>Code barre</mat-label>
+    <input type="text"
+           matInput
+           [(ngModel)]="product.qrCode"
+           autocomplete="false"
+           required placeholder="Ex. Cuisine">
+    <mat-icon (click)="isScanningProduct = true;" matSuffix>qr_code</mat-icon>
+  </mat-form-field>
+
+  <mat-form-field appearance="standard">
+    <mat-label>Quantité</mat-label>
+    <input matInput type="number" [(ngModel)]="product.productQuantity" autocomplete="off">
+  </mat-form-field>
+
+  <mat-radio-group [(ngModel)]="product.unit" aria-label="Select an option">
+    <mat-radio-button value="g">g</mat-radio-button>
+    <mat-radio-button value="l">l</mat-radio-button>
+  </mat-radio-group>
+
+  <mat-form-field (click)="selectCategory = true" appearance="standard">
+    <mat-label>Category</mat-label>
+    <input matInput type="text" [(ngModel)]="category" autocomplete="off">
+  </mat-form-field>
+
+  <photo-uploader (upload)="uploadPhoto($event)"></photo-uploader>
+
+
+  <ng-container *ngIf="product.nutrientLevels">
+    <h5 class="title">Informations nutritionnelles</h5>
+
+    <mat-form-field appearance="standard">
+      <mat-label>Calories en kcal pour 100g</mat-label>
+      <input matInput type="number" [(ngModel)]="product.calories" autocomplete="off">
+    </mat-form-field>
+
+    <mat-form-field appearance="standard">
+      <mat-label>Nutrition Score</mat-label>
+      <mat-select [(ngModel)]="product.score">
+        <mat-option value="a">A</mat-option>
+        <mat-option value="b">B</mat-option>
+        <mat-option value="c">C</mat-option>
+        <mat-option value="d">D</mat-option>
+        <mat-option value="e">E</mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <mat-form-field appearance="standard">
+      <mat-label>Gras</mat-label>
+      <mat-select [(ngModel)]="product.nutrientLevels.fat">
+        <mat-option value="low">low</mat-option>
+        <mat-option value="moderate">moderate</mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <mat-form-field appearance="standard">
+      <mat-label>Gras saturé</mat-label>
+      <mat-select [(ngModel)]="product.nutrientLevels.saturatedFat">
+        <mat-option value="low">low</mat-option>
+        <mat-option value="moderate">moderate</mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <mat-form-field appearance="standard">
+      <mat-label>Sucre</mat-label>
+      <mat-select [(ngModel)]="product.nutrientLevels.sugars">
+        <mat-option value="low">low</mat-option>
+        <mat-option value="moderate">moderate</mat-option>
+      </mat-select>
+    </mat-form-field>
+
+
+    <mat-form-field appearance="standard">
+      <mat-label>Sucre</mat-label>
+      <mat-select [(ngModel)]="product.nutrientLevels.salt">
+        <mat-option value="low">low</mat-option>
+        <mat-option value="moderate">moderate</mat-option>
+      </mat-select>
+    </mat-form-field>
+
+  </ng-container>
+
+  <div class="action">
+    <button (click)="save()" mat-button mat-raised-button color="accent">
+      valider
+    </button>
+  </div>
+</action-container>
+
+
+<barcode-scanner *ngIf="isScanningProduct"
+                 (scannedProduct)="product.qrCode = $event.qrCode"
+                 (close)="isScanningProduct = false"></barcode-scanner>
+
+<product-categories
+  *ngIf="selectCategory"
+  (selected)="onSelectCategory($event)"></product-categories>

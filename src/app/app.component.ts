@@ -1,5 +1,5 @@
 import {AfterContentChecked, AfterViewInit, ChangeDetectorRef, Component, OnInit} from '@angular/core';
-import {ConfigService} from "./b4-common/services/config.service";
+import {ConfigService} from "./services/common/config.service";
 import {Observable} from "rxjs";
 
 @Component({

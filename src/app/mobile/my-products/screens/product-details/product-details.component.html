@@ -1,0 +1,64 @@
+<action-container
+  title="Products"
+  icon="local_fire_department"
+  *ngIf="!displayCategories"
+  [enableRightAction]="true"
+  (rightAction)="onClose()">
+
+  <div class="container">
+    <section class="img"
+             *ngIf="product_photo"
+             [style]="'background-image: url(' + product_photo + ');'">
+    </section>
+
+    <section class="product-details">
+      <!--      <h4> Détails produit</h4>-->
+
+      <ng-container *ngFor="let information of itemInformation">
+        <div class="information">
+          <span class="key">{{information.key}}</span>
+          <span class="value">{{information.value}}
+            <button *ngIf="information.action === 'update_category'"
+                    class="update-quantity"
+                    mat-raised-button
+                    (click)="displayCategories=true"
+                    mat-button>
+              <mat-icon matSuffix color="accent">category</mat-icon>
+            </button>
+          </span>
+        </div>
+        <mat-divider></mat-divider>
+      </ng-container>
+    </section>
+
+    <section class="nutritional-information">
+      <h4> Information nutritionelle</h4>
+
+      <ng-container *ngFor="let information of nutritionalInformation">
+        <div class="information">
+          <span class="key">{{information.key}}</span>
+          <span
+            class="value nutritional-value">
+            <span
+              class="indicator"
+              [class.background-color-accent]="information.value === 'moderate'"
+              [class.background-color-primary]="information.value === 'low'"
+              [class.background-color-warn]="information.value === 'high'">
+              </span>
+            <span
+              [class.color-accent]="information.value === 'C'"
+              [class.color-warn]="information.value === 'D'|| information.value === 'E'">
+              {{information.value}}
+            </span>
+          </span>
+        </div>
+        <mat-divider></mat-divider>
+      </ng-container>
+
+    </section>
+  </div>
+</action-container>
+
+<product-categories *ngIf="displayCategories"
+                    (selected)="onSelectCategory($event)"
+                    (close)="displayCategories = false;"></product-categories>
