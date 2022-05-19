@@ -177,7 +177,7 @@ const item: Item = {
       fat: 'low'
     },
     comment: '',
-    category: 'vegetable'
+    productCategories: []
   },
   "remaining": 400,
   "quantity": 5,

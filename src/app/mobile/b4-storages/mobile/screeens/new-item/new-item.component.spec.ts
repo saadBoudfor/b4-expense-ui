@@ -136,5 +136,5 @@ const fakeProduct: Product =  {
     fat: 'low'
   },
   comment: '',
-  category: 'vegetable'
+  productCategories: [{label: 'vegetable'}]
 };

@@ -44,6 +44,7 @@ fdescribe('ProductService', () => {
       productQuantity: 569.6,
       displayQuantity: '569.6g',
       unit: 'g',
+      productCategories: [],
     })).toBeFalsy();
 
     expect(ProductService.isValid({
