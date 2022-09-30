@@ -12,7 +12,7 @@ import {MatSnackBar} from "@angular/material/snack-bar";
 import {NO_ERRORS_SCHEMA} from "@angular/core";
 import {DatePipe} from "../../../b4-common/pipes/date/date.pipe";
 
-fdescribe('ValidateHouseholdExpenseListComponent', () => {
+describe('ValidateHouseholdExpenseListComponent', () => {
   let component: ValidateHouseholdExpenseListComponent;
   let fixture: ComponentFixture<ValidateHouseholdExpenseListComponent>;
 
